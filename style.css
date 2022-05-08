@@ -113,13 +113,13 @@ path.departement.active{
         .carte svg{
             width: 400px;
         }
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 900px) {
             body {
                 flex-direction: column;
             }
 
             .carte svg {
-                width: 80%;
+                width: 95%;
                 height: auto;
                 margin: auto;
             }
@@ -127,13 +127,9 @@ path.departement.active{
             .infos {
                 max-height: unset;
                 overflow-y: unset;
-                margin: 0;
+                margin: 0 5px;
                 padding: 0;
-            }
-
-            .infos .images {
-                margin-right: 5px;
-                margin-left: 5px;
+                border-left: none;
             }
 
             .infos h2, .infos h1{
