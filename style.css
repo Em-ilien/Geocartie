@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(202, 43, 237);
+    font-weight: bold;
+}
+
+.carte {
+    margin: 1em 2em;
+}
+
+.carte .petite-couronne-agrandie.active-paris > *, .carte .paris-petite-couronne.active-paris{
+    fill: #555;
+}
+
+.infos {
+    max-height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    font-size: 1.3em;
+    padding-left: 0.75em;
+    border-left: 1px solid #555;
+}
+
+.infos h2, .infos h1 {
+    margin: 1em auto 0;
+    width: fit-content;
+}
+
+.infos h2 span {
+    margin-left: 0.75em;
+    font-weight: 100;
+    font-size: 0.8em;
+}
+
+.infos .images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 2em 1em 1em 0;
+    gap: 0.5em;
+}
+
+.infos .images img {
+    width: auto;
+    max-width: 100%;
+    flex-grow: +1;
+    height: 25vh;
+    object-fit: cover;
+    border-radius: 0.1em;
+}
+
+.infos a.voir-plus-images {
+    padding-bottom: 1em;
+}
+
+.infos .default p {
+    margin-top: 1em;
+    color: #888;
+}
+
+.infos .default p:nth-child(3n) {
+    margin-top: 3em;
+    color: #000;
+}
+
+span.description {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    padding: 0.5em;
+    border-radius: 0.1em;
+    border: 1px solid #555;
+    z-index: 1;
+    font-size: 0.8em;
+    font-weight: 100;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+span.description.show {
+    display: unset;
+}
+
+path.departement {
+    cursor: pointer;
+}
+
+path.departement:hover{
+    fill: #ddd;
+}
+
+path.departement.active{
+    fill: #aaa;
+}
+
+@media screen and (max-width: 1100px) {
+    .carte svg{
+        width: 500px;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .carte svg{
+            width: 400px;
+        }
+        @media screen and (max-width: 1000px) {
+            body {
+                flex-direction: column;
+            }
+
+            .carte svg {
+                width: 80%;
+                height: auto;
+                margin: auto;
+            }
+
+            .infos {
+                max-height: unset;
+                overflow-y: unset;
+                margin: 0;
+                padding: 0;
+            }
+
+            .infos .images {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+            .infos h2, .infos h1{
+                margin: 0;
+            }
+
+            .infos .images img {
+                margin: 0;
+            }
+        }
+    }
+}
