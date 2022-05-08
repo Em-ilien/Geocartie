@@ -64,6 +64,7 @@
 
 		.infos .images img {
 			width: auto;
+			max-width: 100%;
 			flex-grow: +1;
 			height: 25vh;
 			object-fit: cover;
@@ -111,6 +112,49 @@
 
 		path.departement.active{
 			fill: #aaa;
+		}
+
+		@media screen and (max-width: 1100px) {
+			.carte svg{
+				width: 500px;
+			}
+
+			@media screen and (max-width: 1000px) {
+				.carte svg{
+					width: 400px;
+				}
+				@media screen and (max-width: 1000px) {
+					body {
+						flex-direction: column;
+					}
+
+					.carte svg {
+						width: 80%;
+						height: auto;
+						margin: auto;
+					}
+
+					.infos {
+						max-height: unset;
+						overflow-y: unset;
+						margin: 0;
+						padding: 0;
+					}
+
+					.infos .images {
+						margin-right: 5px;
+						margin-left: 5px;
+					}
+
+					.infos h2, .infos h1{
+						margin: 0;
+					}
+
+					.infos .images img {
+						margin: 0;
+					}
+				}
+			}
 		}
 	</style>
 </head>
