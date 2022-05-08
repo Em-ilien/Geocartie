@@ -10,6 +10,7 @@
 <body>
 	<div class="carte">
 		<?php include('data/carte-svg.html'); ?>
+		<span class="description"></span>
 	</div>
 	<div class="infos">		
 		<div class="default">

@@ -1,4 +1,5 @@
 let departements = document.body.querySelectorAll(".departement");
+let descriptionDepartements = document.querySelector(".description");
 let infos = document.body.querySelector(".infos");
 
 let json = getJSONFromFile("data/departements.json");
@@ -18,6 +19,9 @@ function getJSONFromFile(url) {
 }
 
 departements.forEach(departement => {
+    let departementID = departement.classList[1];
+    let departementInfos = json.filter(function(data){ return data.id == departementID })[0];
+
     departement.addEventListener("click", (e) => {
         let activeDepartement = document.querySelector(".active");
         if (activeDepartement)
@@ -27,10 +31,7 @@ departements.forEach(departement => {
         
         departement.classList.add("active");
         
-        let departementID = departement.classList[1];
-
-        let departementInfos = json.filter(function(data){ return data.id == departementID })[0];
-
+      
         infos.innerHTML = "";
 
         let infosDepartementName = document.createElement("h2");
@@ -67,7 +68,7 @@ departements.forEach(departement => {
                 let description = document.querySelector(".description");
                 description.innerHTML = e.target.getAttribute("description");
                 description.classList.add("show");
-                description.style.top = e.clientY + "px";
+                description.style.top = (e.clientY + window.scrollY) + "px";
                 description.style.left = e.clientX + "px";
             });
     
@@ -84,7 +85,19 @@ departements.forEach(departement => {
         voirPlusImages.target = "_blank";
         infos.appendChild(voirPlusImages);
     });
+
+    departement.addEventListener("mousemove", (e) => {
+        descriptionDepartements.innerHTML = departementInfos.name + " (" + departementInfos.id + ")<br><br>Région : " + departementInfos.region_name + "<br>Préfecture : " + departementInfos.prefecture_name;
+        descriptionDepartements.classList.add("show");
+        descriptionDepartements.style.top = (e.clientY + window.scrollY + 30) + "px";
+        descriptionDepartements.style.left = (e.clientX + 10) + "px";
+    });
+
+    departement.addEventListener("mouseout", (e) => {
+        descriptionDepartements.classList.remove("show");
+    });
 });
+
 
 petiteCouronne.addEventListener("click", (e) => {
     for (let i = 0; i < 10; i++) {
