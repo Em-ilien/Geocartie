@@ -37,6 +37,10 @@ departements.forEach(departement => {
       
         infos.innerHTML = "";
 
+        let quizzEl = document.createElement("div");
+        quizzEl.classList.add("quizz");
+        infos.appendChild(quizzEl);
+
         let infosDepartementName = document.createElement("h2");
         infosDepartementName.classList.add("departement-name");
         infosDepartementName.innerText = departementInfos.name;
@@ -148,12 +152,14 @@ function isQuizzMode() {
     return modeSwitcher.classList.contains("active")
 }
 
-function getNewQuestion() {
+function printNewQuestion() {
     const rdm = Math.floor(Math.random() * json.length - 1);
     let dep = json[rdm];
 
     question = dep;
-    return "Trouvez le département " + dep.name + " (" + dep.id + ")";
+    
+    let quizzEl = infos.querySelector(".quizz");
+    quizzEl.innerHTML = "<p>Trouvez le département " + dep.id + " (" + dep.name + ")</p>";
 }
 
 modeSwitcher.addEventListener("click", (e) => {
@@ -162,13 +168,7 @@ modeSwitcher.addEventListener("click", (e) => {
     else {
         modeSwitcher.classList.add("active");
 
-        let quizzEl = document.createElement("div");
-        quizzEl.classList.add("quizz");
-        document.body.appendChild(quizzEl);
-
-        let questionQuizz = document.createElement("p");
-        questionQuizz.innerHTML = getNewQuestion();
-        quizzEl.appendChild(questionQuizz);
+        printNewQuestion();
     }
 });
 
@@ -177,12 +177,21 @@ departements.forEach((departement) => {
         if (isQuizzMode()) {
             let quizzEl = document.querySelector(".quizz");
     
-            let questionQuizz = quizzEl.children[0];
-
             if (departement.classList.contains(question.id)) {
-                questionQuizz.innerHTML = getNewQuestion();
-            } else
-                questionQuizz.innerHTML = "Trouvez le département " + question.name + " (" + question.id + ")";
+                let success = document.createElement("span");
+                success.classList.add("notification");
+                success.classList.add("success");
+                success.innerHTML = "Trouvé !";
+                document.body.appendChild(success);
+                
+                printNewQuestion();
+
+                setTimeout(() => {
+                    success.remove();
+                }, 1000);
+            } else {
+                quizzEl.innerHTML = "<p>Trouvez le département " + question.id + " (" + question.name + ")</p>";
+            }
         }
     });
 });

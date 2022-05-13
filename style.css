@@ -96,10 +96,6 @@ span.description {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-span.description.show {
-    display: unset;
-}
-
 path.departement {
     cursor: pointer;
 }
@@ -128,10 +124,21 @@ span.mode-switcher.active, span.mode-switcher:hover {
     background: #ccccccaa;
 }
 
-.quizz {
+.notification {
     position: absolute;
-    bottom: 1em;
+    top: 1em;
     left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    padding: 0.25em 1em;
+    border-radius: 1em;
+    font-weight: bold;
+    background: #fffe;
+}
+
+.notification.success {
+    background: #2aaa2aee;
+    color: #fff;
 }
 
 @media screen and (max-width: 1100px) {
@@ -171,4 +178,8 @@ span.mode-switcher.active, span.mode-switcher:hover {
             }
         }
     }
+}
+
+.show {
+    display: unset;
 }

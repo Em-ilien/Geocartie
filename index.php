@@ -14,6 +14,9 @@
 	</div>
 	<div class="infos">
 		<div class="default">
+			<div class="quizz">
+				<p></p>
+			</div>
 			<h1>Géocartie</h1>
 			<h2>Apprendre et découvrir les départements français</h2>
 			<p>Pour commencer, cliquez sur l'un des départements français métropolitains.</p>
