@@ -102,7 +102,7 @@ departements.forEach(departement => {
     });
 
     departement.addEventListener("mousemove", (e) => {
-        if (modeSwitcher.classList.contains("active"))
+        if (isQuizzMode())
             return;
 
         descriptionDepartements.innerHTML = departementInfos.name + " (" + departementInfos.id + ")<br><br>Région : " + departementInfos.region_name + "<br>Préfecture : " + departementInfos.prefecture_name;
@@ -112,7 +112,7 @@ departements.forEach(departement => {
     });
 
     departement.addEventListener("mouseout", (e) => {
-        if (modeSwitcher.classList.contains("active"))
+        if (isQuizzMode())
             return;
 
         descriptionDepartements.classList.remove("show");
@@ -142,22 +142,47 @@ for (const dep of petiteCouronneagrandie.children) {
     });
 }
 
-// function getNewQuestion() {
-//     for (dep in json)
-// }
+let question;
 
-// modeSwitcher.addEventListener("click", (e) => {
-//     if (modeSwitcher.classList.contains("active"))
-//         modeSwitcher.classList.remove("active");
-//     else {
-//         modeSwitcher.classList.add("active");
+function isQuizzMode() {
+    return modeSwitcher.classList.contains("active")
+}
 
-//         let quizzEl = document.createElement("div");
-//         quizzEl.classList.add("quizz");
-//         infos.appendChild(quizzEl);
+function getNewQuestion() {
+    const rdm = Math.floor(Math.random() * json.length - 1);
+    let dep = json[rdm];
 
-//         let questionQuizz = document.createElement("p");
-//         questionQuizz.innerHTML = getNewQuestion();
-//         quizzEl.appendChild(questionQuizz);
-//     }
-// });
+    question = dep;
+    return "Trouvez le département " + dep.name + " (" + dep.id + ")";
+}
+
+modeSwitcher.addEventListener("click", (e) => {
+    if (isQuizzMode())
+        modeSwitcher.classList.remove("active");
+    else {
+        modeSwitcher.classList.add("active");
+
+        let quizzEl = document.createElement("div");
+        quizzEl.classList.add("quizz");
+        document.body.appendChild(quizzEl);
+
+        let questionQuizz = document.createElement("p");
+        questionQuizz.innerHTML = getNewQuestion();
+        quizzEl.appendChild(questionQuizz);
+    }
+});
+
+departements.forEach((departement) => {
+    departement.addEventListener("click", (e) => {
+        if (isQuizzMode()) {
+            let quizzEl = document.querySelector(".quizz");
+    
+            let questionQuizz = quizzEl.children[0];
+
+            if (departement.classList.contains(question.id)) {
+                questionQuizz.innerHTML = getNewQuestion();
+            } else
+                questionQuizz.innerHTML = "Trouvez le département " + question.name + " (" + question.id + ")";
+        }
+    });
+});
