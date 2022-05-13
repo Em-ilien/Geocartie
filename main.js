@@ -1,11 +1,14 @@
-let departements = document.body.querySelectorAll(".departement");
-let descriptionDepartements = document.querySelector(".description");
-let infos = document.body.querySelector(".infos");
+let carte = document.querySelector(".carte");
+let departements = carte.querySelectorAll(".departement");
+let descriptionDepartements = carte.querySelector(".description");
+let infos = document.querySelector(".infos");
 
 let json = getJSONFromFile("data/departements.json");
 
-let petiteCouronne = document.querySelector(".paris-petite-couronne");
-let petiteCouronneagrandie = document.querySelector(".petite-couronne-agrandie");
+let petiteCouronne = carte.querySelector(".paris-petite-couronne");
+let petiteCouronneagrandie = carte.querySelector(".petite-couronne-agrandie");
+
+let modeSwitcher = document.querySelector(".mode-switcher");
 
 function getJSONFromFile(url) {
     let xhr = new XMLHttpRequest();
@@ -78,15 +81,30 @@ departements.forEach(departement => {
             });
         });
 
+        let buttonsLink = document.createElement("div");
+        buttonsLink.classList.add("buttons-link");
+        infos.appendChild(buttonsLink);
+
         let voirPlusImages = document.createElement("a");
         voirPlusImages.classList.add("voir-plus-images");
         voirPlusImages.innerText = "Voir plus d'images sur Google";
         voirPlusImages.href = "https://www.google.com/search?q=" + encodeURIComponent(departementInfos.name + " département paysage") + "&tbm=isch";
         voirPlusImages.target = "_blank";
-        infos.appendChild(voirPlusImages);
+        buttonsLink.appendChild(voirPlusImages);
+
+        let ajouterImages = document.createElement("a");
+        ajouterImages.classList.add("ajouter-images");
+        ajouterImages.innerText = "Suggérer l'ajout d'images";
+        ajouterImages.href = "https://www.google.com/search?q=" + encodeURIComponent(departementInfos.name + " département paysage") + "&tbm=isch";
+        ajouterImages.target = "_blank";
+        ajouterImages.setAttribute("onclick", "javascript:window.open(`mailto:emilien.cosson.etu@univ-lemans.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+        buttonsLink.appendChild(ajouterImages);
     });
 
     departement.addEventListener("mousemove", (e) => {
+        if (modeSwitcher.classList.contains("active"))
+            return;
+
         descriptionDepartements.innerHTML = departementInfos.name + " (" + departementInfos.id + ")<br><br>Région : " + departementInfos.region_name + "<br>Préfecture : " + departementInfos.prefecture_name;
         descriptionDepartements.classList.add("show");
         descriptionDepartements.style.top = (e.clientY + window.scrollY + 30) + "px";
@@ -94,6 +112,9 @@ departements.forEach(departement => {
     });
 
     departement.addEventListener("mouseout", (e) => {
+        if (modeSwitcher.classList.contains("active"))
+            return;
+
         descriptionDepartements.classList.remove("show");
     });
 });
@@ -120,3 +141,23 @@ for (const dep of petiteCouronneagrandie.children) {
         petiteCouronne.classList.add("active-paris");
     });
 }
+
+// function getNewQuestion() {
+//     for (dep in json)
+// }
+
+// modeSwitcher.addEventListener("click", (e) => {
+//     if (modeSwitcher.classList.contains("active"))
+//         modeSwitcher.classList.remove("active");
+//     else {
+//         modeSwitcher.classList.add("active");
+
+//         let quizzEl = document.createElement("div");
+//         quizzEl.classList.add("quizz");
+//         infos.appendChild(quizzEl);
+
+//         let questionQuizz = document.createElement("p");
+//         questionQuizz.innerHTML = getNewQuestion();
+//         quizzEl.appendChild(questionQuizz);
+//     }
+// });

@@ -25,6 +25,7 @@ a {
 
 .infos {
     max-height: 100vh;
+    min-height: 100vh;
     width: 100%;
     overflow-y: scroll;
     font-size: 1.3em;
@@ -65,6 +66,13 @@ a {
     padding-bottom: 1em;
 }
 
+.infos .buttons-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 1em
+}
+
 .infos .default p {
     margin-top: 1em;
     color: #888;
@@ -96,12 +104,28 @@ path.departement {
     cursor: pointer;
 }
 
-path.departement:hover{
+path.departement:hover {
     fill: #ddd;
 }
 
-path.departement.active{
+path.departement.active {
     fill: #aaa;
+}
+
+span.mode-switcher {
+    position: absolute;
+    bottom: 3em;
+    left: 2em;
+    padding: 1em;
+    border: 3px solid #6668;
+    border-radius: 3em;
+    color: #666;
+    background: #ffffffaa;
+    cursor: pointer;
+}
+
+span.mode-switcher.active, span.mode-switcher:hover {
+    background: #ccccccaa;
 }
 
 @media screen and (max-width: 1100px) {
