@@ -224,5 +224,5 @@ span.mode-switcher.active {
 }
 
 .show {
-    display: unset;
+    display: unset!important;
 }
