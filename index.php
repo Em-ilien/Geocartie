@@ -11,6 +11,7 @@
 	<div class="carte">
 		<?php include('data/carte-svg.html'); ?>
 		<span class="description"></span>
+		<span class="mode-switcher">Mode quizz</span>
 	</div>
 	<div class="infos">
 		<div class="default">
@@ -25,7 +26,6 @@
 		</div>
 	</div>
 	<span class="description"></span>
-	<span class="mode-switcher">Mode quizz</span>
 
 	<script src="main.js"></script>
 </body>

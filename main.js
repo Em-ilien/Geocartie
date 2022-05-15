@@ -8,7 +8,7 @@ let json = getJSONFromFile("data/departements.json");
 let petiteCouronne = carte.querySelector(".paris-petite-couronne");
 let petiteCouronneagrandie = carte.querySelector(".petite-couronne-agrandie");
 
-let modeSwitcher = document.querySelector(".mode-switcher");
+let modeSwitcher = carte.querySelector(".mode-switcher");
 
 function getJSONFromFile(url) {
     let xhr = new XMLHttpRequest();
@@ -26,14 +26,14 @@ departements.forEach(departement => {
     let departementInfos = json.filter(function(data){ return data.id == departementID })[0];
 
     departement.addEventListener("click", (e) => {
-        let activeDepartement = document.querySelector(".active");
+        let activeDepartement = carte.querySelector("svg .active");
+
         if (activeDepartement)
             activeDepartement.classList.remove("active");
         if (petiteCouronne.classList.contains("active-paris"))
             petiteCouronne.classList.remove("active-paris");
         
         departement.classList.add("active");
-        
       
         infos.innerHTML = "";
 
@@ -149,7 +149,7 @@ for (const dep of petiteCouronneagrandie.children) {
 let question;
 
 function isQuizzMode() {
-    return modeSwitcher.classList.contains("active")
+    return modeSwitcher.classList.contains("active");
 }
 
 function printNewQuestion() {
@@ -163,35 +163,37 @@ function printNewQuestion() {
 }
 
 modeSwitcher.addEventListener("click", (e) => {
-    if (isQuizzMode())
+    if (isQuizzMode()) {
         modeSwitcher.classList.remove("active");
-    else {
+        let quizzEl = infos.querySelector(".quizz");
+        quizzEl.innerHTML = "";
+    } else {
         modeSwitcher.classList.add("active");
-
         printNewQuestion();
     }
 });
 
 departements.forEach((departement) => {
     departement.addEventListener("click", (e) => {
-        if (isQuizzMode()) {
-            let quizzEl = document.querySelector(".quizz");
-    
-            if (departement.classList.contains(question.id)) {
-                let success = document.createElement("span");
-                success.classList.add("notification");
-                success.classList.add("success");
-                success.innerHTML = "Trouvé !";
-                document.body.appendChild(success);
-                
-                printNewQuestion();
+        if (!isQuizzMode())
+            return;
 
-                setTimeout(() => {
-                    success.remove();
-                }, 1000);
-            } else {
-                quizzEl.innerHTML = "<p>Trouvez le département " + question.id + " (" + question.name + ")</p>";
-            }
+        let quizzEl = infos.querySelector(".quizz");
+        quizzEl.innerHTML = "<p>Trouvez le département " + question.id + " (" + question.name + ")</p>";
+        
+        if (!departement.classList.contains(question.id)) {
+            return;
         }
+
+        let success = document.createElement("span");
+        success.classList.add("notification");
+        success.classList.add("success");
+        success.innerHTML = "Trouvé !";
+        document.body.appendChild(success);
+        
+        setTimeout(() => {
+            success.remove();
+            printNewQuestion();
+        }, 2000);
     });
 });
