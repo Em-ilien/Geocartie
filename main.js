@@ -10,6 +10,8 @@ let petiteCouronneagrandie = carte.querySelector(".petite-couronne-agrandie");
 
 let modeSwitcher = carte.querySelector(".mode-switcher");
 
+let quizzNbEssais = 0;
+
 function getJSONFromFile(url) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
@@ -30,16 +32,12 @@ departements.forEach(departement => {
 
         if (activeDepartement)
             activeDepartement.classList.remove("active");
-        if (petiteCouronne.classList.contains("active-paris"))
-            petiteCouronne.classList.remove("active-paris");
+        if (petiteCouronne.classList.contains("clignotement-on"))
+            petiteCouronne.classList.remove("clignotement-on");
         
         departement.classList.add("active");
       
         infos.innerHTML = "";
-
-        let quizzEl = document.createElement("div");
-        quizzEl.classList.add("quizz");
-        infos.appendChild(quizzEl);
 
         let infosDepartementName = document.createElement("h2");
         infosDepartementName.classList.add("departement-name");
@@ -101,7 +99,7 @@ departements.forEach(departement => {
         ajouterImages.innerText = "Suggérer l'ajout d'images";
         ajouterImages.href = "https://www.google.com/search?q=" + encodeURIComponent(departementInfos.name + " département paysage") + "&tbm=isch";
         ajouterImages.target = "_blank";
-        ajouterImages.setAttribute("onclick", "javascript:window.open(`mailto:emilien@emixocle.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+        ajouterImages.setAttribute("onclick", "javascript:window.open(`mailto:emilien.cosson.etu@univ-lemans.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
         buttonsLink.appendChild(ajouterImages);
     });
 
@@ -123,33 +121,45 @@ departements.forEach(departement => {
     });
 });
 
+function faireCligonter(element) {
+    for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+            element.classList.add("clignotement-on");
+        }, 2*i*100);
+        setTimeout(() => {
+            element.classList.remove("clignotement-on");
+        }, 2*i*100+100);
+    }
+}
 
 petiteCouronne.addEventListener("click", (e) => {
-    for (let i = 0; i < 10; i++) {
-        if (i % 2 == 0) {
-            setTimeout(() => {
-                petiteCouronneagrandie.classList.add("active-paris");
-                petiteCouronne.classList.add("active-paris");
-            }, i*100);
-        } else {
-            setTimeout(() => {
-                petiteCouronneagrandie.classList.remove("active-paris");
-                petiteCouronne.classList.remove("active-paris");
-            }, i*100);
-        }	
-    }
+    faireCligonter(petiteCouronne);
+    faireCligonter(petiteCouronneagrandie);
+    // for (let i = 0; i < 10; i++) {
+    //     if (i % 2 == 0) {
+    //         setTimeout(() => {
+    //             petiteCouronneagrandie.classList.add("clignotement-on");
+    //             petiteCouronne.classList.add("clignotement-on");
+    //         }, i*100);
+    //     } else {
+    //         setTimeout(() => {
+    //             petiteCouronneagrandie.classList.remove("clignotement-on");
+    //             petiteCouronne.classList.remove("clignotement-on");
+    //         }, i*100);
+    //     }	
+    // }
 });
 
 for (const dep of petiteCouronneagrandie.children) {
     dep.addEventListener("click", (e) => {
-        petiteCouronne.classList.add("active-paris");
+        petiteCouronne.classList.add("clignotement-on");
     });
 }
 
 let question;
 
 function isQuizzMode() {
-    return modeSwitcher.classList.contains("active");
+    return modeSwitcher.classList.contains("hide");
 }
 
 function printNewQuestion() {
@@ -158,18 +168,56 @@ function printNewQuestion() {
 
     question = dep;
     
-    let quizzEl = infos.querySelector(".quizz");
-    quizzEl.innerHTML = "<p>Trouvez le département " + dep.id + " (" + dep.name + ")</p>";
+    let quizzBar = document.querySelector(".quizz-bar");
+
+    let p = quizzBar.querySelector("p");
+    if (p == null)
+        p = document.createElement("p");
+
+    p.innerText = "Trouvez le département " + dep.id + " (" + dep.name + ")";
+
+    quizzBar.appendChild(p);
+
+    quizzNbEssais = 0;
 }
 
 modeSwitcher.addEventListener("click", (e) => {
     if (isQuizzMode()) {
-        modeSwitcher.classList.remove("active");
-        let quizzEl = infos.querySelector(".quizz");
-        quizzEl.innerHTML = "";
+        // modeSwitcher.classList.remove("hide");
+
+        // let quizzBar = document.querySelector(".quizz-bar");
+
+        // quizzBar.remove();
+
+        // document.body.style.marginTop = "unset";
     } else {
-        modeSwitcher.classList.add("active");
+        let quizzBar = document.createElement("div");
+        quizzBar.classList.add("quizz-bar");
+        document.body.appendChild(quizzBar);
+
+        document.body.style.marginTop = "3em";
+        
+        modeSwitcher.classList.add("hide");
         printNewQuestion();
+
+        let quizzClose = document.createElement("div");
+        quizzClose.classList.add("quizz-close");
+
+        quizzClose.addEventListener("click", (e) => {
+            modeSwitcher.classList.remove("hide");
+
+            let quizzBar = document.querySelector(".quizz-bar");
+    
+            quizzBar.remove();
+    
+            document.body.style.marginTop = "unset";
+        });
+
+        quizzBar.appendChild(quizzClose);
+
+        quizzClose.appendChild(document.createElement("div"));
+        quizzClose.appendChild(document.createElement("div"));
+
     }
 });
 
@@ -178,10 +226,16 @@ departements.forEach((departement) => {
         if (!isQuizzMode())
             return;
 
-        let quizzEl = infos.querySelector(".quizz");
-        quizzEl.innerHTML = "<p>Trouvez le département " + question.id + " (" + question.name + ")</p>";
+        let quizzBar = document.querySelector(".quizz-bar");
+
+        // quizzBar.innerHTML = "<p>Trouvez le département " + question.id + " (" + question.name + ")</p>";
         
         if (!departement.classList.contains(question.id)) {
+            quizzNbEssais++;
+            if (quizzNbEssais > 2) {
+                let departementToFind = document.getElementsByClassName("departement " + question.id);
+                faireCligonter(departementToFind[0]);
+            }
             return;
         }
 
@@ -192,8 +246,12 @@ departements.forEach((departement) => {
         document.body.appendChild(success);
         
         setTimeout(() => {
-            success.remove();
             printNewQuestion();
+        }, 400);
+
+        setTimeout(() => {
+            success.remove();
         }, 2000);
+        
     });
 });

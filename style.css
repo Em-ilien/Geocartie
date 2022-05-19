@@ -19,7 +19,7 @@ a {
     margin: 1em 2em;
 }
 
-.carte .petite-couronne-agrandie.active-paris > *, .carte .paris-petite-couronne.active-paris{
+.carte .clignotement-on *, .carte .clignotement-on{
     fill: #555;
 }
 
@@ -78,9 +78,49 @@ a {
     color: #888;
 }
 
-.infos .quizz p {
-    margin-top: 1em;
+.quizz-bar p {
     color: #cc9c19;
+    font-size: 1.3em;
+    margin: auto;
+    width: fit-content;
+}
+
+.quizz-bar {
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 -2px 13px 3px #bbb;
+    height: 2em;
+    width: 100vw;
+    margin-top: -3em;
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+}
+
+.quizz-close {
+    border: 1px solid #aaa;
+    /*! transform: translateX(-50%); */
+    height: 90%;
+    width: fit-content;
+    cursor: pointer;
+    margin: auto 2px auto 0;
+    order: 2;
+}
+
+.quizz-close div {
+    width: 3em;
+    height: 2px;
+    background: #aaa;
+    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    position: relative;
+    translate: -50%;
+    margin-top: -1px;
+}
+
+.quizz-close div:last-child {
+    transform: rotate(-45deg);
 }
 
 .infos .default p:nth-child(3n) {
@@ -114,6 +154,7 @@ path.departement.active {
 }
 
 span.mode-switcher {
+    display: unset;
     position: absolute;
     bottom: 3em;
     left: 2em;
@@ -156,7 +197,7 @@ span.mode-switcher.active {
 
 .notification {
     position: absolute;
-    top: 1em;
+    top: 1.5em;
     font-size: 1.4em;
     padding: 0.75em;
     border-radius: 0.6em;
@@ -225,4 +266,8 @@ span.mode-switcher.active {
 
 .show {
     display: unset!important;
+}
+
+.hide {
+    display : none!important;
 }
