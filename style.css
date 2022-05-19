@@ -84,6 +84,7 @@ a {
     margin: auto;
     width: fit-content;
     text-align: center;
+    order: 1;
 }
 
 .quizz-bar {
@@ -120,6 +121,11 @@ a {
 
 .quizz-close div:last-child {
     transform: translateX(-50%) rotate(-45deg);
+}
+
+
+.quizz-bar .score {
+  margin: auto 1em;
 }
 
 .infos .default p:nth-child(3n) {

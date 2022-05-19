@@ -11,6 +11,7 @@ let petiteCouronneagrandie = carte.querySelector(".petite-couronne-agrandie");
 let modeSwitcher = carte.querySelector(".mode-switcher");
 
 let quizzNbEssais = 0;
+let score;
 
 function getJSONFromFile(url) {
     let xhr = new XMLHttpRequest();
@@ -121,11 +122,12 @@ departements.forEach(departement => {
     });
 });
 
-function faireCligonter(element) {
+function faireClignoter(element) {
     for (let i = 0; i < 6; i++) {
         setTimeout(() => {
             element.classList.add("clignotement-on");
         }, 2*i*100);
+
         setTimeout(() => {
             element.classList.remove("clignotement-on");
         }, 2*i*100+100);
@@ -133,21 +135,8 @@ function faireCligonter(element) {
 }
 
 petiteCouronne.addEventListener("click", (e) => {
-    faireCligonter(petiteCouronne);
-    faireCligonter(petiteCouronneagrandie);
-    // for (let i = 0; i < 10; i++) {
-    //     if (i % 2 == 0) {
-    //         setTimeout(() => {
-    //             petiteCouronneagrandie.classList.add("clignotement-on");
-    //             petiteCouronne.classList.add("clignotement-on");
-    //         }, i*100);
-    //     } else {
-    //         setTimeout(() => {
-    //             petiteCouronneagrandie.classList.remove("clignotement-on");
-    //             petiteCouronne.classList.remove("clignotement-on");
-    //         }, i*100);
-    //     }	
-    // }
+    faireClignoter(petiteCouronne);
+    faireClignoter(petiteCouronneagrandie);
 });
 
 for (const dep of petiteCouronneagrandie.children) {
@@ -182,44 +171,53 @@ function printNewQuestion() {
 }
 
 modeSwitcher.addEventListener("click", (e) => {
-    if (isQuizzMode()) {
-        // modeSwitcher.classList.remove("hide");
+    if (isQuizzMode())
+        return;
 
-        // let quizzBar = document.querySelector(".quizz-bar");
+    let quizzBar = document.createElement("div");
+    quizzBar.classList.add("quizz-bar");
+    document.body.appendChild(quizzBar);
 
-        // quizzBar.remove();
-
-        // document.body.style.marginTop = "unset";
-    } else {
-        let quizzBar = document.createElement("div");
-        quizzBar.classList.add("quizz-bar");
-        document.body.appendChild(quizzBar);
-
-        document.body.style.marginTop = "3em";
-        
-        modeSwitcher.classList.add("hide");
-        printNewQuestion();
-
-        let quizzClose = document.createElement("div");
-        quizzClose.classList.add("quizz-close");
-
-        quizzClose.addEventListener("click", (e) => {
-            modeSwitcher.classList.remove("hide");
-
-            let quizzBar = document.querySelector(".quizz-bar");
+    document.body.style.marginTop = "3em";
     
-            quizzBar.remove();
-    
-            document.body.style.marginTop = "unset";
-        });
+    modeSwitcher.classList.add("hide");
+    printNewQuestion();
 
-        quizzBar.appendChild(quizzClose);
+    let quizzClose = document.createElement("div");
+    quizzClose.classList.add("quizz-close");
 
-        quizzClose.appendChild(document.createElement("div"));
-        quizzClose.appendChild(document.createElement("div"));
+    quizzClose.addEventListener("click", (e) => {
+        modeSwitcher.classList.remove("hide");
 
-    }
+        let quizzBar = document.querySelector(".quizz-bar");
+        quizzBar.remove();
+
+        document.body.style.marginTop = "unset";
+    });
+
+    quizzBar.appendChild(quizzClose);
+
+    quizzClose.appendChild(document.createElement("div"));
+    quizzClose.appendChild(document.createElement("div"));
+
+    score = {
+        correct: 0,
+        wrong: 0
+    };
 });
+
+function updateScore() {
+    let scoreElement = document.querySelector(".score");
+    if (scoreElement == null) {
+        scoreElement = document.createElement("span");
+        scoreElement.classList.add("score");
+
+        let quizzBar = document.querySelector(".quizz-bar");
+        quizzBar.appendChild(scoreElement);
+    }
+
+    scoreElement.innerText = "Score : " + score.correct + "/" + (score.correct + score.wrong);
+}
 
 departements.forEach((departement) => {
     departement.addEventListener("click", (e) => {
@@ -227,14 +225,12 @@ departements.forEach((departement) => {
             return;
 
         let quizzBar = document.querySelector(".quizz-bar");
-
-        // quizzBar.innerHTML = "<p>Trouvez le département " + question.id + " (" + question.name + ")</p>";
         
         if (!departement.classList.contains(question.id)) {
             quizzNbEssais++;
             if (quizzNbEssais > 2) {
                 let departementToFind = document.getElementsByClassName("departement " + question.id);
-                faireCligonter(departementToFind[0]);
+                faireClignoter(departementToFind[0]);
             }
             return;
         }
@@ -253,5 +249,11 @@ departements.forEach((departement) => {
             success.remove();
         }, 2000);
         
+        if (quizzNbEssais <= 2)
+            score.correct++;
+        else
+            score.wrong++;
+
+        updateScore();
     });
 });
