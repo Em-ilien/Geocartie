@@ -83,6 +83,7 @@ a {
     font-size: 1.3em;
     margin: auto;
     width: fit-content;
+    text-align: center;
 }
 
 .quizz-bar {
@@ -99,7 +100,6 @@ a {
 
 .quizz-close {
     border: 1px solid #aaa;
-    /*! transform: translateX(-50%); */
     height: 90%;
     width: fit-content;
     cursor: pointer;
@@ -111,16 +111,15 @@ a {
     width: 3em;
     height: 2px;
     background: #aaa;
-    transform: rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
     top: 50%;
     left: 50%;
     position: relative;
-    translate: -50%;
     margin-top: -1px;
 }
 
 .quizz-close div:last-child {
-    transform: rotate(-45deg);
+    transform: translateX(-50%) rotate(-45deg);
 }
 
 .infos .default p:nth-child(3n) {
