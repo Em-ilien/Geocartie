@@ -81,19 +81,20 @@ a {
 }
 
 .quizz-bar p {
-    color: #cc9c19;
-    font-size: 1.3em;
+    color: #33c8ac;
+    font-size: 1.7em;
     margin: auto;
     width: fit-content;
     text-align: center;
     order: 1;
     padding: 0 0.7em;
+    font-weight: bold;
 }
 
 .quizz-bar {
     position: fixed;
-    background: #fff;
-    box-shadow: 0 -2px 13px 3px #bbb;
+    background: #222;
+    box-shadow: 0 -1px 24px 0px #555;
     height: 2em;
     width: 100vw;
     margin-top: -6.5vh;
@@ -103,20 +104,24 @@ a {
 }
 
 .quizz-close {
-    border: 2px solid #aaa9;
+    border: 2px solid #ccc;
     height: 85%;
     width: fit-content;
     cursor: pointer;
     margin: auto 0;
     order: 2;
     margin-right: 3px;
-    border-radius: 15%;
+    border-radius: 10%;
+}
+
+.quizz-close:hover {
+    background: #555;
 }
 
 .quizz-close div {
     width: 3em;
     height: 2px;
-    background: #aaa;
+    background: #ccc;
     transform: translateX(-50%) rotate(45deg);
     top: 50%;
     left: 50%;
@@ -131,7 +136,7 @@ a {
 
 .quizz-bar .score {
   margin: auto 0 auto 0.75em;
-  color: #999;
+  color: #bbb;
   letter-spacing: 3px;
 }
 
@@ -285,6 +290,10 @@ span.mode-switcher.active {
             body .infos * {
                 margin-left: 5px;
                 margin-right: 5px;
+            }
+            
+            .quizz-bar p {
+                font-size: 1.2em;
             }
 
             @media screen and (max-width: 400px) {

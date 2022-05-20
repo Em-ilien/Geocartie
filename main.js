@@ -35,14 +35,21 @@ departements.forEach(departement => {
         if (isQuizzMode())
             return;
 
-        updateInfoBulle(departementInfos, e);
+        if (infoBulle == undefined)
+            setupInfoBulle();
+
+        infoBulle.innerHTML = departementInfos.name + " (" + departementInfos.id + ")<br><br>Région : " + departementInfos.region_name + "<br>Préfecture : " + departementInfos.prefecture_name;
+        document.body.appendChild(infoBulle);
+        infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
+        infoBulle.style.left = (e.clientX + 10) + "px";
     });
 
     departement.addEventListener("mouseout", (e) => {
         if (isQuizzMode())
             return;
 
-        document.body.removeChild(infoBulle);
+        if (infoBulle != undefined)
+            document.body.removeChild(infoBulle);
     });
 });
 
@@ -116,7 +123,7 @@ function setupDepInfosEl() {
     addImagesBtn = document.createElement("a");
     addImagesBtn.classList.add("ajouter-images");
     addImagesBtn.innerText = "Suggérer l'ajout d'images";
-    addImagesBtn.href = "mailto:emilien.cosson.etu@univ-lemans.fr";
+    addImagesBtn.href = "mailto:emilien@emixocle.fr";
     addImagesBtn.target = "_blank";
     buttonsLink.appendChild(addImagesBtn);
 }
@@ -139,6 +146,9 @@ function updateDepInfosEl(departementInfos) {
         imagesDepCtn.appendChild(imgEl);
 
         imgEl.addEventListener("mouseenter", (e) => {
+            if (infoBulle == undefined)
+                setupInfoBulle();
+
             infoBulle.innerHTML = e.target.getAttribute("description");
             document.body.appendChild(infoBulle);
             infoBulle.style.top = (e.clientY + window.scrollY) + "px";
@@ -146,27 +156,18 @@ function updateDepInfosEl(departementInfos) {
         });
 
         imgEl.addEventListener("mouseout", (e) => {
-            document.body.removeChild(infoBulle);
+            if (infoBulle != undefined)
+                document.body.removeChild(infoBulle);
         });
     });
 
     seeMoreImagesBtn.href = "https://www.google.com/search?q=" + encodeURIComponent(departementInfos.name + " département paysage") + "&tbm=isch";
-    addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien.cosson.etu@univ-lemans.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+    addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien@emixocle.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
 }
 
 function setupInfoBulle() {
     infoBulle = document.createElement("span");
     infoBulle.classList.add("info-bulle");
-}
-
-function updateInfoBulle(departementInfos, e) {
-    if (infoBulle == undefined)
-        setupInfoBulle();
-
-    infoBulle.innerHTML = departementInfos.name + " (" + departementInfos.id + ")<br><br>Région : " + departementInfos.region_name + "<br>Préfecture : " + departementInfos.prefecture_name;
-    document.body.appendChild(infoBulle);
-    infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
-    infoBulle.style.left = (e.clientX + 10) + "px";
 }
 
 function getJSONFromFile(url) {

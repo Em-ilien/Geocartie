@@ -5,6 +5,8 @@ let quizzBar;
 let quizzNbTries = 0;
 let score = {};
 let depToFind = {};
+let departementsFound = [];
+let mistakes = [];
 
 
 
@@ -38,6 +40,13 @@ departements.forEach((departement) => {
         success.innerHTML = "Trouvé !";
         document.body.appendChild(success);
         
+        if (quizzNbTries <= 2)
+            score.correct++;
+        else {
+            score.wrong++;
+            mistakes.push(depToFind);
+        }
+
         setTimeout(() => {
             printNewQuestion();
             quizzNbTries = 0;
@@ -46,13 +55,9 @@ departements.forEach((departement) => {
         setTimeout(() => {
             success.remove();
         }, 2000);
-        
-        if (quizzNbTries <= 2)
-            score.correct++;
-        else
-            score.wrong++;
 
         updateScore();
+        departementsFound.push({depID: depToFind.id, quizzNbTries: quizzNbTries});
     });
 });
 
@@ -76,18 +81,23 @@ function setupQuizzBar() {
 }
 
 function printNewQuestion() {
-    const rdm = Math.floor(Math.random() * json.length);
-    let dep = json[rdm];
+    if (mistakes.length > 0 && Math.random() < 0.1) {
+        let mistake = mistakes.shift();
+        depToFind = mistake;
+    } else {
+        do {
+            const rdm = Math.floor(Math.random() * json.length);
+            depToFind = json[rdm];
+        } while (departementsFound.slice(-5).find(d => d.depID == depToFind.id) != undefined);
+    }
     
-    depToFind.id = dep.id;
-
     let p = quizzBar.querySelector("p");
     if (p == null) {
         p = document.createElement("p");
         quizzBar.appendChild(p);
     }
 
-    p.innerText = "Trouvez le département " + dep.id + " (" + dep.name + ")";
+    p.innerText = (score.correct >= 3 ? "" : "Cherchez le département ") + depToFind.name + " (" + depToFind.id + ")";
 }
 
 function updateScore() {
