@@ -1,8 +1,8 @@
 # Geocartie
 
-## Introduction
-
 <img style="width:500px;" src="https://user-images.githubusercontent.com/66224623/169597707-3951e731-b296-4630-94cd-5d07c2435894.png" alt="Image Géocartie"/>
+
+## Introduction
 
 Geocartie est une application Web open-source permettant de découvrir et d'apprendre les différents départements métropolitains français.
 L'interface comprend :
