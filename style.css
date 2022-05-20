@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: row;
     font-family: Arial, Helvetica, sans-serif;
-    max-height: 100vh;
+    height: 100vh;
 }
 
 a {
