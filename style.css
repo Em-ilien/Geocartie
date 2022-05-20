@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: row;
     font-family: Arial, Helvetica, sans-serif;
+    max-height: 100vh;
 }
 
 a {
@@ -16,7 +17,8 @@ a {
 }
 
 .carte {
-    margin: 1em 2em;
+    margin: 2em 1em 1em;
+    max-height: 100%;
 }
 
 .carte .clignotement-on *, .carte .clignotement-on{
@@ -24,8 +26,8 @@ a {
 }
 
 .infos {
-    max-height: 100vh;
-    min-height: 100vh;
+    max-height: 100%;
+    min-height: 100%;
     width: 100%;
     overflow-y: scroll;
     font-size: 1.3em;
@@ -85,6 +87,7 @@ a {
     width: fit-content;
     text-align: center;
     order: 1;
+    padding: 0 0.7em;
 }
 
 .quizz-bar {
@@ -93,19 +96,21 @@ a {
     box-shadow: 0 -2px 13px 3px #bbb;
     height: 2em;
     width: 100vw;
-    margin-top: -3em;
-    height: 3em;
+    margin-top: -6.5vh;
+    height: 7.5vh;
     display: flex;
     flex-direction: row;
 }
 
 .quizz-close {
-    border: 1px solid #aaa;
-    height: 90%;
+    border: 2px solid #aaa9;
+    height: 85%;
     width: fit-content;
     cursor: pointer;
-    margin: auto 2px auto 0;
+    margin: auto 0;
     order: 2;
+    margin-right: 3px;
+    border-radius: 15%;
 }
 
 .quizz-close div {
@@ -125,7 +130,18 @@ a {
 
 
 .quizz-bar .score {
-  margin: auto 1em;
+  margin: auto 0 auto 0.75em;
+  color: #999;
+  letter-spacing: 3px;
+}
+
+
+.carte svg {
+  max-height: 100%;
+}
+body.quizz-mode {
+  margin-top: 6.5vh;
+  max-height: 93.5vh;
 }
 
 .infos .default p:nth-child(3n) {
@@ -202,7 +218,7 @@ span.mode-switcher.active {
 
 .notification {
     position: absolute;
-    top: 1.5em;
+    top: 2.5em;
     font-size: 1.4em;
     padding: 0.75em;
     border-radius: 0.6em;
@@ -210,7 +226,6 @@ span.mode-switcher.active {
     background: #fffe;
     width: 12em;
     text-align: center;
-
     animation: notif 2s ease-in-out infinite;
 }
 
@@ -232,9 +247,13 @@ span.mode-switcher.active {
             body {
                 flex-direction: column;
             }
+            
+            .carte {
+                height: 81vh;
+            }
 
             .carte svg {
-                width: 95%;
+                width: 100%;
                 height: auto;
                 margin: auto;
             }
@@ -246,9 +265,10 @@ span.mode-switcher.active {
             .infos {
                 max-height: unset;
                 overflow-y: unset;
-                margin: 1em 5px 0;
+                margin: 1em 0 0;
                 padding: 0;
                 border-left: none;
+                max-width: 100%;
             }
 
             .infos h2, .infos h1{
@@ -257,6 +277,15 @@ span.mode-switcher.active {
 
             .infos .images img {
                 margin: 0;
+            }
+            
+            .infos .images {
+                margin: 2em 0.5em 1em 0.5em;
+            }
+            
+            body .infos * {
+                margin-left: 5px;
+                margin-right: 5px;
             }
 
             @media screen and (max-width: 400px) {

@@ -178,7 +178,7 @@ modeSwitcher.addEventListener("click", (e) => {
     quizzBar.classList.add("quizz-bar");
     document.body.appendChild(quizzBar);
 
-    document.body.style.marginTop = "3em";
+    document.body.classList.add("quizz-mode");
     
     modeSwitcher.classList.add("hide");
     printNewQuestion();
@@ -216,7 +216,7 @@ function updateScore() {
         quizzBar.appendChild(scoreElement);
     }
 
-    scoreElement.innerText = "Score : " + score.correct + "/" + (score.correct + score.wrong);
+    scoreElement.innerText = score.correct + "/" + (score.correct + score.wrong);
 }
 
 departements.forEach((departement) => {
