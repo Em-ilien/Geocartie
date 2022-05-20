@@ -149,9 +149,8 @@ body.quizz-mode {
     color: #000;
 }
 
-span.description {
+span.info-bulle {
     position: absolute;
-    display: none;
     background-color: #fff;
     padding: 0.5em;
     border-radius: 0.1em;

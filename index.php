@@ -10,16 +10,10 @@
 <body>
 	<div class="carte">
 		<?php include('data/carte-svg.html'); ?>
-		<span class="description"></span>
 		<span class="mode-switcher">Mode quizz</span>
 	</div>
 	<div class="infos">
 		<div class="default">
-<!-- new			
-            <div class="quizz">
-				<p></p>
-			</div>
--->
 			<h1>Géocartie</h1>
 			<h2>Apprendre et découvrir les départements français</h2>
 			<p>Pour commencer, cliquez sur l'un des départements français métropolitains.</p>
@@ -27,7 +21,6 @@
 			<p>La carte de France provient de comersis.com et les images sont issues de pages Internet.</p>
 		</div>
 	</div>
-	<span class="description"></span>
 
 	<script src="main.js"></script>
 	<script src="quizz.js"></script>

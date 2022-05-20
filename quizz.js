@@ -1,15 +1,85 @@
 let modeSwitcher = carte.querySelector(".mode-switcher");
+
 let quizzBar;
 
 let quizzNbTries = 0;
-let score;
-let question;
+let score = {};
+let depToFind = {};
+
+
+
+modeSwitcher.addEventListener("click", (e) => {
+    if (isQuizzMode())
+        return;
+
+    if (quizzBar == undefined)
+        setupQuizzBar();
+
+    switchToQuizzMode();
+});
+
+departements.forEach((departement) => {
+    departement.addEventListener("click", (e) => {
+        if (!isQuizzMode())
+            return;
+
+        if (!departement.classList.contains(depToFind.id)) {
+            quizzNbTries++;
+            if (quizzNbTries > 2) {
+                let departementToFind = document.getElementsByClassName("departement " + depToFind.id);
+                faireClignoter(departementToFind[0]);
+            }
+            return;
+        }
+
+        let success = document.createElement("span");
+        success.classList.add("notification");
+        success.classList.add("success");
+        success.innerHTML = "Trouvé !";
+        document.body.appendChild(success);
+        
+        setTimeout(() => {
+            printNewQuestion();
+            quizzNbTries = 0;
+        }, 200);
+
+        setTimeout(() => {
+            success.remove();
+        }, 2000);
+        
+        if (quizzNbTries <= 2)
+            score.correct++;
+        else
+            score.wrong++;
+
+        updateScore();
+    });
+});
+
+
+
+function setupQuizzBar() {
+    quizzBar = document.createElement("div");
+    quizzBar.classList.add("quizz-bar");
+
+    let quizzClose = document.createElement("div");
+    quizzClose.classList.add("quizz-close");
+
+    quizzClose.addEventListener("click", (e) => {
+        closeQuizzMode();
+    });
+
+    quizzBar.appendChild(quizzClose);
+
+    quizzClose.appendChild(document.createElement("div"));
+    quizzClose.appendChild(document.createElement("div"));
+}
 
 function printNewQuestion() {
-    const rdm = Math.floor(Math.random() * json.length - 1);
+    const rdm = Math.floor(Math.random() * json.length);
     let dep = json[rdm];
-
-    question = dep;
+    
+    depToFind.id = dep.id;
 
     let p = quizzBar.querySelector("p");
     if (p == null) {
@@ -33,12 +103,7 @@ function updateScore() {
     scoreElement.innerText = score.correct + "/" + (score.correct + score.wrong);
 }
 
-modeSwitcher.addEventListener("click", (e) => {
-    if (isQuizzMode())
-        return;
-
-    quizzBar = document.createElement("div");
-    quizzBar.classList.add("quizz-bar");
+function switchToQuizzMode() {
     document.body.appendChild(quizzBar);
 
     document.body.classList.add("quizz-mode");
@@ -47,62 +112,14 @@ modeSwitcher.addEventListener("click", (e) => {
     printNewQuestion();
     quizzNbTries = 0;
 
-    let quizzClose = document.createElement("div");
-    quizzClose.classList.add("quizz-close");
-
-    quizzClose.addEventListener("click", (e) => {
-        modeSwitcher.classList.remove("hide");
-
-        quizzBar.remove();
-
-        document.body.classList.remove("quizz-mode");
-    });
-
-    quizzBar.appendChild(quizzClose);
-
-    quizzClose.appendChild(document.createElement("div"));
-    quizzClose.appendChild(document.createElement("div"));
-
     score = {
         correct: 0,
         wrong: 0
     };
-});
+}
 
-departements.forEach((departement) => {
-    departement.addEventListener("click", (e) => {
-        if (!isQuizzMode())
-            return;
-
-        if (!departement.classList.contains(question.id)) {
-            quizzNbTries++;
-            if (quizzNbTries > 2) {
-                let departementToFind = document.getElementsByClassName("departement " + question.id);
-                faireClignoter(departementToFind[0]);
-            }
-            return;
-        }
-
-        let success = document.createElement("span");
-        success.classList.add("notification");
-        success.classList.add("success");
-        success.innerHTML = "Trouvé !";
-        document.body.appendChild(success);
-        
-        setTimeout(() => {
-            printNewQuestion();
-            quizzNbTries = 0;
-        }, 400);
-
-        setTimeout(() => {
-            success.remove();
-        }, 2000);
-        
-        if (quizzNbTries <= 2)
-            score.correct++;
-        else
-            score.wrong++;
-
-        updateScore();
-    });
-});
+function closeQuizzMode() {
+    modeSwitcher.classList.remove("hide");
+    document.body.removeChild(quizzBar);
+    document.body.classList.remove("quizz-mode");
+}
