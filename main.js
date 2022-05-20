@@ -116,7 +116,7 @@ function setupDepInfosEl() {
     addImagesBtn = document.createElement("a");
     addImagesBtn.classList.add("ajouter-images");
     addImagesBtn.innerText = "Suggérer l'ajout d'images";
-    addImagesBtn.href = "mailto:emilien@emixocle.fr";
+    addImagesBtn.href = "mailto:emilien.cosson.etu@univ-lemans.fr";
     addImagesBtn.target = "_blank";
     buttonsLink.appendChild(addImagesBtn);
 }
@@ -128,6 +128,8 @@ function updateDepInfosEl(departementInfos) {
     nameDepEl.innerHTML = departementInfos.name + "<span>" + departementInfos.id + "</span>";
     regionDepEl.children[0].innerText = departementInfos.region_name;
     prefDepEl.children[0].innerText = departementInfos.prefecture_name;
+
+    imagesDepCtn.innerText = "";
 
     departementInfos.images.forEach((image) => {
         let imgEl = document.createElement("img");
@@ -149,7 +151,7 @@ function updateDepInfosEl(departementInfos) {
     });
 
     seeMoreImagesBtn.href = "https://www.google.com/search?q=" + encodeURIComponent(departementInfos.name + " département paysage") + "&tbm=isch";
-    addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien@emixocle.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+    addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien.cosson.etu@univ-lemans.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
 }
 
 function setupInfoBulle() {
