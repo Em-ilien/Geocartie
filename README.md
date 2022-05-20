@@ -14,7 +14,7 @@ L'interface comprend :
 
 [Twitter](https://twitter.com/Em_ixocle)
 
-[Mail](emilien@emixocle.fr)
+[Mail](mailto:emilien@emixocle.fr)
 
 ## Mode Quizz
 
