@@ -79,6 +79,8 @@ carte.firstElementChild.addEventListener("click", (e) => {
     document.body.appendChild(infos);
     infos.appendChild(defaultInfos);
 
+    disactivePreviousActiveDepartements();
+
     nameDepEl = null;
 });
 

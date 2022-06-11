@@ -14,10 +14,20 @@ modeSwitcher.addEventListener("click", (e) => {
     if (isQuizzMode())
         return;
 
-    if (quizzBar == undefined)
+    if (quizzBar == undefined) {
         setupQuizzBar();
 
+        quizzNbTries = 0;
+
+        score = {
+            correct: 0,
+            wrong: 0
+        };
+    }
+
     switchToQuizzMode();
+
+    updateScore();
 });
 
 departements.forEach((departement) => {
@@ -120,12 +130,6 @@ function switchToQuizzMode() {
     
     modeSwitcher.classList.add("hide");
     printNewQuestion();
-    quizzNbTries = 0;
-
-    score = {
-        correct: 0,
-        wrong: 0
-    };
 }
 
 function closeQuizzMode() {

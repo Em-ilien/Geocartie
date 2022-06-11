@@ -19,6 +19,7 @@ a {
 
 .carte {
     max-height: 100%;
+    cursor: help;
 }
 
 .carte .clignotement-on *, .carte .clignotement-on{
