@@ -50,7 +50,8 @@
            "description":"Ain",
            "contextLink":"https://www.eterritoire.fr/departement/auvergne-rhone-alpes/ain"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":2,
@@ -93,7 +94,8 @@
            "description":"L'Aisne aux cinq paysages - Picardie - France",
            "contextLink":"https://www.easyvoyage.com/france/l-aisne-aux-cinq-paysages-5075"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":3,
@@ -146,7 +148,8 @@
            "description":"Territorialiser les espaces naturels vulnérables par le paysage",
            "contextLink":"https://journals.openedition.org/paysage/19630"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":4,
@@ -199,7 +202,8 @@
            "description":"Atlas des paysages des Alpes-de-Haute-Provence | MTE Objectif paysages",
            "contextLink":"https://objectif-paysages.developpement-durable.gouv.fr/atlas-des-paysages-des-alpes-de-haute-provence-107"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":5,
@@ -247,7 +251,8 @@
            "description":"Garages BestDrive en Hautes-Alpes : Devis Réparation Auto | Vroomly",
            "contextLink":"https://www.vroomly.com/garage-05/centre-bestdrive/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":6,
@@ -285,7 +290,8 @@
            "description":"Les grands parcs naturels du département des Alpes-Maritimes ...",
            "contextLink":"https://recreanice.fr/parcs-departement-06-alpes-maritimes-balades"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":7,
@@ -323,7 +329,8 @@
            "description":"La beauté des gorges de l'Ardèche",
            "contextLink":"https://www.linternaute.com/sortir/escapade/1094397-les-splendeurs-de-l-ardeche-et-de-la-drome/1094400-les-gorges-de-l-ardeche"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":8,
@@ -366,7 +373,8 @@
            "description":"LES PLUS BEAUX PAYSAGES<br>DANS L'AUBE<br>(10000)",
            "contextLink":"https://www.mes-ballades.com/10/paysages-dans-l-aube-10-en-france.htm"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":9,
@@ -414,7 +422,8 @@
            "description":"Réouverture de certains musées, accès à quelques plans d'eau : l ...",
            "contextLink":"https://france3-regions.francetvinfo.fr/occitanie/ariege/foix/reouverture-certains-musees-acces-quelques-plans-eau-ariege-poursuit-son-deconfinement-1830494.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":10,
@@ -472,7 +481,8 @@
            "description":"Lacs, étangs... - Aube - Photo-Paysage.com Photo-Paysage.com",
            "contextLink":"https://www.photo-paysage.com/displayimage.php?pid=853"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":11,
@@ -520,7 +530,8 @@
            "description":"Dans la basse vallée de l'Aude, un collectif mobilisé contre un ...",
            "contextLink":"https://www.ladepeche.fr/2021/01/11/dans-la-basse-vallee-de-laude-un-collectif-mobilise-contre-un-barrage-9304246.php"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":12,
@@ -573,7 +584,8 @@
            "description":"Les plus beaux paysages nature du sud de l'Aveyron - Trip in wild ...",
            "contextLink":"https://www.tripinwild.fr/plus-beaux-paysages-sud-aveyron/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":13,
@@ -626,7 +638,8 @@
            "description":"Atlas de paysages - Nous découvrir – Site du Département des ...",
            "contextLink":"https://www.departement13.fr/nous-decouvrir/atlas-de-paysages/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":14,
@@ -679,7 +692,8 @@
            "description":"Le Calvados : découvrez ses paysages, son savoir-faire et nos bons ...",
            "contextLink":"https://www.maison-travaux.fr/dossiers/reportages-actualites/le-calvados-rierre-et-colombages-une-tradition"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":15,
@@ -727,7 +741,8 @@
            "description":"File:Paysage Cantal 2007.JPG - Wikimedia Commons",
            "contextLink":"https://commons.wikimedia.org/wiki/File:Paysage_Cantal_2007.JPG"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":16,
@@ -770,7 +785,8 @@
            "description":"Photo aérienne de Saintes - Charente-Maritime (17)",
            "contextLink":"https://www.survoldefrance.fr/affichage2.php?img=44525&lieu=Saintes&f=0&prev_suiv_link=1"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":17,
@@ -818,7 +834,8 @@
            "description":"Photo aérienne de : Fort Boyard - Charente-Maritime (17 ...",
            "contextLink":"https://www.pinterest.fr/pin/524176844104655418/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":18,
@@ -871,7 +888,8 @@
            "description":"Loir et Cher - Arts et Voyages",
            "contextLink":"http://e-sushi.fr/art-voyage/france/loir-et-cher"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":19,
@@ -924,7 +942,8 @@
            "description":"Les lieux incontournables à visiter en Corrèze - Casa del Travel",
            "contextLink":"https://www.casadeltravel.fr/les-lieux-incontournables-a-visiter-en-correze/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":"2A",
@@ -982,7 +1001,8 @@
            "description":"Photo of Sari d 'Orcino village de Corse du Sud | Corse du sud ...",
            "contextLink":"https://www.pinterest.fr/pin/550565123177159157/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":"2B",
@@ -1040,7 +1060,8 @@
            "description":"San-Nicolao — Wikipédia",
            "contextLink":"https://fr.wikipedia.org/wiki/San-Nicolao"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":21,
@@ -1098,7 +1119,8 @@
            "description":"Bourgogne-Franche-Comté | Office français de la biodiversité",
            "contextLink":"https://www.ofb.gouv.fr/bourgogne-franche-comte"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":22,
@@ -1136,7 +1158,8 @@
            "description":"77 Côte De Granit Rose Stock Photos, Pictures & Royalty-Free ...",
            "contextLink":"https://www.istockphoto.com/photos/c%C3%B4te-de-granit-rose"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":23,
@@ -1184,7 +1207,8 @@
            "description":"Cinq endroits à découvrir dans la Creuse - Voyage - LeVif Weekend",
            "contextLink":"https://weekend.levif.be/lifestyle/voyage/cinq-endroits-a-decouvrir-dans-la-creuse/article-normal-1334141.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":24,
@@ -1237,7 +1261,8 @@
            "description":"Une nature et des paysages préservés | Dordogne Périgord Tourisme",
            "contextLink":"https://www.dordogne-perigord-tourisme.fr/sinspirer/une-destination-aux-multiples-facettes/nature-paysages-preserves/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":25,
@@ -1285,7 +1310,8 @@
            "description":"Météo Doubs (25) gratuite : prévisions météo jusqu'à 12 jours",
            "contextLink":"https://www.my-meteo.com/departement-doubs/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":26,
@@ -1328,7 +1354,8 @@
            "description":"6 étapes incontournables dans la Drôme | Note au voyageur",
            "contextLink":"https://www.noteauvoyageur.eu/sous-le-charme-de-la-drome-partir-un-jour-15/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":27,
@@ -1371,7 +1398,8 @@
            "description":"Idée Road-Trip : Un séjour dans l'Eure - SereniTrip",
            "contextLink":"https://serenitrip.fr/idee-road-trip-un-sejour-dans-leure/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":28,
@@ -1389,7 +1417,8 @@
            "description":"CARTE. Quelles sont \"les petites villes de demain\" en Eure-et-Loir ...",
            "contextLink":"https://actu.fr/politique/carte-quelles-sont-les-petites-villes-de-demain-en-eure-et-loir_38158797.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":29,
@@ -1427,7 +1456,8 @@
            "description":"Finistère : top 10 des plus beaux lieux à découvrir pendant un ...",
            "contextLink":"https://un-monde-a-velo.com/finistere/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":30,
@@ -1470,7 +1500,8 @@
            "description":"10,600 Gard Stock Photos, Pictures & Royalty-Free Images - iStock",
            "contextLink":"https://www.istockphoto.com/photos/gard"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":31,
@@ -1528,7 +1559,8 @@
            "description":"Découvrir la Haute-Garonne en Occitanie en 6 idées de choses à faire",
            "contextLink":"https://www.decouvertemonde.com/visiter-haute-garonne-occitanie"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":32,
@@ -1576,7 +1608,8 @@
            "description":"Feuilleton] Le Gers, un département attractif",
            "contextLink":"https://france3-regions.francetvinfo.fr/occitanie/gers/feuilleton-le-gers-un-departement-attractif-879449.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":33,
@@ -1629,7 +1662,8 @@
            "description":"L'Île Nouvelle | Gironde.FR",
            "contextLink":"https://www.gironde.fr/environnement/decouverte-des-espaces-naturels-de-gironde/lile-nouvelle"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":34,
@@ -1677,7 +1711,8 @@
            "description":"Les espaces naturels sensibles (ENS) : préserver le patrimoine ...",
            "contextLink":"https://herault.fr/299-les-espaces-naturels.htm"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":35,
@@ -1720,7 +1755,8 @@
            "description":"Paysagiste en Ille et Vilaine (35), trouvez le bon professionnel",
            "contextLink":"https://www.paysagistes.pro/trouver-paysagiste/bretagne/ille-et-vilaine/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":36,
@@ -1768,7 +1804,8 @@
            "description":"Le Berry - Département de l'Indre - Sarzay- le château ...",
            "contextLink":"https://jcbarousse.fr/picture?/3846"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":37,
@@ -1811,7 +1848,8 @@
            "description":"LISTE. Journées du patrimoine en Indre-et-Loire : quelles visites ...",
            "contextLink":"https://www.lanouvellerepublique.fr/indre-et-loire/liste-journees-du-patrimoine-en-indre-et-loire-quels-evenements-dans-votre-commune"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":38,
@@ -1849,7 +1887,8 @@
            "description":"Vente et pose de gazon synthétique Isère",
            "contextLink":"https://thegazonsynthetique.fr/infos/67_gazon-synthetique-isere-pelouse-35-40"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":39,
@@ -1907,7 +1946,8 @@
            "description":"Belvédère des 4 lacs, Pic de l'Aigle - Jura Tourisme",
            "contextLink":"https://www.jura-tourism.com/vivre-le-jura/visiter/les-incontournables/pic-de-laigle-et-belvedere-des-4-lacs/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":40,
@@ -1950,7 +1990,8 @@
            "description":"Devenez bénévole dans le département Landes | Bénévolat Landes ...",
            "contextLink":"https://www.jeveuxaider.gouv.fr/departements/landes"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":41,
@@ -1988,7 +2029,8 @@
            "description":"loir-et-cher.jpg",
            "contextLink":"http://reflectim.fr/tag/loir-et-cher-paysage/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":42,
@@ -2031,7 +2073,8 @@
            "description":"Les merveilles méconnues de la Loire - Itinera-magica.com",
            "contextLink":"https://www.itinera-magica.com/que-voir-dans-la-loire/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":43,
@@ -2084,7 +2127,8 @@
            "description":"Loisirs \"nature\" - Département 43 : Culture, sports et loisirs ...",
            "contextLink":"https://www.hauteloire.fr/Loisirs-nature.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":44,
@@ -2127,7 +2171,8 @@
            "description":"Page d'information - Gîtes de France Loire-Atlantique",
            "contextLink":"https://www.gites-de-france-loire-atlantique.com/page/decouvrir-la-loire-atlantique"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":45,
@@ -2170,7 +2215,8 @@
            "description":"Photo aérienne de Orléans - Loiret (45)",
            "contextLink":"https://survoldefrance.fr/affichage2.php?img=64483&departement=Loiret+%2845%29&f=120&prev_suiv_link=1"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":46,
@@ -2228,7 +2274,8 @@
            "description":"Le village de lacoste (84480) sur sa colline, département du ...",
            "contextLink":"https://myloview.com/sticker-le-village-de-lacoste-84480-sur-sa-colline-departement-du-no-10312B67"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":47,
@@ -2276,7 +2323,8 @@
            "description":"A la découverte des plus beaux paysages et villages du Lot ...",
            "contextLink":"https://www.prochainsdetours.fr/occitanie-beaux-paysages-villages-du-lot/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":48,
@@ -2329,7 +2377,8 @@
            "description":"Photo aérienne de Mende - Lozère (48)",
            "contextLink":"https://www.survoldefrance.fr/affichage2.php?&departement=Loz%C3%A8re+%2848%29&top20=1&f=0&img=23524&prev_suiv_link=1"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":49,
@@ -2372,7 +2421,8 @@
            "description":"La Loire et ses affluents | Parc Naturel Régional Loire-Anjou-Touraine",
            "contextLink":"https://www.parc-loire-anjou-touraine.fr/le-territoire/paysages/la-loire-et-ses-affluents"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":50,
@@ -2425,7 +2475,8 @@
            "description":"Cotentin, Cap de La Hague / Basse-Normandie / Département de la ...",
            "contextLink":"https://www.pinterest.com/pin/378091331194402498/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":51,
@@ -2478,7 +2529,8 @@
            "description":"Rencontre - Lancement de l'Atlas des paysages du Val-de-Marne",
            "contextLink":"https://www.caue94.fr/votre-collectivite-souhaite-profiter-d-un-accompagnement/urbanisme-et-paysage/2-1-1-visite-de-chantier-groupe-scolaire-a-fontenay-sous-bois"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":52,
@@ -2531,7 +2583,8 @@
            "description":"LES PLUS BEAUX PAYSAGES<br>DE LA HAUTE-MARNE<br>52000",
            "contextLink":"https://www.mes-ballades.com/52/les-plus-beaux-paysages-de-la-haute-marne-52-region-grand-est-en-france.htm"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":53,
@@ -2584,7 +2637,8 @@
            "description":"Landscapes of the Mayenne - 24 quality high-definition images",
            "contextLink":"https://www.france-voyage.com/travel-photos/landscapes-mayenne-2396.htm"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":54,
@@ -2627,7 +2681,8 @@
            "description":"Découvrir la Meurthe & Moselle - Meurthe-et-Moselle",
            "contextLink":"https://tourisme-meurtheetmoselle.fr/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":55,
@@ -2685,7 +2740,8 @@
            "description":"Le departement de la Meuse - Au logis des chouettes",
            "contextLink":"http://aulogisdeschouettes.fr/tourisme/le-departement-de-la-meuse/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":56,
@@ -2723,7 +2779,8 @@
            "description":"Morbihan. Et si on découvrait le Domaine de Kerguéhennec, surnommé ...",
            "contextLink":"https://pontivy.maville.com/actu/actudet_-morbihan.-et-si-on-decouvrait-le-domaine-de-kerguehennec-surnomme-le-versailles-breton-_fil-3655588_actu.Htm"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":57,
@@ -2776,7 +2833,8 @@
            "description":"Fénétrange High Resolution Stock Photography and Images - Alamy",
            "contextLink":"https://www.alamy.com/stock-photo/f%C3%A9n%C3%A9trange.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":58,
@@ -2824,7 +2882,8 @@
            "description":"8 bonnes raisons de visiter la Nièvre : Nièvre",
            "contextLink":"https://www.petitfute.com/d22-nievre/actualite/m17-top-10-insolites-voyage/a13227-8-bonnes-raisons-de-visiter-la-nievre.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":59,
@@ -2872,7 +2931,8 @@
            "description":"Ancienne fosse Ledoux sur la commune de Condé-sur-l'Escaut ...",
            "contextLink":"https://www.pinterest.fr/pin/816488607434340059/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":60,
@@ -2925,7 +2985,8 @@
            "description":"Elle fait partie du paysage» : dans l'Oise, l'inquiétante ...",
            "contextLink":"https://www.leparisien.fr/oise-60/elle-fait-partie-du-paysage-dans-l-oise-l-inquietante-proliferation-de-la-perruche-a-collier-20-02-2021-8425636.php"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":61,
@@ -2978,7 +3039,8 @@
            "description":"Vente et pose de gazon synthétique l'Orne",
            "contextLink":"https://thegazonsynthetique.fr/infos/326_gazon-synthetique-orne-"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":62,
@@ -3021,7 +3083,8 @@
            "description":"Guide de voyage Nord-Pas-de-Calais - Geo.fr",
            "contextLink":"https://www.geo.fr/destinations/france/nord-pas-de-calais"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":63,
@@ -3069,7 +3132,8 @@
            "description":"Infographies. Elections dans le Puy-de-Dôme : emploi, revenus ...",
            "contextLink":"https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes/puy-de-dome/infographies-elections-dans-le-puy-de-dome-emploi-revenus-demographie-les-chiffres-cles-du-departement-2133931.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":64,
@@ -3117,7 +3181,8 @@
            "description":"Pollution de l'air : les Pyrénées-Atlantiques mieux lotis que d ...",
            "contextLink":"https://www.sudouest.fr/pyrenees-atlantiques/pau/pollution-de-l-air-les-pyrenees-atlantiques-mieux-lotis-que-d-autres-departements-8039918.php"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":65,
@@ -3155,7 +3220,8 @@
            "description":"Découvrir les Hautes-Pyrénées - Département des Hautes-Pyrénées",
            "contextLink":"https://www.hautespyrenees.fr/qualite-de-vie/decouvrir-les-hautes-pyrenees/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":66,
@@ -3193,7 +3259,8 @@
            "description":"Tourisme Pyrénées-Orientales | Quoi faire/voir dans Pyrénées ...",
            "contextLink":"https://www.camping-le-calagogo.fr/tourisme-pyrenees-orientales/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":67,
@@ -3246,7 +3313,8 @@
            "description":"Le Bas-Rhin, Département 67 en Alsace, Visite, Avis, Photos, Infos…",
            "contextLink":"http://www.ousortiren.com/blog/1815-bas-rhin"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":68,
@@ -3289,7 +3357,8 @@
            "description":"Les plus beaux lieux du Haut Rhin - lesplusbeauxlieuxdefrance",
            "contextLink":"http://lesplusbeauxvillages.over-blog.com/2018/08/les-plus-beaux-lieux-du-haut-rhin.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":69,
@@ -3327,7 +3396,8 @@
            "description":"Gisement De Lavande Avec Le Vignoble, Département De Drome, Le ...",
            "contextLink":"https://fr.dreamstime.com/gisement-lavande-vignoble-d%C3%A9partement-drome-rh%C3%B4ne-alpes-atf-france-ext%C3%A9rieure-ext%C3%A9rieur-ext%C3%A9rieurs-l-europe-image154182340"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":70,
@@ -3385,7 +3455,8 @@
            "description":"Départementales 2021. Ces 10 choses à savoir sur le département de ...",
            "contextLink":"https://france3-regions.francetvinfo.fr/bourgogne-franche-comte/departementales-2021-ces-10-choses-a-savoir-sur-le-departement-de-la-haute-saone-a-quelques-jours-des-elections-2097247.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":71,
@@ -3428,7 +3499,8 @@
            "description":"Le pays du Charolais-Brionnais en Saône-et-Loire",
            "contextLink":"https://www.destination-saone-et-loire.fr/fr/la-saone-et-loire/le-charolais-brionnais.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":72,
@@ -3481,7 +3553,8 @@
            "description":"Paysagiste en Sarthe (72), trouvez le bon professionnel",
            "contextLink":"https://www.paysagistes.pro/trouver-paysagiste/pays-de-la-loire/sarthe/"
         }
-     ]
+     ],
+     "verification": true
   },
   {
      "id":73,
@@ -3514,7 +3587,8 @@
            "description":"Fichier:Panneau Savoie en montagne.jpg — Wikipédia",
            "contextLink":"https://fr.wikipedia.org/wiki/Fichier:Panneau_Savoie_en_montagne.jpg"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":74,
@@ -3552,7 +3626,8 @@
            "description":"La Haute-Savoie reste le département le plus attractif de France ...",
            "contextLink":"https://www.francebleu.fr/infos/economie-social/la-haute-savoie-reste-le-departement-le-plus-attractif-de-france-metropolitaine-1545924520"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":75,
@@ -3600,7 +3675,8 @@
            "description":"Département des Alpes-Maritimes - #IdéeSortie Le musée ...",
            "contextLink":"https://m.facebook.com/400177530045868/photos/a.415542801842674/4711284768935101/?type=3"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":76,
@@ -3648,7 +3724,8 @@
            "description":"Que faire en Seine-Maritime ? — Prochains Détours",
            "contextLink":"https://www.prochainsdetours.fr/normandie-que-faire-en-seine-maritime/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":77,
@@ -3696,7 +3773,8 @@
            "description":"Pierre L'Excellent - Photographe d'architecture - http://seine-et ...",
            "contextLink":"https://pages.facebook.com/finestown/photos/a.865326263508319/2456741514366778/?type=3&source=48"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":78,
@@ -3744,7 +3822,8 @@
            "description":"10 villages yvelinois de charme, à visiter absolument ! - Yvelines ...",
            "contextLink":"https://www.sortir-yvelines.fr/Alice/Zoom-sur/villages-charme-yvelines"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":79,
@@ -3782,7 +3861,8 @@
            "description":"2 SEVRES PAYSAGES jardinier à Sainte-Néomaye",
            "contextLink":"https://www.jardiniers-professionnels.fr/pad/2-sevres-paysages/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":80,
@@ -3825,7 +3905,8 @@
            "description":"La Somme en vidéo | Conseil départemental de la Somme",
            "contextLink":"https://www.somme.fr/departement/votre-departement/le-territoire/la-somme-en-video/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":81,
@@ -3883,7 +3964,8 @@
            "description":"Douceur de vivre en Tarn et Garonne - Voyager Magazine",
            "contextLink":"http://www.voyager-magazine.fr/m-926-douceur-de-vivre-en-tarn-et-garonne.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":82,
@@ -3936,7 +4018,8 @@
            "description":"Les plus beaux paysages du Lot-et-Garonne en vidéo",
            "contextLink":"https://passion-aquitaine.ouest-france.fr/paysages-lot-et-garonne/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":83,
@@ -3989,7 +4072,8 @@
            "description":"verdon_paysage_var.jpg",
            "contextLink":"http://reflectim.fr/tag/paysage-du-var/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":84,
@@ -4032,7 +4116,8 @@
            "description":"Images Gratuites : paysage, arbre, forêt, Montagne, colline, ville ...",
            "contextLink":"https://pxhere.com/fr/photo/547528"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":85,
@@ -4075,7 +4160,8 @@
            "description":"France : un prêtre assassiné en Vendée",
            "contextLink":"https://www.aa.com.tr/fr/monde/france-un-pr%C3%AAtre-assassin%C3%A9-en-vend%C3%A9e-/2329016"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":86,
@@ -4108,7 +4194,8 @@
            "description":"Les plus beaux endroits à visiter dans - Vienne (86)",
            "contextLink":"https://www.tourisme-en-france.com/fr/tourisme-france/ville-hameau-remarquable-a-voir-plus-beaux-villages-de-france-departement-vienne/65"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":87,
@@ -4166,7 +4253,8 @@
            "description":"Fichier:Saint-Laurent-les-Églises (Haute-Vienne, Fr), paysage ...",
            "contextLink":"https://fr.m.wikipedia.org/wiki/Fichier:Saint-Laurent-les-%C3%89glises_(Haute-Vienne,_Fr),_paysage_matinal.JPG"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":88,
@@ -4209,7 +4297,8 @@
            "description":"5 spots incontournables pour prendre des photos #Vosges - Tourisme ...",
            "contextLink":"https://www.tourisme.vosges.fr/5-spots-incontournables-prendre-photos-vosges/"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":89,
@@ -4267,7 +4356,8 @@
            "description":"Devenez bénévole dans le département Yonne | Bénévolat Yonne ...",
            "contextLink":"https://www.jeveuxaider.gouv.fr/departements/yonne"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":90,
@@ -4315,7 +4405,8 @@
            "description":"Pourquoi le Territoire de Belfort ne fête \"que\" ses 100 ans cette ...",
            "contextLink":"https://www.geo.fr/histoire/pourquoi-le-territoire-de-belfort-ne-fete-que-ses-100-ans-cette-annee-208793"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":91,
@@ -4368,7 +4459,8 @@
            "description":"Essonne : les bâtis du parc de Villeroy de Mennecy labellisés ...",
            "contextLink":"https://www.le-republicain.fr/actualites-locales/essonne-les-batis-du-parc-de-villeroy-de-mennecy-sont-labellises-patrimoine-dinteret-regional"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":92,
@@ -4421,7 +4513,8 @@
            "description":"Les Hauts-de-Seine, département le plus riche de France après ...",
            "contextLink":"https://actu.fr/economie/les-hauts-de-seine-departement-le-plus-riche-de-france-apres-paris_42148781.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":93,
@@ -4469,7 +4562,8 @@
            "description":"L'atlas des paysages de Seine-Saint-Denis est en ligne - DRIEAT ...",
            "contextLink":"https://www.driee.ile-de-france.developpement-durable.gouv.fr/l-atlas-des-paysages-de-seine-saint-denis-est-en-a4210.html"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":94,
@@ -4507,7 +4601,8 @@
            "description":"Préfecture du Val-de-Marne | LinkedIn",
            "contextLink":"https://fr.linkedin.com/company/prefecture-du-val-de-marne"
         }
-     ]
+     ],
+     "verification": false
   },
   {
      "id":95,

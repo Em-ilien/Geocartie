@@ -14,6 +14,7 @@ a {
     text-decoration: none;
     color: rgb(202, 43, 237);
     font-weight: bold;
+    cursor: pointer;
 }
 
 .carte {
