@@ -14,7 +14,7 @@ L'interface comprend :
 
 [Twitter](https://twitter.com/Em_ixocle)
 
-[Mail](mailto:emilien@emixocle.fr)
+[Mail](mailto:emilien@em-ilien.fr)
 
 ## Mode Quizz
 
@@ -26,7 +26,7 @@ Les départements que l'utilisateur n'a pas su trouver ont tendance à revenir p
 
 ## Images d'illustration
 
-Pour toute demande d'ajout d'images sur le site em-ilien.fr/geocartie, veuillez rédiger un courriel à emilien@emixocle.fr en mentionnant le numéro de département concerné et les liens vers les images.
+Pour toute demande d'ajout d'images sur le site em-ilien.fr/geocartie, veuillez rédiger un courriel à emilien@em-ilien.fr en mentionnant le numéro de département concerné et les liens vers les images.
 
 Pour des questions de droit d'auteur, les images doivent être hébergées sur des serveurs Web par le soin des détenteurs desdits droits.
 
@@ -43,10 +43,10 @@ Les **DROM-COM**, dont cinq sont des **départements français**, ne figurent pa
 Ce code source appartient à M. Emilien COSSON. Toute utilisation ou reproduction est autorisée à condition :
 * de mentionner le lien vers ce repository Github, ou bien vers la page Web https://em-ilien.fr/geocartie ;
 * de ne pas revendre le code source ;
-* de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (emilien@emixocle.fr).
+* de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (emilien@em-ilien.fr).
 
 Vous pouvez mettre en ligne Géocartie sur votre serveur Web et le mettre à la disposition de vos utilisateurs aux conditions mentionnés ci-dessus.
 
 Vous pouvez mettre en ligne le code source de Géocartie, que vous l'ayez édité ou non, aux mêmes conditions en veillant tout particulièrement à informer vos utilisateurs que ce code est soumis au moins aux mêmes conditions mentionnées ci-dessus.
 
-Pour toute question ou demande, je serai ravi de vous renseigner par courriel (emilien@emixocle.fr).
+Pour toute question ou demande, je serai ravi de vous renseigner par courriel (emilien@em-ilien.fr).
