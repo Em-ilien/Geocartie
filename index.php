@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Apprendre et découvrir les départements français avec Géocartie">
+	<meta name="twitter:card" content="summary"></meta>
+	<meta name="twitter:creator" content="@Em_ixocle"></meta>
+	<meta name="og:title" content="Géocartie"></meta>
+	<meta name="og:description" content="Apprendre et découvrir les départements français avec Géocartie">
+	<meta name="og:image" content="https://media.discordapp.net/attachments/567292343791910913/985221514892828732/unknown.png"></meta>
 	<title>Géocartie</title>
 	<link rel="stylesheet" href="style.css">	
 </head>
