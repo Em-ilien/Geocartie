@@ -86,7 +86,8 @@ carte.firstElementChild.addEventListener("click", (e) => {
     depInfos.name = null;
     
     carte.style.cursor = "unset";
-    document.body.removeChild(infoBulle);
+    if (infoBulle != undefined)
+        document.body.removeChild(infoBulle);
 });
 
 carte.addEventListener("mouseover", (e) => {
@@ -115,6 +116,9 @@ carte.addEventListener("mouseout", (e) => {
 });
 
 carte.addEventListener("mousemove", (e) => {
+    if (infoBulle == undefined)
+        return;
+    
     infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
     infoBulle.style.left = (e.clientX + 10) + "px";
 });
@@ -200,8 +204,8 @@ function setupDepInfosEl() {
     depInfos.addImagesBtn = document.createElement("a");
     depInfos.addImagesBtn.classList.add("ajouter-images");
     depInfos.addImagesBtn.innerText = "Suggérer l'ajout d'images";
-    depInfos.addImagesBtn.href = "mailto:emilien@em-ilien.fr";
-    depInfos.addImagesBtn.target = "_blank";
+    // depInfos.addImagesBtn.href = "mailto:emilien@em-ilien.fr";
+    // depInfos.addImagesBtn.target = "_blank";
     depInfos.buttonsLink.appendChild(depInfos.addImagesBtn);
 }
 
@@ -239,10 +243,35 @@ function updateDepInfosEl(depJSON) {
     });
 
     depInfos.seeMoreImagesBtn.href = "https://www.google.com/search?q=" + encodeURIComponent(depJSON.name + " département paysage") + "&tbm=isch";
-    depInfos.addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien@em-ilien.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+    depInfos.addImagesBtn.addEventListener("click", (e) => {
+        showEmailWindow("Ajout d'une image sur Géocartie", "Monsieur Cosson,\n\n\n"
+            + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"
+            + "Je vous adresse ce courriel afin de vous suggérer l'ajout d'images pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n"
+            + "- {LIEN_IMAGE}\n"
+            + "- \n"
+            + "- \n\n\n"
+            + "Je devine l'attention que vous porterez à mon message.\n\n"
+            + "Mes sincères salutations,\n"
+            + "[SIGNATURE]");
+            
+        e.preventDefault();
+    });
     
     //Avertissement temporaire pour prévenir de la non-fiabilité des images TODO
-    warningImagesSignalement.setAttribute("onclick", "javascript:window.open(`mailto:emilien@em-ilien.fr?subject=Suppression%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous signaler une ou plusieurs images à supprimer pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+    warningImagesSignalement.addEventListener("click", (e) => {
+        showEmailWindow("Signalement d'une image à supprimer", "Monsieur Cosson,\n\n\n"
+            + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"
+            + "Je vous adresse ce courriel afin de signaler une image à supprimer pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n"
+            + "- {LIEN_IMAGE}\n"
+            + "- \n"
+            + "- \n\n\n"
+            + "Je devine l'attention que vous porterez à mon message.\n\n"
+            + "Mes sincères salutations,\n"
+            + "[SIGNATURE]");
+        
+        e.preventDefault();
+    });
+
     if (depJSON.verification)
         warningImages.style.display = "none";
     else
