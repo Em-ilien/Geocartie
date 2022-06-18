@@ -79,3 +79,48 @@
         width: 90%;
     }
 }
+
+/* Confirmation de fermeture */
+.confirmation-window {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #000;
+    padding: 1em;
+    position: fixed;
+    width: 50%;
+    z-index: 9999;
+    height: fit-content;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.confirmation-window .confirmation-warning {
+
+}
+
+.confirmation-window .confirmation-close-btn {
+    font-weight: bold;
+    font-size: 1em;
+    padding: 1em;
+    cursor: pointer;
+    border: 0.1em solid #555;
+    border-radius: 0.2em;
+    margin: 1em auto 0;
+    display: block;
+    width: fit-content;
+}
+
+.confirmation-window .confirmation-cancel-btn {
+    font-weight: bold;
+    font-size: 1em;
+    padding: 1em;
+    cursor: pointer;
+    border: 0.1em solid #555;
+    border-radius: 0.2em;
+    margin: 1em auto 0;
+    display: block;
+    width: fit-content;
+}
+
+

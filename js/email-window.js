@@ -1,6 +1,7 @@
 let emailWindow;
 let filterWall;
 let previousFocusedElement;
+let redactionConfirmationRequired;
 
 document.body.addEventListener("click", (e) => {
     previousFocusedElement = e.target;
@@ -15,9 +16,43 @@ function showEmailWindow(titleCourriel, bodyCourriel) {
     contentEl.innerText = bodyCourriel;
 
     previousFocusedElement = emailWindow;
+    redactionConfirmationRequired = false;
+}
+
+function closeConfirmationWindow() {
+    let confirmationWindow = document.createElement("div");
+    confirmationWindow.classList.add("confirmation-window");
+    document.body.appendChild(confirmationWindow);
+
+    let warningEl = document.createElement("p");
+    warningEl.classList.add("confirmation-warning");
+    warningEl.innerText = "En fermant la fenêtre, votre rédaction sera perdue. Continuer ?";
+    confirmationWindow.appendChild(warningEl);
+
+    let closeBtn = document.createElement("span");
+    closeBtn.classList.add("confirmation-close-btn");
+    closeBtn.innerText = "Fermer quand même";
+    confirmationWindow.appendChild(closeBtn);
+    closeBtn.addEventListener("click", () => {
+        redactionConfirmationRequired = false;
+        closeEmailWindow();
+        document.body.removeChild(confirmationWindow);
+    });
+
+    let cancelBtn = document.createElement("span");
+    cancelBtn.classList.add("confirmation-cancel-btn");
+    cancelBtn.innerText = "Annuler";
+    confirmationWindow.appendChild(cancelBtn);
+    cancelBtn.addEventListener("click", () => {
+        document.body.removeChild(confirmationWindow);
+    });
 }
 
 function closeEmailWindow() {
+    if (redactionConfirmationRequired) {
+        closeConfirmationWindow();
+        return;
+    }
     document.body.removeChild(emailWindow);
     document.body.removeChild(document.querySelector(".filter-wall"));
 }
@@ -25,6 +60,10 @@ function closeEmailWindow() {
 function setupEmailWindow(titleCourriel) {
     emailWindow = document.createElement("div");
     emailWindow.classList.add("email-window");
+
+    emailWindow.addEventListener("keydown", (e) => {
+        redactionConfirmationRequired = true;
+    });
     
     let closeBtn = document.createElement("span");
     closeBtn.classList.add("close-btn");
@@ -62,7 +101,7 @@ function setupEmailWindow(titleCourriel) {
             warningEl.innerText = "Si rien ne se passe, copiez et envoyez manuellement le courriel.";
             emailWindow.appendChild(warningEl);
         }
-        
+
         contentEl.addEventListener("click", (e) => {
             if (previousFocusedElement == contentEl)
                 return;
@@ -73,7 +112,8 @@ function setupEmailWindow(titleCourriel) {
         let content = contentEl.innerText;
         content = content.replace(/\n/g, "%0D%0A");
 
-        window.open(`mailto:emilien@em-ilien.fr?subject=${titleCourriel}&body=${content}`);        
+        window.open(`mailto:emilien@em-ilien.fr?subject=${titleCourriel}&body=${content}`);
+        redactionConfirmationRequired = false;      
     });
 
     filterWall = document.createElement("div");
