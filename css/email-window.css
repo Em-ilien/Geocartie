@@ -54,11 +54,11 @@
 }
 
 .email-window .content {
-    
     border: 1px solid #555;
     border-radius: 1em;
     padding: 1em;
     margin-top: 2em;
+    word-wrap: break-word;
 }
 
 .filter-wall {

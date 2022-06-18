@@ -252,7 +252,7 @@ function updateDepInfosEl(depJSON) {
             + "- \n\n\n"
             + "Je devine l'attention que vous porterez à mon message.\n\n"
             + "Mes sincères salutations,\n"
-            + "[SIGNATURE]");
+            + "{SIGNATURE}");
             
         e.preventDefault();
     });
@@ -267,7 +267,7 @@ function updateDepInfosEl(depJSON) {
             + "- \n\n\n"
             + "Je devine l'attention que vous porterez à mon message.\n\n"
             + "Mes sincères salutations,\n"
-            + "[SIGNATURE]");
+            + "{SIGNATURE}");
         
         e.preventDefault();
     });
