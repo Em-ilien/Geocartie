@@ -5,13 +5,15 @@ let infos = document.querySelector(".infos");
 let smallCrown = carte.querySelector(".paris-petite-couronne");
 let smallEnlargedCrown = carte.querySelector(".petite-couronne-agrandie");
 
-let nameDepEl;
-let regionDepEl;
-let prefDepEl;
-let imagesDepCtn;
-let buttonsLink;
-let seeMoreImagesBtn;
-let addImagesBtn;
+let depInfos = {
+    name: null,
+    region: null,
+    prefecture: null,
+    images: null,
+    buttonsLink: null,
+    seeMoreImagesBtn: null,
+    addImagesBtn: null
+}
 
 let defaultInfos = infos.querySelector(".default");
 
@@ -23,14 +25,14 @@ let json = getJSONFromFile("data/departements.json");
 
 departements.forEach(departement => {
     let departementID = departement.classList[1];
-    let departementInfos = json.filter(function(data){ return data.id == departementID })[0];
+    let depJSON = json.filter(function(data){ return data.id == departementID })[0];
 
     departement.addEventListener("click", (e) => {
         disactivePreviousActiveDepartements();
         
         departement.classList.add("active");
 
-        updateDepInfosEl(departementInfos);
+        updateDepInfosEl(depJSON);
     });
 
     departement.addEventListener("mousemove", (e) => {
@@ -40,7 +42,7 @@ departements.forEach(departement => {
         if (infoBulle == undefined)
             setupInfoBulle();
 
-        infoBulle.innerHTML = departementInfos.name + " (" + departementInfos.id + ")<br><br>Région : " + departementInfos.region_name + "<br>Préfecture : " + departementInfos.prefecture_name;
+        infoBulle.innerHTML = depJSON.name + " (" + depJSON.id + ")<br><br>Région : " + depJSON.region_name + "<br>Préfecture : " + depJSON.prefecture_name;
         document.body.appendChild(infoBulle);
         infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
         infoBulle.style.left = (e.clientX + 10) + "px";
@@ -60,8 +62,8 @@ smallCrown.addEventListener("click", (e) => {
     faireClignoter(smallEnlargedCrown);
 });
 
-for (const dep of smallEnlargedCrown.children) {
-    dep.addEventListener("click", (e) => {
+for (const departement of smallEnlargedCrown.children) {
+    departement.addEventListener("click", (e) => {
         smallCrown.classList.add("clignotement-on");
     });
 }
@@ -81,7 +83,28 @@ carte.firstElementChild.addEventListener("click", (e) => {
 
     disactivePreviousActiveDepartements();
 
-    nameDepEl = null;
+    depInfos.name = null;
+    
+    carte.style.cursor = "unset";
+});
+
+carte.addEventListener("mouseover", (e) => {
+    if (e.target != carte && e.target != carte.firstElementChild)
+        return;
+
+    if (depInfos.name == null)
+        return;
+    
+    carte.style.backgroundColor = "#eee";
+    carte.style.cursor = "pointer";
+});
+
+carte.addEventListener("mouseout", (e) => {
+    if (e.target != carte && e.target != carte.firstElementChild)
+        return;
+
+    carte.style.backgroundColor = "#fff";
+    carte.style.cursor = "unset";
 });
 
 
@@ -119,23 +142,23 @@ let warningImagesSignalement;
 function setupDepInfosEl() {
     infos.removeChild(defaultInfos);
 
-    nameDepEl = document.createElement("h2");
-    nameDepEl.classList.add("departement-name");
-    infos.appendChild(nameDepEl);
+    depInfos.name = document.createElement("h2");
+    depInfos.name.classList.add("departement-name");
+    infos.appendChild(depInfos.name);
 
-    regionDepEl = document.createElement("p");
-    regionDepEl.classList.add("region");
-    regionDepEl.innerHTML = "Région : <span></span>";
-    infos.appendChild(regionDepEl);
+    depInfos.region = document.createElement("p");
+    depInfos.region.classList.add("region");
+    depInfos.region.innerHTML = "Région : <span></span>";
+    infos.appendChild(depInfos.region);
 
-    prefDepEl = document.createElement("p");
-    prefDepEl.classList.add("prefecture");
-    prefDepEl.innerHTML = "Préfecture : <span></span>";
-    infos.appendChild(prefDepEl);
+    depInfos.prefecture = document.createElement("p");
+    depInfos.prefecture.classList.add("prefecture");
+    depInfos.prefecture.innerHTML = "Préfecture : <span></span>";
+    infos.appendChild(depInfos.prefecture);
 
-    imagesDepCtn = document.createElement("div");
-    imagesDepCtn.classList.add("images");
-    infos.appendChild(imagesDepCtn);
+    depInfos.images = document.createElement("div");
+    depInfos.images.classList.add("images");
+    infos.appendChild(depInfos.images);
 
     //Avertissement temporaire pour prévenir de la non-fiabilité des images TODO
     warningImages = document.createElement("p");
@@ -152,40 +175,40 @@ function setupDepInfosEl() {
     warningImages.appendChild(warningImagesSignalement);
     //End
 
-    buttonsLink = document.createElement("div");
-    buttonsLink.classList.add("buttons-link");
-    infos.appendChild(buttonsLink);
+    depInfos.buttonsLink = document.createElement("div");
+    depInfos.buttonsLink.classList.add("buttons-link");
+    infos.appendChild(depInfos.buttonsLink);
 
-    seeMoreImagesBtn = document.createElement("a");
-    seeMoreImagesBtn.classList.add("see-more-images-btn");
-    seeMoreImagesBtn.innerText = "Voir plus d'images sur Google";
-    seeMoreImagesBtn.target = "_blank";
-    buttonsLink.appendChild(seeMoreImagesBtn);
+    depInfos.seeMoreImagesBtn = document.createElement("a");
+    depInfos.seeMoreImagesBtn.classList.add("see-more-images-btn");
+    depInfos.seeMoreImagesBtn.innerText = "Voir plus d'images sur Google";
+    depInfos.seeMoreImagesBtn.target = "_blank";
+    depInfos.buttonsLink.appendChild(depInfos.seeMoreImagesBtn);
 
-    addImagesBtn = document.createElement("a");
-    addImagesBtn.classList.add("ajouter-images");
-    addImagesBtn.innerText = "Suggérer l'ajout d'images";
-    addImagesBtn.href = "mailto:emilien@em-ilien.fr";
-    addImagesBtn.target = "_blank";
-    buttonsLink.appendChild(addImagesBtn);
+    depInfos.addImagesBtn = document.createElement("a");
+    depInfos.addImagesBtn.classList.add("ajouter-images");
+    depInfos.addImagesBtn.innerText = "Suggérer l'ajout d'images";
+    depInfos.addImagesBtn.href = "mailto:emilien@em-ilien.fr";
+    depInfos.addImagesBtn.target = "_blank";
+    depInfos.buttonsLink.appendChild(depInfos.addImagesBtn);
 }
 
-function updateDepInfosEl(departementInfos) {
-    if (nameDepEl == undefined)
+function updateDepInfosEl(depJSON) {
+    if (depInfos.name == undefined)
         setupDepInfosEl();
 
-    nameDepEl.innerHTML = departementInfos.name + "<span>" + departementInfos.id + "</span>";
-    regionDepEl.children[0].innerText = departementInfos.region_name;
-    prefDepEl.children[0].innerText = departementInfos.prefecture_name;
+    depInfos.name.innerHTML = depJSON.name + "<span>" + depJSON.id + "</span>";
+    depInfos.region.children[0].innerText = depJSON.region_name;
+    depInfos.prefecture.children[0].innerText = depJSON.prefecture_name;
 
-    imagesDepCtn.innerText = "";
+    depInfos.images.innerText = "";
 
-    departementInfos.images.forEach((image) => {
+    depJSON.images.forEach((image) => {
         let imgEl = document.createElement("img");
         imgEl.src = image.src;
         imgEl.setAttribute("onclick", "window.open(`" + image.contextLink + "`, '_blank');");
         imgEl.setAttribute("description", image.description);
-        imagesDepCtn.appendChild(imgEl);
+        depInfos.images.appendChild(imgEl);
 
         imgEl.addEventListener("mouseenter", (e) => {
             if (infoBulle == undefined)
@@ -203,12 +226,12 @@ function updateDepInfosEl(departementInfos) {
         });
     });
 
-    seeMoreImagesBtn.href = "https://www.google.com/search?q=" + encodeURIComponent(departementInfos.name + " département paysage") + "&tbm=isch";
-    addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien@em-ilien.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+    depInfos.seeMoreImagesBtn.href = "https://www.google.com/search?q=" + encodeURIComponent(depJSON.name + " département paysage") + "&tbm=isch";
+    depInfos.addImagesBtn.setAttribute("onclick", "javascript:window.open(`mailto:emilien@em-ilien.fr?subject=Ajout%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous suggérer l'ajout d'images pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
     
     //Avertissement temporaire pour prévenir de la non-fiabilité des images TODO
-    warningImagesSignalement.setAttribute("onclick", "javascript:window.open(`mailto:emilien@em-ilien.fr?subject=Suppression%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous signaler une ou plusieurs images à supprimer pour le département " + departementInfos.id + " (" + departementInfos.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
-    if (departementInfos.verification)
+    warningImagesSignalement.setAttribute("onclick", "javascript:window.open(`mailto:emilien@em-ilien.fr?subject=Suppression%20d%27une%20image%20sur%20G%C3%A9ocartie&body=Monsieur%20Cosson%2C%0D%0A%0D%0A%0D%0AJ'ai%20d%C3%A9couvert%20l'application%20Web%20nomm%C3%A9e%20G%C3%A9ocartie%20que%20vous%20avez%20r%C3%A9alis%C3%A9e.%0D%0A%0D%0AJe%20vous%20adresse%20ce%20courriel%20afin%20de" + encodeURIComponent(" vous signaler une ou plusieurs images à supprimer pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n- {LIEN_IMAGE}\n-\n-") + "%0D%0A%0D%0AJe%20devine%20l'attention%20que%20vous%20porterez%20%C3%A0%20mon%20message.%0D%0A%0D%0AMes%20sinc%C3%A8res%20salutations%2C%0D%0A%7BSIGNATURE%7D`, 'mail'); event.preventDefault();");
+    if (depJSON.verification)
         warningImages.style.display = "none";
     else
         warningImages.style.display = "block";

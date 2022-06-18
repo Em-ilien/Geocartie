@@ -2,9 +2,9 @@ let modeSwitcher = carte.querySelector(".mode-switcher");
 
 let quizzBar;
 
-let quizzNbTries = 0;
+let nbTries = 0;
 let score = {};
-let depToFind = {};
+let departementToFind = {};
 let departementsFound = [];
 let mistakes = [];
 
@@ -17,7 +17,7 @@ modeSwitcher.addEventListener("click", (e) => {
     if (quizzBar == undefined) {
         setupQuizzBar();
 
-        quizzNbTries = 0;
+        nbTries = 0;
 
         score = {
             correct: 0,
@@ -35,10 +35,10 @@ departements.forEach((departement) => {
         if (!isQuizzMode())
             return;
 
-        if (!departement.classList.contains(depToFind.id)) {
-            quizzNbTries++;
-            if (quizzNbTries > 2) {
-                let departementToFind = document.getElementsByClassName("departement " + depToFind.id);
+        if (!departement.classList.contains(departementToFind.id)) {
+            nbTries++;
+            if (nbTries > 2) {
+                let departementToFind = document.getElementsByClassName("departement " + departementToFind.id);
                 faireClignoter(departementToFind[0]);
             }
             return;
@@ -50,16 +50,16 @@ departements.forEach((departement) => {
         success.innerHTML = "Trouvé !";
         document.body.appendChild(success);
         
-        if (quizzNbTries <= 2)
+        if (nbTries <= 2)
             score.correct++;
         else {
             score.wrong++;
-            mistakes.push(depToFind);
+            mistakes.push(departementToFind);
         }
 
         setTimeout(() => {
             printNewQuestion();
-            quizzNbTries = 0;
+            nbTries = 0;
         }, 200);
 
         setTimeout(() => {
@@ -67,7 +67,7 @@ departements.forEach((departement) => {
         }, 2000);
 
         updateScore();
-        departementsFound.push({depID: depToFind.id, quizzNbTries: quizzNbTries});
+        departementsFound.push({depID: departementToFind.id, nbTries: nbTries});
     });
 });
 
@@ -93,12 +93,12 @@ function setupQuizzBar() {
 function printNewQuestion() {
     if (mistakes.length > 0 && Math.random() < 0.1) {
         let mistake = mistakes.shift();
-        depToFind = mistake;
+        departementToFind = mistake;
     } else {
         do {
             const rdm = Math.floor(Math.random() * json.length);
-            depToFind = json[rdm];
-        } while (departementsFound.slice(-5).find(d => d.depID == depToFind.id) != undefined);
+            departementToFind = json[rdm];
+        } while (departementsFound.slice(-5).find(d => d.depID == departementToFind.id) != undefined);
     }
     
     let p = quizzBar.querySelector("p");
@@ -107,7 +107,7 @@ function printNewQuestion() {
         quizzBar.appendChild(p);
     }
 
-    p.innerText = (score.correct >= 3 ? "" : "Cherchez le département ") + depToFind.name + " (" + depToFind.id + ")";
+    p.innerText = (score.correct >= 3 ? "" : "Cherchez le département ") + departementToFind.name + " (" + departementToFind.id + ")";
 }
 
 function updateScore() {
