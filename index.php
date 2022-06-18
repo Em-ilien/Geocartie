@@ -35,8 +35,8 @@
 		</div>
 	</div>
 
-	<script src="main.js"></script>
-	<script src="quizz.js"></script>
-	<script src="email-window.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/quizz.js"></script>
+	<script src="js/email-window.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 let emailWindow;
+let filterWall;
 let previousFocusedElement;
 
 document.body.addEventListener("click", (e) => {
@@ -12,13 +13,6 @@ function showEmailWindow(titleCourriel, bodyCourriel) {
 
     let contentEl = emailWindow.querySelector(".content");
     contentEl.innerText = bodyCourriel;
-
-    let filterWall = document.createElement("div");
-    filterWall.classList.add("filter-wall");
-    document.body.appendChild(filterWall);
-    filterWall.addEventListener("click", () => {
-        closeEmailWindow();
-    });
 
     previousFocusedElement = emailWindow;
 }
@@ -60,6 +54,7 @@ function setupEmailWindow(titleCourriel) {
     let sendBtn = document.createElement("span");
     sendBtn.classList.add("send-btn");
     sendBtn.innerText = "Envoyer";
+    emailWindow.appendChild(sendBtn);
     sendBtn.addEventListener("click", () => {
         let warningEl = document.createElement("p");
         warningEl.classList.add("warning");
@@ -79,7 +74,12 @@ function setupEmailWindow(titleCourriel) {
         window.open(`mailto:emilien@em-ilien.fr?subject=${titleCourriel}&body=${content}`);        
     });
 
-    emailWindow.appendChild(sendBtn);
+    filterWall = document.createElement("div");
+    filterWall.classList.add("filter-wall");
+    document.body.appendChild(filterWall);
+    filterWall.addEventListener("click", () => {
+        closeEmailWindow();
+    });
 }
 
 function selectText(node) {
