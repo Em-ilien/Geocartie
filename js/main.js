@@ -52,7 +52,7 @@ departements.forEach(departement => {
         if (isQuizzMode())
             return;
 
-        if (infoBulle != undefined)
+        if (infoBulle != undefined && document.body.contains(infoBulle))
             document.body.removeChild(infoBulle);
     });
 });
@@ -86,7 +86,7 @@ carte.firstElementChild.addEventListener("click", (e) => {
     depInfos.name = null;
     
     carte.style.cursor = "unset";
-    if (infoBulle != undefined)
+    if (infoBulle != undefined && document.body.contains(infoBulle))
         document.body.removeChild(infoBulle);
 });
 
@@ -237,7 +237,7 @@ function updateDepInfosEl(depJSON) {
         });
 
         imgEl.addEventListener("mouseout", (e) => {
-            if (infoBulle != undefined)
+            if (infoBulle != undefined && document.body.contains(infoBulle))
                 document.body.removeChild(infoBulle);
         });
     });
