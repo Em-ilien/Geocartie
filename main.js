@@ -86,6 +86,7 @@ carte.firstElementChild.addEventListener("click", (e) => {
     depInfos.name = null;
     
     carte.style.cursor = "unset";
+    document.body.removeChild(infoBulle);
 });
 
 carte.addEventListener("mouseover", (e) => {
@@ -97,6 +98,12 @@ carte.addEventListener("mouseover", (e) => {
     
     carte.style.backgroundColor = "#eee";
     carte.style.cursor = "pointer";
+
+    if (infoBulle == undefined)
+        setupInfoBulle();
+
+    infoBulle.innerHTML = "Afficher la page d'accueil";
+    document.body.appendChild(infoBulle);
 });
 
 carte.addEventListener("mouseout", (e) => {
@@ -105,6 +112,11 @@ carte.addEventListener("mouseout", (e) => {
 
     carte.style.backgroundColor = "#fff";
     carte.style.cursor = "unset";
+});
+
+carte.addEventListener("mousemove", (e) => {
+    infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
+    infoBulle.style.left = (e.clientX + 10) + "px";
 });
 
 
