@@ -56,11 +56,13 @@ function setupEmailWindow(titleCourriel) {
     sendBtn.innerText = "Envoyer";
     emailWindow.appendChild(sendBtn);
     sendBtn.addEventListener("click", () => {
-        let warningEl = document.createElement("p");
-        warningEl.classList.add("warning");
-        warningEl.innerText = "Si rien ne se passe, copiez et envoyez manuellement le courriel.";
-        emailWindow.appendChild(warningEl);
-
+        if (emailWindow.querySelector(".warning") == null) {
+            let warningEl = document.createElement("p");
+            warningEl.classList.add("warning");
+            warningEl.innerText = "Si rien ne se passe, copiez et envoyez manuellement le courriel.";
+            emailWindow.appendChild(warningEl);
+        }
+        
         contentEl.addEventListener("click", (e) => {
             if (previousFocusedElement == contentEl)
                 return;
