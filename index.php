@@ -1,3 +1,9 @@
+<?php
+require("config.php");
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +17,7 @@
 	<meta name="og:image" content="https://media.discordapp.net/attachments/567292343791910913/985221514892828732/unknown.png"></meta>
 	<title>Géocartie</title>
 	<link rel="stylesheet" href="css/style.css">	
-	<link rel="stylesheet" href="css/email-window.css">	
+	<link rel="stylesheet" href="css/windows.css">	
 </head>
 <body>
 	<div class="carte">
@@ -34,11 +40,16 @@
 			<p><a target="_blank" href="https://github.com/em-ilien/geocartie">Voir le code source - GitHub</a></p>
 		</div>
 	</div>
-
+	<div class="burger-menu">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
 	<script src="js/main.js"></script>
 	<script src="js/quizz.js"></script>
 	<script src="js/email-window.js"></script>
 	<script src="js/small-crown.js"></script>
 	<script src="js/backing-home-page.js"></script>
+	<script src="js/burger-menu.js"></script>
 </body>
 </html>

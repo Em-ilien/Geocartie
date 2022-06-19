@@ -38,8 +38,8 @@ departements.forEach((departement) => {
         if (!departement.classList.contains(departementToFind.id)) {
             nbTries++;
             if (nbTries > 2) {
-                let departementToFind = document.getElementsByClassName("departement " + departementToFind.id);
-                faireClignoter(departementToFind[0]);
+                let departementEl = document.getElementsByClassName("departement " + departementToFind.id);
+                doFlash(departementEl[0]);
             }
             return;
         }

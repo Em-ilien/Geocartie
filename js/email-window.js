@@ -1,5 +1,4 @@
 let emailWindow;
-let filterWall;
 let previousFocusedElement;
 let redactionConfirmationRequired;
 
@@ -22,6 +21,7 @@ function showEmailWindow(titleCourriel, bodyCourriel) {
 function closeConfirmationWindow() {
     let confirmationWindow = document.createElement("div");
     confirmationWindow.classList.add("confirmation-window");
+    confirmationWindow.classList.add("window");
     document.body.appendChild(confirmationWindow);
 
     let warningEl = document.createElement("p");
@@ -31,6 +31,7 @@ function closeConfirmationWindow() {
 
     let closeBtn = document.createElement("span");
     closeBtn.classList.add("confirmation-close-btn");
+    closeBtn.classList.add("btn");
     closeBtn.innerText = "Fermer quand même";
     confirmationWindow.appendChild(closeBtn);
     closeBtn.addEventListener("click", () => {
@@ -41,6 +42,7 @@ function closeConfirmationWindow() {
 
     let cancelBtn = document.createElement("span");
     cancelBtn.classList.add("confirmation-cancel-btn");
+    cancelBtn.classList.add("btn");
     cancelBtn.innerText = "Annuler";
     confirmationWindow.appendChild(cancelBtn);
     cancelBtn.addEventListener("click", () => {
@@ -49,17 +51,21 @@ function closeConfirmationWindow() {
 }
 
 function closeEmailWindow() {
+    if (document.querySelector(".email-window") == null)
+        return;
+
     if (redactionConfirmationRequired) {
         closeConfirmationWindow();
         return;
     }
     document.body.removeChild(emailWindow);
-    document.body.removeChild(document.querySelector(".filter-wall"));
+    removeFilterWall();
 }
 
 function setupEmailWindow(titleCourriel) {
     emailWindow = document.createElement("div");
     emailWindow.classList.add("email-window");
+    emailWindow.classList.add("window");
 
     emailWindow.addEventListener("keydown", (e) => {
         redactionConfirmationRequired = true;
@@ -67,6 +73,7 @@ function setupEmailWindow(titleCourriel) {
     
     let closeBtn = document.createElement("span");
     closeBtn.classList.add("close-btn");
+    closeBtn.classList.add("btn");
     closeBtn.innerText = "Fermer";
     emailWindow.appendChild(closeBtn);
     closeBtn.addEventListener("click", () => {
@@ -92,6 +99,7 @@ function setupEmailWindow(titleCourriel) {
 
     let sendBtn = document.createElement("span");
     sendBtn.classList.add("send-btn");
+    sendBtn.classList.add("btn");
     sendBtn.innerText = "Envoyer";
     emailWindow.appendChild(sendBtn);
     sendBtn.addEventListener("click", () => {
@@ -116,12 +124,7 @@ function setupEmailWindow(titleCourriel) {
         redactionConfirmationRequired = false;      
     });
 
-    filterWall = document.createElement("div");
-    filterWall.classList.add("filter-wall");
-    document.body.appendChild(filterWall);
-    filterWall.addEventListener("click", () => {
-        closeEmailWindow();
-    });
+    setupFilterWall();
 }
 
 function selectText(node) {

@@ -51,8 +51,3 @@ carte.addEventListener("mousemove", (e) => {
     infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
     infoBulle.style.left = (e.clientX + 10) + "px";
 });
-
-function hideInfoBulle() {
-    if (infoBulle != undefined && document.body.contains(infoBulle))
-        document.body.removeChild(infoBulle);
-}

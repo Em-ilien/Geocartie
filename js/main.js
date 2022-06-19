@@ -15,11 +15,12 @@ let depInfos = {
 let defaultInfos = infos.querySelector(".default");
 
 let infoBulle;
+let filterWall;
 
 let json = getJSONFromFile("data/departements.json");
 
 //TODO localhost
-let isAdmin = false;
+let adminModeEnabled = false;
 
 //Avertissement temporaire pour prévenir de la non-fiabilité des images TODO
 let warningImagesAlgorithm;
@@ -172,7 +173,7 @@ function updateDepInfosEl(depJSON) {
             hideInfoBulle();
         });
 
-        if (isAdmin) {
+        if (adminModeEnabled) {
             registerDeletingImagesGUI(imgEl, depJSON, image);
         }
     });
@@ -260,6 +261,11 @@ function setupInfoBulle() {
     infoBulle.classList.add("info-bulle");
 }
 
+function hideInfoBulle() {
+    if (infoBulle != undefined && document.body.contains(infoBulle))
+        document.body.removeChild(infoBulle);
+}
+
 function getJSONFromFile(url) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
@@ -269,4 +275,28 @@ function getJSONFromFile(url) {
     } else {
         return JSON.parse(xhr.responseText);
     }
+}
+
+function setupFilterWall() {
+    if (document.querySelector(".filter-wall") != null)
+        return;
+
+    filterWall = document.createElement("div");
+    filterWall.classList.add("filter-wall");
+    document.body.appendChild(filterWall);
+
+    filterWall.addEventListener("click", () => {
+        closeEmailWindow();
+        closeNavWindow();
+    });
+}
+
+function removeFilterWall() {
+    if (document.querySelector(".window") != null)
+        return;
+
+    if (filterWall == null || !document.body.contains(filterWall))
+        return;
+    
+    document.body.removeChild(filterWall);
 }
