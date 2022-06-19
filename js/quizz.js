@@ -11,7 +11,7 @@ let mistakes = [];
 
 
 modeSwitcher.addEventListener("click", (e) => {
-    if (isQuizzMode())
+    if (isQuizzModeEnabled())
         return;
 
     if (quizzBar == undefined) {
@@ -32,7 +32,7 @@ modeSwitcher.addEventListener("click", (e) => {
 
 departements.forEach((departement) => {
     departement.addEventListener("click", (e) => {
-        if (!isQuizzMode())
+        if (!isQuizzModeEnabled())
             return;
 
         if (!departement.classList.contains(departementToFind.id)) {

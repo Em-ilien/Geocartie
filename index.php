@@ -38,5 +38,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/quizz.js"></script>
 	<script src="js/email-window.js"></script>
+	<script src="js/small-crown.js"></script>
+	<script src="js/backing-home-page.js"></script>
 </body>
 </html>

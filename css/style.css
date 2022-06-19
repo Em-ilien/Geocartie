@@ -21,7 +21,7 @@ a {
     max-height: 100%;
 }
 
-.carte .clignotement-on *, .carte .clignotement-on{
+.carte .flashing-color-is-active *, .carte .flashing-color-is-active{
     fill: #555;
 }
 
