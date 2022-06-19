@@ -266,12 +266,13 @@ span.mode-switcher.active {
 
             .carte .mode-switcher {
                 position: initial;
+                margin: 1em;
             }
 
             .infos {
                 max-height: unset;
                 overflow-y: unset;
-                margin: 1em 0 0;
+                margin: 2em 0 0;
                 padding: 0;
                 border-left: none;
                 max-width: 100%;
@@ -298,13 +299,18 @@ span.mode-switcher.active {
                 font-size: 1.2em;
             }
 
-            @media screen and (max-width: 400px) {
-                .carte .mode-switcher {
-                    font-size: 0.75em;
-                    margin: 1em;
+            @media (max-width: 650px) {
+                .infos {
+                    margin: 1em 0 0;
+                }
+            
+                @media screen and (max-width: 400px) {
+                    .carte .mode-switcher {
+                        font-size: 0.75em;
+                        margin: 1em;
+                    }
                 }
             }
-
         }
     }
 }

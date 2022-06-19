@@ -36,6 +36,19 @@ carte.addEventListener("mouseover", (e) => {
     document.body.appendChild(infoBulle);
 });
 
+carte.addEventListener("mousemove", (e) => {
+    if (infoBulle == undefined)
+        return;
+    
+    if (infoBulle.innerText != "Afficher la page d'accueil")
+        return;
+
+    if (e.target == carte || e.target == carte.firstElementChild)
+        return;
+
+    hideInfoBulle();
+});
+
 carte.addEventListener("mouseout", (e) => {
     if (e.target != carte && e.target != carte.firstElementChild)
         return;
