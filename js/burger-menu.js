@@ -52,7 +52,7 @@ function setupNavWidow() {
 
     let contactEl = document.createElement("p");
     contactEl.classList.add("link");
-    contactEl.innerHTML = 'Me contacter';
+    contactEl.innerHTML = 'Contactez-moi';
     contactEl.addEventListener("click", (e) => {
         showEmailWindow("Message concernant Géocartie", "Monsieur Cosson,\n\n\n"
             + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"

@@ -81,6 +81,7 @@ function setupQuizzBar() {
     quizzClose.classList.add("quizz-close");
 
     quizzClose.addEventListener("click", (e) => {
+        document.querySelector(".burger-menu").style.top = "0";
         closeQuizzMode();
     });
 
@@ -88,6 +89,8 @@ function setupQuizzBar() {
 
     quizzClose.appendChild(document.createElement("div"));
     quizzClose.appendChild(document.createElement("div"));
+
+    document.querySelector(".burger-menu").style.top = "7.5vh";
 }
 
 function printNewQuestion() {
@@ -130,6 +133,8 @@ function switchToQuizzMode() {
     
     modeSwitcher.classList.add("hide");
     printNewQuestion();
+
+
 }
 
 function closeQuizzMode() {
