@@ -4,9 +4,16 @@ let quizzBar;
 
 let nbTries = 0;
 let score = {};
+
 let departementToFind = {};
-let departementsFound = [];
-let mistakes = [];
+let departementsToRework = {};
+let lastAskedDepartement = [];
+let foundDepartements = [
+    {
+        time: 0,
+        departements: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "2A", "2B", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95"]
+    } 
+];
 
 
 
@@ -50,12 +57,21 @@ departements.forEach((departement) => {
         success.innerHTML = "Trouvé !";
         document.body.appendChild(success);
         
-        if (nbTries <= 2)
+        if (nbTries <= 2) {
             score.correct++;
-        else {
+            if (departementsToRework[departementToFind.id] != null) {
+                departementsToRework[departementToFind.id] = departementsToRework[departementToFind.id] - 1;
+                if (departementsToRework[departementToFind.id] <= 0)
+                    delete departementsToRework[departementToFind.id];
+            }
+        } else {
             score.wrong++;
-            mistakes.push(departementToFind);
+            departementsToRework[departementToFind.id] = 4;
         }
+
+        if (lastAskedDepartement.length > 6)
+            lastAskedDepartement.shift();
+        lastAskedDepartement.push(departementToFind.id);
 
         setTimeout(() => {
             printNewQuestion();
@@ -67,7 +83,20 @@ departements.forEach((departement) => {
         }, 2000);
 
         updateScore();
-        departementsFound.push({depID: departementToFind.id, nbTries: nbTries});
+
+        for (let i = 0; i < foundDepartements.length; i++) {
+            if (foundDepartements[i].departements.includes(departementToFind.id)) {
+                foundDepartements[i].departements.splice(foundDepartements[i].departements.indexOf(departementToFind.id), 1);
+                if (foundDepartements[i+1] == undefined)
+                    foundDepartements.push({
+                        time: i+1,
+                        departements: []
+                    });
+                
+                foundDepartements[i+1].departements.push(departementToFind.id);
+                break;
+            }
+        }
     });
 });
 
@@ -93,16 +122,34 @@ function setupQuizzBar() {
     document.querySelector(".burger-menu").style.top = "7.5vh";
 }
 
-function printNewQuestion() {
-    if (mistakes.length > 0 && Math.random() < 0.1) {
-        let mistake = mistakes.shift();
-        departementToFind = mistake;
-    } else {
-        do {
-            const rdm = Math.floor(Math.random() * json.length);
-            departementToFind = json[rdm];
-        } while (departementsFound.slice(-5).find(d => d.depID == departementToFind.id) != undefined);
+function getDepartementIDOfNewQuestion() {
+    for (const dep in departementsToRework) {
+        if (lastAskedDepartement.includes(dep))
+            continue;
+
+        return dep;
     }
+
+    for (let k = 0; k < 10000; k++) {
+        for (let i = 0; i < foundDepartements.length; i++) {
+            for (let j = 0; j < 5; j++) {
+                j++;
+                const rdm = Math.floor(Math.random() * foundDepartements[i].departements.length);
+                const dep = foundDepartements[i].departements[rdm];
+                if (lastAskedDepartement.includes(dep))
+                    continue;
+
+                return dep;
+            }
+        }
+    }
+
+    window.alert("Erreur : impossible de trouver un département à afficher");
+}
+
+function printNewQuestion() {
+    departementToFind.id = getDepartementIDOfNewQuestion();
+    departementToFind.name = json.filter(function(data){ return data.id == departementToFind.id })[0].name;
     
     let p = quizzBar.querySelector("p");
     if (p == null) {
