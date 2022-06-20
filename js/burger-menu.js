@@ -66,7 +66,7 @@ function setupNavWidow() {
     linksCtn.appendChild(contactEl);
 
     let mentionsLegalesEl = document.createElement("p");
-    mentionsLegalesEl.innerHTML = '<a href="mentions-legales.php">Mentions légales</a>';
+    mentionsLegalesEl.innerHTML = '<a target="_blank" href="mentions-legales.php">Mentions légales</a>';
     linksCtn.appendChild(mentionsLegalesEl);
 
     let codeSourceEl = document.createElement("p");
