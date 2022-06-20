@@ -17,6 +17,8 @@ let lastAskedDepartement = [];
 
 let userLoggedIn;
 
+let loginPopup;
+
 
 
 //When JS is loaded
@@ -245,7 +247,7 @@ function getVariablesFromSession() {
 }
 
 function showLoginPopupInvitation() {
-    let loginPopup = document.createElement("div");
+    loginPopup = document.createElement("div");
     loginPopup.classList.add("login-popup-window");
     loginPopup.classList.add("window");
     document.body.appendChild(loginPopup);
@@ -281,7 +283,14 @@ function showLoginPopupInvitation() {
     loginClose.classList.add("btn");
     loginClose.innerText = "Fermer";
     loginClose.addEventListener("click", (e) => {
-        document.body.removeChild(loginPopup);
+        closeLoginPopup();
     });
     loginPopup.appendChild(loginClose);
+
+    setupFilterWall();
+}
+
+function closeLoginPopup() {
+    document.body.removeChild(loginPopup);
+    removeFilterWall();
 }

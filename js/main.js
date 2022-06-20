@@ -288,6 +288,7 @@ function setupFilterWall() {
     filterWall.addEventListener("click", () => {
         closeEmailWindow();
         closeNavWindow();
+        closeLoginPopup();
     });
 }
 
