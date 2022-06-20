@@ -40,6 +40,15 @@ a, .link {
     width: fit-content;
 }
 
+.infos .default h2 {
+    margin-bottom: 2em;
+}
+
+.infos .default .links {
+  width: fit-content;
+  margin: 5em auto 0 3em;
+}
+
 .infos h2 span {
     margin-left: 0.75em;
     font-weight: 100;
@@ -148,11 +157,6 @@ a, .link {
 body.quizz-mode {
   margin-top: 7.5vh;
   max-height: 92.5vh;
-}
-
-.infos .default p:nth-child(3n) {
-    margin-top: 3em;
-    color: #000;
 }
 
 span.info-bulle {

@@ -29,15 +29,19 @@ session_start();
 			<h1>Géocartie</h1>
 			<h2>Apprendre et découvrir les départements français</h2>
 			<p>Pour commencer, cliquez sur l'un des départements français métropolitains.</p>
-			<p>Pour toute suggestion, question ou demande, <a target="_blank" onClick="showEmailWindow(`Message concernant Géocartie`, `Monsieur Cosson,\n\n
+			<p>Lancez le Mode quizz pour vous exercer.</p>
+
+			<div class="links">
+				<p><a target="_blank" onClick="showEmailWindow(`Message concernant Géocartie`, `Monsieur Cosson,\n\n
 				J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n
 				Je vous adresse ce courriel afin de {SAISISSEZ_UN_MOTIF}.\n
 				{VEUILLEZ_POURSUIVRE_VOTRE_MESSAGE}\n\n
 				Je devine l'attention que vous porterez à mon message.\n
 				Mes sincères salutations,\n{SIGNATURE}`); event.preventDefault();"
-				href="mailto:emilien@em-ilien.fr">veuillez rédiger un courriel</a>.</p>
-			<p>La carte de France provient de comersis.com et les images sont issues de pages Internet.</p>
-			<p><a target="_blank" href="https://github.com/em-ilien/geocartie">Voir le code source - GitHub</a></p>
+				href="mailto:emilien@em-ilien.fr">Suggestion, question ou demande</a></p>
+				<p><a target="_blank" href="https://github.com/em-ilien/geocartie">Code source - GitHub</a></p>
+				<p><a target="_blank" href="mentions-legales.php">Mentions légales</a></p>
+			</div>
 		</div>
 	</div>
 	<div class="burger-menu">
