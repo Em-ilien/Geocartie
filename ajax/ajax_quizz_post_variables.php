@@ -22,10 +22,13 @@ $_SESSION['score'] = $score;
 $_SESSION['departementsToRework'] = $departementsToRework;
 $_SESSION['foundDepartements'] = $foundDepartements;
 
+$json = file_get_contents("../quizz-users-variables.json");
+$json = json_decode($json, true);
+
 $json[$email]['score'] = json_decode($score);
 $json[$email]['departementsToRework'] = json_decode($departementsToRework);
 $json[$email]['foundDepartements'] = json_decode($foundDepartements);
 
-file_put_contents("../data/quizz-users-variables.json", json_encode($json));
+file_put_contents("../quizz-users-variables.json", json_encode($json));
 
 echo json_encode(["status" => "success"]);

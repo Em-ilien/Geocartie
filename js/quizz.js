@@ -15,7 +15,7 @@ let foundDepartements = [
 ];
 let lastAskedDepartement = [];
 
-let userLoggedIn = false;
+let userLoggedIn;
 
 
 
@@ -224,8 +224,13 @@ function getVariablesFromSession() {
     xhr.responseType = "json";
     xhr.onload = function() {
         console.log(xhr.response);
-        if (xhr.response.status == "success") {
+
+        if (xhr.response.connected)
             userLoggedIn = true;
+        else
+            userLoggedIn = false;
+
+        if (xhr.response.status == "success") {
             score = xhr.response.score;
             departementsToRework = xhr.response.departementsToRework;
             foundDepartements = xhr.response.foundDepartements;
@@ -234,7 +239,7 @@ function getVariablesFromSession() {
             nbTries = 0;
             switchToQuizzMode();        
             updateScore();
-        }
+        }        
     }
     xhr.send();
 }
@@ -265,7 +270,7 @@ function showLoginPopupInvitation() {
             });
 
             let loginDescription = document.createElement("p");
-            loginDescription.innerText = "Votre score et autres données relatifs au Quizz seront enregistrés entre chaque session. Optimal pour l'apprentissage !";
+            loginDescription.innerText = "Votre score et autres données relatives au Quizz seront enregistrés entre chaque session. Optimal pour l'apprentissage !";
             loginPopup.appendChild(loginDescription);
         }
     }
