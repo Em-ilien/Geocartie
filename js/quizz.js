@@ -6,7 +6,28 @@ let nbTries = 0;
 let departementToFind = {};
 
 let score;
-let departementsToRework = {};
+let departementsToRework = [];
+
+class DepartementToRework {
+    constructor(id, amount) {
+        this.id = id;
+        this.amount = amount;
+    }
+
+    getId() {
+        return this.id;
+    }
+
+    getAmount() {
+        return this.amount;
+    }
+
+    setAmount(amount) {
+        this.amount = amount;
+    }
+}
+
+
 let foundDepartements = [
     {
         time: 0,
@@ -72,14 +93,29 @@ departements.forEach((departement) => {
         
         if (nbTries <= 2) {
             score.correct++;
-            if (departementsToRework[departementToFind.id] != null) {
-                departementsToRework[departementToFind.id] = departementsToRework[departementToFind.id] - 1;
-                if (departementsToRework[departementToFind.id] <= 0)
-                    delete departementsToRework[departementToFind.id];
-            }
+            departementsToRework.forEach(dep => {
+                if (dep.id == departementToFind.id) {
+                    if (dep.amount > 1) {
+                        dep.amount = dep.amount - 1;
+                    } else {
+                        //Delete dep from departementsToRework
+                        departementsToRework.splice(departementsToRework.indexOf(dep), 1);
+                    }
+                }
+            });
         } else {
             score.wrong++;
-            departementsToRework[departementToFind.id] = 4;
+            let found = false;
+            departementsToRework.forEach(dep => {
+                if (dep.id == departementToFind.id) {
+                    dep.amount = 2;
+                    found = true;
+                }
+            });
+            if (!found) {
+                let departementToRework = new DepartementToRework(departementToFind.id, 3);
+                departementsToRework.push(departementToRework);
+            }
         }
 
         if (lastAskedDepartement.length > 6)
@@ -124,7 +160,7 @@ function setupQuizzBar() {
     quizzClose.classList.add("quizz-close");
 
     quizzClose.addEventListener("click", (e) => {
-        document.querySelector(".burger-menu").style.top = "0";
+        document.querySelector(".burger-menu").style.top = "unset";
         closeQuizzMode();
     });
 
@@ -137,11 +173,12 @@ function setupQuizzBar() {
 }
 
 function getDepartementIDOfNewQuestion() {
-    for (const dep in departementsToRework) {
-        if (lastAskedDepartement.includes(dep))
+    for (let i = 0; i < departementsToRework.length; i++) {
+        const dep = departementsToRework[i];
+        if (lastAskedDepartement.includes(dep.id))
             continue;
-
-        return dep;
+        
+        return dep.id;
     }
 
     for (let k = 0; k < 10000; k++) {
@@ -151,6 +188,8 @@ function getDepartementIDOfNewQuestion() {
                 const rdm = Math.floor(Math.random() * foundDepartements[i].departements.length);
                 const dep = foundDepartements[i].departements[rdm];
                 if (lastAskedDepartement.includes(dep))
+                    continue;
+                if (dep == undefined)
                     continue;
 
                 return dep;
@@ -213,9 +252,9 @@ function updateVariablesInSession() {
     xhr.responseType = "json";
     xhr.onload = function() {
         console.log(xhr.response);
-        // if (xhr.response.status == "success") {
-        //     console.log("Variables updated in session");
-        // }
+        if (xhr.response.status == "success") {
+            console.log("Variables updated in session");
+        }
     }
     xhr.send(data);
 }
@@ -241,7 +280,16 @@ function getVariablesFromSession() {
             nbTries = 0;
             switchToQuizzMode();        
             updateScore();
-        }        
+        } else if (xhr.response.status == "error" && xhr.response.message.includes("No data found")) {
+            setupQuizzBar();
+            nbTries = 0;        
+            score = {
+                correct: 0,
+                wrong: 0
+            };
+            switchToQuizzMode();
+            updateScore();
+        }
     }
     xhr.send();
 }
@@ -267,8 +315,17 @@ function showLoginPopupInvitation() {
             loginBtn.classList.add("btn");
             loginPopup.appendChild(loginBtn);
             loginBtn.addEventListener("click", () => {
-                loginPopup.remove();
+                closeLoginPopup();
                 window.open("https://accounts.google.com/o/oauth2/v2/auth?scope=email&access_type=online&redirect_uri=" + xhr.response.redirectUri + "&response_type=code&client_id=" + xhr.response.clientId, "_self");
+            });
+
+            let dontLoginBtn = document.createElement("span");
+            dontLoginBtn.innerText = "Continuer hors-ligne";
+            dontLoginBtn.classList.add("dont-login-btn");
+            dontLoginBtn.classList.add("btn");
+            loginPopup.appendChild(dontLoginBtn);
+            dontLoginBtn.addEventListener("click", () => {
+                closeLoginPopup();
             });
 
             let loginDescription = document.createElement("p");
