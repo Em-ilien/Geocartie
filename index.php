@@ -20,9 +20,9 @@ session_start();
 	<link rel="stylesheet" href="css/windows.css">	
 </head>
 <body>
-	<div class="carte">
+	<div class="carte" info-bulle="<p>Afficher la page d'accueil</p>" info-bulle--is-disabled="true">
 		<?php include('data/carte-svg.html'); ?>
-		<span class="mode-switcher">Mode quizz</span>
+		<span class="mode-switcher" info-bulle="<p>Lancer le Mode quizz</p>">Mode quizz</span>
 	</div>
 	<div class="infos">
 		<div class="default">
@@ -32,15 +32,17 @@ session_start();
 			<p>Lancez le Mode quizz pour vous exercer.</p>
 
 			<div class="links">
-				<p><a target="_blank" onClick="showEmailWindow(`Message concernant Géocartie`, `Monsieur Cosson,\n\n
+				<p><a 	info-bulle="<p>Ouvrir l'interface d'envoi de courriel</p>"
+						target="_blank"
+						onClick="showEmailWindow(`Message concernant Géocartie`, `Monsieur Cosson,\n\n
 				J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n
 				Je vous adresse ce courriel afin de {SAISISSEZ_UN_MOTIF}.\n
 				{VEUILLEZ_POURSUIVRE_VOTRE_MESSAGE}\n\n
 				Je devine l'attention que vous porterez à mon message.\n
 				Mes sincères salutations,\n{SIGNATURE}`); event.preventDefault();"
 				href="mailto:emilien@em-ilien.fr">Suggestion, question ou demande</a></p>
-				<p><a target="_blank" href="https://github.com/em-ilien/geocartie">Code source - GitHub</a></p>
-				<p><a target="_blank" href="mentions-legales.php">Mentions légales</a></p>
+				<p><a info-bulle="<p>Se rendre sur le projet Github</p>" target="_blank" href="https://github.com/em-ilien/geocartie">Code source - GitHub</a></p>
+				<p><a info-bulle="<p>Consulter les mentions légales</p>" target="_blank" href="mentions-legales.php">Mentions légales</a></p>
 			</div>
 		</div>
 	</div>
@@ -55,5 +57,6 @@ session_start();
 	<script src="js/small-crown.js"></script>
 	<script src="js/backing-home-page.js"></script>
 	<script src="js/burger-menu.js"></script>
+	<script src="js/info-bulle.js"></script>
 </body>
 </html>

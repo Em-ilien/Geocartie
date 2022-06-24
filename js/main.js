@@ -14,7 +14,6 @@ let depInfos = {
 
 let defaultInfos = infos.querySelector(".default");
 
-let infoBulle;
 let filterWall;
 
 let json = getJSONFromFile("data/departements.json");
@@ -40,25 +39,7 @@ departements.forEach(departement => {
         updateDepInfosEl(depJSON);
     });
 
-    departement.addEventListener("mousemove", (e) => {
-        if (isQuizzModeEnabled())
-            return;
-
-        if (infoBulle == undefined)
-            setupInfoBulle();
-
-        infoBulle.innerHTML = depJSON.name + " (" + depJSON.id + ")<br><br>Région : " + depJSON.region_name + "<br>Préfecture : " + depJSON.prefecture_name;
-        document.body.appendChild(infoBulle);
-        infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
-        infoBulle.style.left = (e.clientX + 10) + "px";
-    });
-
-    departement.addEventListener("mouseout", (e) => {
-        if (isQuizzModeEnabled())
-            return;
-
-        hideInfoBulle();
-    });
+    departement.setAttribute("info-bulle", "<p>" + depJSON.name + " (" + depJSON.id + ")</p><br><p>Région : " + depJSON.region_name + "</p><p>Préfecture : " + depJSON.prefecture_name + "</p>");
 });
 
 
@@ -155,23 +136,14 @@ function updateDepInfosEl(depJSON) {
     depJSON.images.forEach((image) => {
         let imgEl = document.createElement("img");
         imgEl.src = image.src;
-        imgEl.setAttribute("onclick", "window.open(`" + image.contextLink + "`, '_blank');");
+        imgEl.addEventListener("click", (e) => {
+            window.open(image.contextLink, '_blank');
+        });
+
         imgEl.setAttribute("description", image.description);
         depInfos.images.appendChild(imgEl);
 
-        imgEl.addEventListener("mouseenter", (e) => {
-            if (infoBulle == undefined)
-                setupInfoBulle();
-
-            infoBulle.innerHTML = e.target.getAttribute("description");
-            document.body.appendChild(infoBulle);
-            infoBulle.style.top = (e.clientY + window.scrollY) + "px";
-            infoBulle.style.left = e.clientX + "px";
-        });
-
-        imgEl.addEventListener("mouseout", (e) => {
-            hideInfoBulle();
-        });
+        imgEl.setAttribute("info-bulle", "<p>" + image.description + "</p>");
 
         if (adminModeEnabled) {
             registerDeletingImagesGUI(imgEl, depJSON, image);
@@ -254,16 +226,6 @@ function registerDeletingImagesGUI(imgEl, depJSON, image) {
         });
         document.body.appendChild(deleteImage);
     });
-}
-
-function setupInfoBulle() {
-    infoBulle = document.createElement("span");
-    infoBulle.classList.add("info-bulle");
-}
-
-function hideInfoBulle() {
-    if (infoBulle != undefined && document.body.contains(infoBulle))
-        document.body.removeChild(infoBulle);
 }
 
 function getJSONFromFile(url) {

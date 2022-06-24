@@ -233,12 +233,20 @@ function switchToQuizzMode() {
     
     modeSwitcher.classList.add("hide");
     printNewQuestion();
+
+    departements.forEach(departement => {
+        departement.setAttribute("info-bulle--is-disabled", "true");
+    });
 }
 
 function closeQuizzMode() {
     modeSwitcher.classList.remove("hide");
     document.body.removeChild(quizzBar);
     document.body.classList.remove("quizz-mode");
+
+    departements.forEach(departement => {
+        departement.removeAttribute("info-bulle--is-disabled");
+    });
 }
 
 function updateVariablesInSession() {

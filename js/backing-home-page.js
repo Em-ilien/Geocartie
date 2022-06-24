@@ -4,19 +4,23 @@ carte.querySelectorAll("svg g path, svg g polyline").forEach(p => {
     });
 });
 
-carte.firstElementChild.addEventListener("click", (e) => {
-    infos.remove();
-    infos = document.createElement("div");
-    infos.classList.add("infos");
-    document.body.appendChild(infos);
-    infos.appendChild(defaultInfos);
+[carte, carte.firstElementChild].forEach(el => {
+    el.addEventListener("click", (e) => {
+        infos.remove();
+        infos = document.createElement("div");
+        infos.classList.add("infos");
+        document.body.appendChild(infos);
+        infos.appendChild(defaultInfos);
 
-    disactivePreviousActiveDepartements();
+        disactivePreviousActiveDepartements();
 
-    depInfos.name = null;
-    
-    carte.style.cursor = "unset";
-    hideInfoBulle();
+        depInfos.name = null;
+        
+        el.style.cursor = "unset";
+        
+        carte.setAttribute("info-bulle--is-disabled", "true");
+        carte.firstElementChild.setAttribute("info-bulle--is-disabled", "true");
+    });
 });
 
 carte.addEventListener("mouseover", (e) => {
@@ -29,24 +33,8 @@ carte.addEventListener("mouseover", (e) => {
     carte.style.backgroundColor = "#eee";
     carte.style.cursor = "pointer";
 
-    if (infoBulle == undefined)
-        setupInfoBulle();
-
-    infoBulle.innerHTML = "Afficher la page d'accueil";
-    document.body.appendChild(infoBulle);
-});
-
-carte.addEventListener("mousemove", (e) => {
-    if (infoBulle == undefined)
-        return;
-    
-    if (infoBulle.innerText != "Afficher la page d'accueil")
-        return;
-
-    if (e.target == carte || e.target == carte.firstElementChild)
-        return;
-
-    hideInfoBulle();
+    carte.removeAttribute("info-bulle--is-disabled");
+    carte.firstElementChild.removeAttribute("info-bulle--is-disabled");
 });
 
 carte.addEventListener("mouseout", (e) => {
@@ -55,12 +43,4 @@ carte.addEventListener("mouseout", (e) => {
 
     carte.style.backgroundColor = "#fff";
     carte.style.cursor = "unset";
-});
-
-carte.addEventListener("mousemove", (e) => {
-    if (infoBulle == undefined)
-        return;
-    
-    infoBulle.style.top = (e.clientY + window.scrollY + 30) + "px";
-    infoBulle.style.left = (e.clientX + 10) + "px";
 });
