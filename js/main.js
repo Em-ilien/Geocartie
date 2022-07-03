@@ -151,40 +151,50 @@ function updateDepInfosEl(depJSON) {
     });
 
     depInfos.seeMoreImagesBtn.href = "https://www.google.com/search?q=" + encodeURIComponent(depJSON.name + " département paysage") + "&tbm=isch";
-    depInfos.addImagesBtn.addEventListener("click", (e) => {
-        showEmailWindow("Ajout d'une image sur Géocartie", "Monsieur Cosson,\n\n\n"
-            + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"
-            + "Je vous adresse ce courriel afin de vous suggérer l'ajout d'images pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n"
-            + "- {LIEN_IMAGE}\n"
-            + "- \n"
-            + "- \n\n\n"
-            + "Je devine l'attention que vous porterez à mon message.\n\n"
-            + "Mes sincères salutations,\n"
-            + "{SIGNATURE}");
-            
-        e.preventDefault();
-    });
+    let oldAddImagesBtn = depInfos.addImagesBtn;
+    depInfos.addImagesBtn = oldAddImagesBtn.cloneNode(true);
+    oldAddImagesBtn.parentNode.replaceChild(depInfos.addImagesBtn, oldAddImagesBtn);
+    depInfos.addImagesBtn.addEventListener("click", (e) => showEmailWindowForAddImage(depJSON, e));
     
     //Avertissement temporaire pour prévenir de la non-fiabilité des images TODO
-    warningImagesAlgorithmReport.addEventListener("click", (e) => {
-        showEmailWindow("Signalement d'une image à supprimer", "Monsieur Cosson,\n\n\n"
-            + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"
-            + "Je vous adresse ce courriel afin de signaler une image à supprimer pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n"
-            + "- {LIEN_IMAGE}\n"
-            + "- \n"
-            + "- \n\n\n"
-            + "Je devine l'attention que vous porterez à mon message.\n\n"
-            + "Mes sincères salutations,\n"
-            + "{SIGNATURE}");
-        
-        e.preventDefault();
-    });
+    let oldWarningImagesAlgorithmReport = warningImagesAlgorithmReport;
+    warningImagesAlgorithmReport = oldWarningImagesAlgorithmReport.cloneNode(true);
+    oldWarningImagesAlgorithmReport.parentNode.replaceChild(warningImagesAlgorithmReport, oldWarningImagesAlgorithmReport);
+    warningImagesAlgorithmReport.addEventListener("click", (e) => showEmailWindowForRemoveImage(depJSON, e));
 
     if (depJSON.verification)
         warningImagesAlgorithm.style.display = "none";
     else
         warningImagesAlgorithm.style.display = "block";
     //End
+}
+
+function showEmailWindowForRemoveImage(depJSON, e) {
+    showEmailWindow("Signalement d'une image à supprimer", "Monsieur Cosson,\n\n\n"
+        + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"
+        + "Je vous adresse ce courriel afin de signaler une image à supprimer pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n"
+        + "- {LIEN_IMAGE}\n"
+        + "- \n"
+        + "- \n\n\n"
+        + "Je devine l'attention que vous porterez à mon message.\n\n"
+        + "Mes sincères salutations,\n"
+        + "{SIGNATURE}");
+
+    e.preventDefault();
+}
+
+function showEmailWindowForAddImage(depJSON, e) {
+    showEmailWindow("Ajout d'une image sur Géocartie", "Monsieur Cosson,\n\n\n"
+        + "J'ai découvert l'application Web nommée Géocartie que vous avez réalisée.\n\n"
+        + "Je vous adresse ce courriel afin de vous suggérer l'ajout d'images pour le département " + depJSON.id + " (" + depJSON.name + ") :\n\n"
+        + "- {LIEN_IMAGE}\n"
+        + "- \n"
+        + "- \n\n\n"
+        + "Je devine l'attention que vous porterez à mon message.\n\n"
+        + "Mes sincères salutations,\n"
+        + "{SIGNATURE}");
+
+    e.preventDefault();
 }
 
 function registerDeletingImagesGUI(imgEl, depJSON, image) {
