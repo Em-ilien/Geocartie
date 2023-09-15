@@ -13,10 +13,10 @@
 <style>
     div {
         display: flex;
-        padding: 9px 13px;
+        padding: 0.5625em 0.8125em;
         flex-direction: column;
         align-items: center;
-        gap: 10px; 
+        gap: 0.625em; 
     }
 
     img {
@@ -26,7 +26,7 @@
     }
 
     span {
-        font-size: 12px;
+        font-size: 0.75em;
         font-style: normal;
         font-weight: 400;
         line-height: normal; 

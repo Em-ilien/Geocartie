@@ -26,7 +26,7 @@
         align-items: center;
         justify-content: center;
         list-style: none;
-        gap: 71px;
+        gap: 4.4375em;
     }
 
     nav ul li {
@@ -34,19 +34,19 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 0.625em;
     }
 
     nav ul li span {
-        font-size: 20px;
+        font-size: 1.25em;
         font-style: normal;
         font-weight: 400;
         line-height: normal; 
     }
 
     nav ul li img {
-        width: 10px;
-        height: 6px;
+        width: 0.625em;
+        height: 0.375em;
         flex-shrink: 0;
         fill: #000;
         stroke-width: 1px;

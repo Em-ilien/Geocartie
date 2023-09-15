@@ -29,7 +29,7 @@
     header > div:first-child {
         display: flex;
         align-items: center;
-        gap: 94px;
-        margin-left: 10px;
+        gap: 5.875em;
+        margin-left: 0.625em;
     }
 </style>

@@ -23,9 +23,9 @@
     .actions {
         display: inline-flex;
         flex-direction: row-reverse;
-        padding: 0px 16px;
+        padding: 0 1em;
         align-items: flex-start;
-        gap: 6px;
+        gap: 0.375em;
     }
 
     .more {
@@ -37,7 +37,7 @@
             display: inline-flex;
             flex-direction: row-reverse;
             align-items: flex-start;
-            gap: 6px;
+            gap: 0.375em;
         }
     }
 </style>
