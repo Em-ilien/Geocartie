@@ -26,7 +26,7 @@
         align-items: center;
         justify-content: center;
         list-style: none;
-        gap: 4.4375em;
+        gap: 3vw;
     }
 
     nav ul li {
@@ -51,5 +51,22 @@
         fill: #000;
         stroke-width: 1px;
         stroke: #000; 
+    }
+
+    @media (max-width: 500px) {
+        nav ul {
+            padding: 0.5625em 1.625em;
+            justify-content: space-between;
+            border: 1px solid #DDD;
+            border-left: none;
+            border-right: none;
+            width: 100vw;
+        }
+    }
+
+    @media (max-width: 370px) {
+        nav ul {
+            padding: 0.5625em 5%;
+        }
     }
 </style>

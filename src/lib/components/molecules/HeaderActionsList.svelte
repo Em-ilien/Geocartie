@@ -1,6 +1,5 @@
 <script>
-    import HeaderAction from '../atoms/HeaderAction.svelte';
-
+    import ActionItem from '../atoms/ActionItem.svelte';
 
     import accountIcon from "$lib/assets/icons/actions/account-icon.png";
     import codeIcon from "$lib/assets/icons/actions/code-icon.png";
@@ -10,12 +9,12 @@
 </script>
 
 <div class="actions">
-    <HeaderAction text="Se connecter" icon={accountIcon} />
-    <HeaderAction text="Joueur au Quizz" icon={quizzIcon} />
+    <ActionItem text="Se connecter" icon={accountIcon} />
+    <ActionItem text="Jouer au Quizz" icon={quizzIcon} />
     <div class="more">
-        <HeaderAction text="Nous contacter" icon={contactIcon} />
-        <HeaderAction text="Mentions légales" icon={legalIcon} />
-        <HeaderAction text="Code source" icon={codeIcon} />
+        <ActionItem text="Nous contacter" icon={contactIcon} />
+        <ActionItem text="Mentions légales" icon={legalIcon} />
+        <ActionItem text="Code source" icon={codeIcon} />
     </div>
 </div>
 
@@ -26,18 +25,25 @@
         padding: 0 1em;
         align-items: flex-start;
         gap: 0.375em;
+        align-self: flex-end;
     }
 
     .more {
         display: none;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1160px) {
         .more {
             display: inline-flex;
             flex-direction: row-reverse;
             align-items: flex-start;
             gap: 0.375em;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .actions {
+            display: none;
         }
     }
 </style>

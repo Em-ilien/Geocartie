@@ -29,6 +29,7 @@
         font-size: 0.75em;
         font-style: normal;
         font-weight: 400;
-        line-height: normal; 
+        line-height: normal;
+        width: max-content;
     }
 </style>

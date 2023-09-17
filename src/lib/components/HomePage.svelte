@@ -1,4 +1,5 @@
 <script>
+    import BottomNavigation from "./sections/BottomNavigation.svelte";
     import DefaultContextSection from "./sections/DefaultContextSection.svelte";
     import Header from "./sections/Header.svelte";
     import Map from "./sections/Map.svelte";
@@ -10,3 +11,4 @@
     <DefaultContextSection />
     <Map />
 </main>
+<BottomNavigation />
