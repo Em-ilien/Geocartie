@@ -16,12 +16,12 @@
         padding: 0.5625em 0.8125em;
         flex-direction: column;
         align-items: center;
-        gap: 0.625em; 
+        gap: 0.625em;
+        cursor: pointer;
     }
 
     img {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
         object-fit: contain;
     }
 

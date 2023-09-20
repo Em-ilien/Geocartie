@@ -17,16 +17,22 @@
 <style>
     header {
         display: flex;
+        align-items: stretch;
         justify-content: space-between;
-        align-items: center;
         border-bottom: 1px solid #DDD; 
     }
 
     header > div:first-child {
         display: flex;
-        align-items: center;
+        align-items: stretch;
         gap: 6vw;
         margin-left: 0.625em;
+    }
+
+    img {
+        cursor: pointer;
+        object-fit: contain;
+        width: 10em;
     }
 
     @media (max-width: 780px) {

@@ -26,22 +26,31 @@
         align-items: center;
         justify-content: center;
         list-style: none;
-        gap: 3vw;
+        height: 100%;
+       
     }
 
     nav ul li {
+        height: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
         gap: 0.625em;
+        cursor: pointer;
+        padding: 0 1.5vw;
+
     }
 
     nav ul li span {
-        font-size: 1.25em;
+        font-size: 1.1em;
         font-style: normal;
         font-weight: 400;
         line-height: normal; 
+    }
+
+    nav ul li:hover span {
+        text-decoration: underline;
     }
 
     nav ul li img {
