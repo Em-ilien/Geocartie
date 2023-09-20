@@ -11,4 +11,11 @@
     .app {
         font-family: 'Roboto', 'Lato', sans-serif;
     }
+
+    :global(*) {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+    }
 </style>
