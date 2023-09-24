@@ -10,6 +10,9 @@
 <style>
     .app {
         font-family: 'Roboto', 'Lato', sans-serif;
+        overflow: hidden;
+        max-width: 100vw;
+        max-height: 100vh;
     }
 
     :global(*) {

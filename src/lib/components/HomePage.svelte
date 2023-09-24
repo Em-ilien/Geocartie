@@ -12,3 +12,16 @@
     <Map />
 </main>
 <BottomNavigation />
+
+<style>
+    main {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: stretch;
+        height: 100%;
+        width: 100%;
+    }
+
+ 
+</style>
