@@ -173,6 +173,16 @@
 	section.darken {
 		background: #00000060;
 		backdrop-filter: blur(1px);
+		animation: darken 0.1875s ease-in-out;
+	}
+
+	@keyframes darken {
+		0% {
+			background: #fff;
+		}
+		100% {
+			background: #00000060;
+		}
 	}
 
 	section.darken :global(*) {
@@ -220,6 +230,18 @@
 		border-radius: 1em;
 		padding: 1rem;
 		box-shadow: 0 0 1em 0.25em #00000080;
+		animation: open-modal 0.1875s ease-in-out;
+	}
+
+	@keyframes open-modal {
+		0% {
+			transform: translate(+25%, +25%) scale(0);
+			opacity: 0;
+		}
+		100% {
+			transform: translate(-50%, -50%) scale(1);
+			opacity: 1;
+		}
 	}
 
 	.little-crown-modal :global(svg *) {
