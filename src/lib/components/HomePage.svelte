@@ -19,8 +19,11 @@
         flex-direction: row;
         align-items: stretch;
         justify-content: stretch;
-        height: 100%;
         width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow-y: hidden;
+        height: auto;
     }
 
  

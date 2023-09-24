@@ -7,11 +7,26 @@
 	function onClickLittleCrown(e) {
 		littleCrownModalActive = true;
 		sectionClass = "darken"
-		console.log("littleCrownModalActive", littleCrownModalActive);
+	}
+
+	function onClickMapSection(e) {
+		if (!littleCrownModalActive)
+			return;
+
+		littleCrownModalActive = false;
+		sectionClass = undefined;
+	}
+
+	function onKeydown(e) {
+		if (e.key === "Escape") {
+			littleCrownModalActive = false;
+			sectionClass = undefined;
+			e.stopPropagation();
+		}
 	}
 </script>
 
-<section class={sectionClass}>
+<section class={sectionClass} on:click|self={onClickMapSection}>
 	<svg viewBox="14 -1 600 590" xmlns="http://www.w3.org/2000/svg">
 		<defs>
 			<amcharts:ammap projection="mercator" leftLongitude="-5.185287" topLatitude="51.089515" rightLongitude="9.560553" bottomLatitude="41.366975"></amcharts:ammap>
@@ -148,14 +163,24 @@
 	{/if}
 </section>
 
+<svelte:body on:keydown={onKeydown} />
+
 <style>
 	section {
 		width: 50%;
+		max-height: 100%;
 	}
 	section.darken {
-		pointer-events: none; /* Désactive les interactions avec l'élément */
 		background: #00000060;
 		backdrop-filter: blur(1px);
+	}
+
+	section.darken :global(*) {
+		pointer-events: none; /* Désactive les interactions avec l'élément */
+	}
+
+	section .little-crown-modal :global(*) {
+		pointer-events: all;
 	}
 
     svg :global(.land) {
@@ -172,13 +197,18 @@
 		opacity: 1;
     }
 
+	section > svg {
+		width: 100%;
+		height: 100%;
+	}
+
 	svg :global(polygon), svg :global(polyline) {
         fill-opacity: 0;
 		stroke: #555;
         stroke-width: 1.25;
 	}
 
-	.little-crown-modal {
+	section .little-crown-modal {
 		pointer-events: all;
 		position: relative;
 		top: -50%;

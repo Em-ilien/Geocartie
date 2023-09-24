@@ -9,6 +9,8 @@
 
 <style>
     .app {
+        display: flex;
+        flex-direction: column;
         font-family: 'Roboto', 'Lato', sans-serif;
         overflow: hidden;
         max-width: 100vw;
