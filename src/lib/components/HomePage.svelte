@@ -3,7 +3,6 @@
     import DefaultContextSection from "./sections/DefaultContextSection.svelte";
     import Header from "./sections/Header.svelte";
     import Map from "./sections/Map.svelte";
-
 </script>
 
 <Header />
@@ -25,6 +24,4 @@
         overflow-y: hidden;
         height: auto;
     }
-
- 
 </style>

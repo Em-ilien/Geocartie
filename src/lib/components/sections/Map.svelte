@@ -186,7 +186,7 @@
 	}
 
 	section.darken :global(*) {
-		pointer-events: none; /* Désactive les interactions avec l'élément */
+		pointer-events: none;
 	}
 
 	section .little-crown-modal :global(*) {
@@ -242,9 +242,5 @@
 			transform: translate(-50%, -50%) scale(1);
 			opacity: 1;
 		}
-	}
-
-	.little-crown-modal :global(svg *) {
-		/* transform: scale(10); */
 	}
 </style>

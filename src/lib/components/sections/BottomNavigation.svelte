@@ -1,6 +1,6 @@
 <script>
     import ActionItem from "../atoms/ActionItem.svelte";
-
+    
     import accountIcon from "$lib/assets/icons/actions/account-icon.png";
     import quizzIcon from "$lib/assets/icons/actions/quizz-icon.png";
 </script>
@@ -12,9 +12,6 @@
 
 <style>
     .bottom-navigation {
-        position: absolute;
-        bottom: 0;
-
         display: flex;
         width: 100vw;
         padding: 0 7.125em 0.375em 7.125em;

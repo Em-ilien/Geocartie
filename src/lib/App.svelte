@@ -14,7 +14,9 @@
         font-family: 'Roboto', 'Lato', sans-serif;
         overflow: hidden;
         max-width: 100vw;
+        min-width: 100vw;
         max-height: 100vh;
+        min-height: 100vh;
     }
 
     :global(*) {
