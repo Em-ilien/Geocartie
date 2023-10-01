@@ -4,15 +4,15 @@
     let questions = [
         {
             question: "Qu'est-ce que Géocartie ?",
-            answer: "Géocartie est une application web permettant d'apprendre et de découvrir les départements français. Cette plateforme open-source comprend une carte interactive et un quizz.",
+            answer: "Géocartie est une application web permettant d'apprendre et de découvrir les départements français. Cette plateforme open-source comprend une carte interactive et un Quizz.",
         },
         {
             question: "Qu'est-ce que le Quizz ?",
-            answer: "Le quizz permet de s'entraîner à localiser les départements. Géocartie donne le nom d'un département : votre objectif est de le retrouver sur la carte.",
+            answer: "Le Quizz permet de s'entraîner à localiser les départements. Géocartie donne le nom d'un département : votre objectif est de le retrouver sur la carte. Cliquez sur le bouton \"Jouer au Quizz\" pour essayer.",
         },
         {
             question: "À quoi sert la connexion à son compte Google ?",
-            answer: "Se connecter à son compte Google permet de sauvegarder ses scores et ses statistiques liées au quizz. Le mode hors-ligne permet toujours de jouer au quizz.",
+            answer: "Se connecter à son compte Google permet de sauvegarder ses scores et ses statistiques liées au Quizz. Le mode hors-ligne permet toujours de jouer au Quizz.",
         }
     ];
 
