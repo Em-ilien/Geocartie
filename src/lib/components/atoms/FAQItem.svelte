@@ -31,9 +31,10 @@
         font-size: 1em;
         font-style: normal;
         line-height: normal;
+        align-items: center;
         display: flex;
         gap: 0.5625em;
-        align-items: center;
+        cursor: pointer;
     }
     li .question:hover {
         text-decoration-line: underline;

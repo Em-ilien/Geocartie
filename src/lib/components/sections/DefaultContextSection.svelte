@@ -145,6 +145,9 @@
 
     .cta button:hover {
         box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
+        /* padding-left: 1.5em; */
+        padding-right: 3em;
+        transition: 0.5s cubic-bezier(0,0,0,1);
     }
 
     .cta > span {
