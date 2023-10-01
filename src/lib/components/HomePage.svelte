@@ -22,6 +22,6 @@
         flex-grow: 1;
         flex-shrink: 1;
         overflow-y: hidden;
-        height: auto;
+        height: fit-content;
     }
 </style>
