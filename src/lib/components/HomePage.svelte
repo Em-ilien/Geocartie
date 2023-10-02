@@ -4,7 +4,7 @@
     import Header from "./sections/Header.svelte";
     import Map from "./sections/Map.svelte";
 
-    let dataState = null;
+    let dataState = "loading";
 </script>
 
 <Header />

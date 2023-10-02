@@ -1,7 +1,7 @@
 <script>
     import { page } from "$app/stores";
-  import ContactContextSection from "./ContactContextSection.svelte";
-    import ContextSection from "./ContextSection.svelte";
+    import ContactContextSection from "./ContactContextSection.svelte";
+  import ContextSection from "./ContextSection.svelte";
     import DefaultContextSection from "./DefaultContextSection.svelte";
     import LegalContextSection from "./LegalContextSection.svelte";
 
@@ -20,13 +20,18 @@
 {:else if dataState == null}
     <DefaultContextSection bind:dataState={dataState}/>
 {:else if dataState == "loading"}
-    <div class="loading">
-        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-    </div>
+    <ContextSection>
+        <div class="loading">
+            <h1>Chargement</h1>
+            <p>Chargement des données en cours...</p>
+        </div>
+    </ContextSection>
 {:else if dataState == "error"}
-    <div class="error">
-        <h1>Erreur</h1>
-        <p>Une erreur est survenue lors du chargement des données.</p>
-        <p>Veuillez réessayer plus tard.</p>
-    </div>
+    <ContextSection>
+        <div class="error">
+            <h1>Erreur</h1>
+            <p>Une erreur est survenue lors du chargement des données.</p>
+            <p>Veuillez réessayer plus tard.</p>
+        </div>
+    </ContextSection>
 {/if}
