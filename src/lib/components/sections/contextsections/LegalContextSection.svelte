@@ -11,8 +11,13 @@
         <p>Vous pouvez contacter l'administrateur du site par courriel à <a href="mailto:emilien@em-ilien.fr">l'adresse emilien@em-ilien.fr</a>.</p>
     
         <h2>Hébergeur</h2>
-        <p>Ce site web est hébergé par OVH.</p>
-        <p>RCS Roubaix – Tourcoing 424 761 419 00045 ; Code APE 6202A ; N° TVA : FR 22 424 761 419 ; Siège social : 2 rue Kellermann - 59100 Roubaix - France.</p>
+        <p>Ce site web est hébergé par Vercel.</p>
+        <p>
+            Vercel Inc.<br>
+            340 S Lemon Ave #4133<br>
+            Walnut, CA 91789<br>
+            <a href="https://vercel.com">https://vercel.com</a>
+        </p>
     
         <h2>Politique de confidentialité et cookies</h2>
         <p>Ce site ne collecte aucune donnée personnelle, hormis l'adresse email fournie par l'utilisateur à la connexion (voir section "Connexion avec Google").</p>
@@ -31,7 +36,7 @@
         <ul>
             <li>de mentionner le lien vers ce repository Github, ou bien vers la page Web https://em-ilien.fr/geocartie ;</li>
             <li>de ne pas revendre le code source ;</li>
-            <li>de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (<a href="emilien@em-ilien.fr">emilien@em-ilien.fr</a>).</li>
+            <li>de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (<a href="mailto:emilien@em-ilien.fr">emilien@em-ilien.fr</a>).</li>
         </ul>
         <p>Vous pouvez mettre en ligne Géocartie sur votre serveur Web et le mettre à la disposition de vos utilisateurs aux conditions mentionnés ci-dessus.</p>
         <p>Vous pouvez mettre en ligne le code source de Géocartie, que vous l'ayez édité ou non, aux mêmes conditions en veillant tout particulièrement à informer vos utilisateurs que ce code est soumis au moins aux mêmes conditions mentionnées ci-dessus.</p>
@@ -39,7 +44,7 @@
     
         <h3>Images et carte</h3>
         <p>La carte de France provient de comersis.com et les images sont issues de pages Internet.</p>
-        <p>Pour toute demande d'ajout d'images, veuillez rédiger un courriel à <a href="emilien@em-ilien.fr">emilien@em-ilien.fr</a> en mentionnant le numéro de département concerné et les liens vers les images.</p>
+        <p>Pour toute demande d'ajout d'images, veuillez rédiger un courriel à <a href="mailto:emilien@em-ilien.fr">emilien@em-ilien.fr</a> en mentionnant le numéro de département concerné et les liens vers les images.</p>
         <p>Pour des questions de droit d'auteur, les images doivent être hébergées sur des serveurs Web par le soin des détenteurs desdits droits.</p>
     </section>
 </ContextSection>
@@ -51,6 +56,9 @@
         background-color: #fff;
     }
 
+    .legal * {
+        user-select: text;
+    }
 
     h1 {
         font-size: 2.5em;
