@@ -1,13 +1,15 @@
 <script>
     import BottomNavigation from "./sections/BottomNavigation.svelte";
-    import DefaultContextSection from "./sections/DefaultContextSection.svelte";
+    import SpecificContextSection from "./sections/contextsections/SpecificContextSection.svelte";
     import Header from "./sections/Header.svelte";
     import Map from "./sections/Map.svelte";
+
+    let dataState = null;
 </script>
 
 <Header />
 <main>
-    <DefaultContextSection />
+    <SpecificContextSection {dataState}/>
     <Map />
 </main>
 <BottomNavigation />
