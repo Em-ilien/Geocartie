@@ -130,6 +130,11 @@
         cursor: pointer;
     }
 
+    .cta button:active {
+        box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.25)!important;
+        transform: scale(0.95);
+    }
+
     .cta button img {
         width: 1.6875em;
         height: 1.6875em;

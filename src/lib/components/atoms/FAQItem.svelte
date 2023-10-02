@@ -5,22 +5,42 @@
     export let question;
     export let answer;
     export let active = false;
-
-    function onClick() {
+    
+    let liEl;
+    let answerHeight = 0;
+    
+    function onClick(e) {
         active = !active;
         dispatch('click', { active, question, answer });
+        
+        answerHeight = 0;
+        const answerElem = liEl.querySelector('.answer');
+        console.log(answerElem)
+        setTimeout(() => {
+            console.log(answerElem.clientHeight)
+
+            const interval = setInterval(() => {
+                if (answerHeight < answerElem.clientHeight + 8) {
+                    answerHeight += 10;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 10);
+        });
     }
 </script>
 
 
-<li class:active>
+<li bind:this={liEl} class:active>
     <div class="question" on:click={onClick}>
         <svg xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
             <path d="M8 1.32704L4.44755 5L1 1.32704L1.35897 1L4.44755 4.10692L7.64103 1L8 1.32704Z" fill="black" stroke="black"/>
         </svg>
         <span>{question}</span>
     </div>
-    <p class="answer">{answer}</p>
+    <div class="answer-hider" style:height={(active ? answerHeight : "0") + "px"}> 
+        <p class="answer">{answer}</p>
+    </div>
 </li>
 
 <style>
@@ -49,6 +69,12 @@
         transition: 0.15s ease-in-out;
     }
 
+    li .answer-hider {
+        height: 0;
+        overflow: hidden;
+        transition: .7s ease;
+    }
+
     li .answer {
         margin-top: 0.5em;
         padding: 0 0.5em;
@@ -57,9 +83,6 @@
         z-index: -1;
         position: relative;
         opacity: 0;
-        -webkit-transition: .7s ease;
-        -moz-transition: .7s ease;
-        -o-transition: .7s ease;
         transition: .7s ease;
         margin: 0;
     }
