@@ -2,12 +2,13 @@
     import logo from '$lib/assets/images/logo.png';
     import ActionsList from '../molecules/HeaderActionsList.svelte';
     import HeaderNav from '../molecules/HeaderNav.svelte';
-
 </script>
 
 <header>
     <div>
-        <img src={logo} alt="Logo Géocartie" />
+        <a href="/">
+            <img src={logo} alt="Logo Géocartie" />
+        </a>
         <HeaderNav />
     </div>
     
@@ -19,7 +20,8 @@
         display: flex;
         align-items: stretch;
         justify-content: space-between;
-        border-bottom: 1px solid #DDD; 
+        border-bottom: 1px solid #DDD;
+        user-select: none;
     }
 
     header > div:first-child {
@@ -29,8 +31,13 @@
         margin-left: 0.625em;
     }
 
-    img {
+    a {
         cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    a img {
         object-fit: contain;
         width: 10em;
     }

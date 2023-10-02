@@ -47,14 +47,14 @@
     <footer>
         <nav>
             <a target="_blank" href="https://github.com/Em-ilien/Geocartie">Code source</a>
-            <a target="_blank" href="/legal">Mentions légales</a>
-            <a target="_blank" href="/contact">Nous contacter</a>
+            <a href="/legal">Mentions légales</a>
+            <a href="/contact">Nous contacter</a>
         </nav>
     </footer>
 </section>
 
 <style>
-    section {        
+    section {
         display: flex;
         padding: 4em 4% 1em 4%;
         margin-left: 0.625em;
