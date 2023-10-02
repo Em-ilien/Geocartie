@@ -1,7 +1,7 @@
 <script>
     import { page } from "$app/stores";
+    import ContextSection from "./ContextSection.svelte";
     import ContactContextSection from "./ContactContextSection.svelte";
-  import ContextSection from "./ContextSection.svelte";
     import DefaultContextSection from "./DefaultContextSection.svelte";
     import LegalContextSection from "./LegalContextSection.svelte";
 
