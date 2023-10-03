@@ -7,14 +7,11 @@
     import legalIcon from "$lib/assets/icons/actions/legal-icon.png";
     import quizzIcon from "$lib/assets/icons/actions/quizz-icon.png";
 
-    function onClickQuizz(e) {
-        alert("Le quizz n'est pas encore implémenté.");
-        //TODO
-    }
+    import {onClickLogin, onClickQuizz} from "$lib/helpers/buttonClick.js";
 </script>
 
 <div class="actions">
-    <ActionItem text="Se connecter" icon={accountIcon} href="/login" />
+    <ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
     <ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={onClickQuizz}/>
     <div class="more">
         <ActionItem text="Nous contacter" icon={contactIcon} href="/contact" />

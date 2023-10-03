@@ -1,9 +1,18 @@
 <script>
     import icon from '$lib/assets/icons/arrow.png';
+
+    import toast from 'svelte-french-toast';
+
+    function onClick(e) {
+        toast.error("Le menu n'est pas encore implémenté.", {
+            style: "font-family: 'Roboto', 'Lato', sans-serif; box-shadow: 2px 2px 5px 3px #00000025",
+            position: "top-right",
+        });
+    }
 </script>
 
 <nav>
-    <ul>
+    <ul on:click={onClick}>
         <li>
             <span>France</span>
             <img src={icon} alt="Icône flèche" />
