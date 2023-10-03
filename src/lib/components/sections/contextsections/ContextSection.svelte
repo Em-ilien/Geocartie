@@ -48,6 +48,15 @@
         flex-grow: 1;
     }
 
+    .context-section :global(h1),
+    .context-section :global(h2),
+    .context-section :global(p),
+    .context-section :global(b),
+    .context-section :global(i),
+    .context-section :global(span) {
+        user-select: text;
+    }
+
     footer nav {
         display: inline-flex;
         align-items: flex-start;

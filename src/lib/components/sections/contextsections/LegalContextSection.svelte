@@ -56,10 +56,6 @@
         background-color: #fff;
     }
 
-    .legal * {
-        user-select: text;
-    }
-
     h1 {
         font-size: 2.5em;
     }

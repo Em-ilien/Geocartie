@@ -59,7 +59,7 @@
     li .question:hover {
         text-decoration-line: underline;
     }
-    
+
     li .question svg {
         transform: rotate(0deg);
         transition: 0.15s ease-in-out;
