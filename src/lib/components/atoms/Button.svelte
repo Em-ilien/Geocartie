@@ -19,6 +19,18 @@
         cursor: pointer;
     }
 
+    button:hover {
+        box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
+        padding-right: 3em;
+        transition: 0.5s cubic-bezier(0,0,0,1);
+    }
+
+    @media(hover: none) {
+        button:hover {
+            padding-right: 1.25em;
+        }
+    }
+
     button:active {
         box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.25)!important;
         transform: scale(0.95);
@@ -35,11 +47,5 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-    }
-
-    button:hover {
-        box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
-        padding-right: 3em;
-        transition: 0.5s cubic-bezier(0,0,0,1);
     }
 </style>
