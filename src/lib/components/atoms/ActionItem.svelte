@@ -1,23 +1,32 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher();
 
     export let text = "";
     export let icon;
+    export let href = null;
+    export let blank = null;
 
+    function onClick(e) {
+        dispatch("click", null);
+    }
 </script>
 
-<div>
+<a href={href} target={blank ? "_blank" : ""} on:click={onClick}>
     <img src={icon} alt="Icône" />
     <span>{text}</span>
-</div>
+</a>
 
 <style>
-    div {
+    a {
         display: flex;
         padding: 0.5625em 0.8125em;
         flex-direction: column;
         align-items: center;
         gap: 0.625em;
         cursor: pointer;
+        text-decoration: none;
+        color: #000;
     }
 
     img {

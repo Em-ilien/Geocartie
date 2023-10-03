@@ -6,15 +6,20 @@
     import contactIcon from "$lib/assets/icons/actions/contact-icon.png";
     import legalIcon from "$lib/assets/icons/actions/legal-icon.png";
     import quizzIcon from "$lib/assets/icons/actions/quizz-icon.png";
+
+    function onClickQuizz(e) {
+        alert("Le quizz n'est pas encore implémenté.");
+        //TODO
+    }
 </script>
 
 <div class="actions">
-    <ActionItem text="Se connecter" icon={accountIcon} />
-    <ActionItem text="Jouer au Quizz" icon={quizzIcon} />
+    <ActionItem text="Se connecter" icon={accountIcon} href="/login" />
+    <ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={onClickQuizz}/>
     <div class="more">
-        <ActionItem text="Nous contacter" icon={contactIcon} />
-        <ActionItem text="Mentions légales" icon={legalIcon} />
-        <ActionItem text="Code source" icon={codeIcon} />
+        <ActionItem text="Nous contacter" icon={contactIcon} href="/contact" />
+        <ActionItem text="Mentions légales" icon={legalIcon} href="/legal" />
+        <ActionItem text="Code source" icon={codeIcon} href="https://github.com/Em-ilien/Geocartie" blank={true} />
     </div>
 </div>
 
