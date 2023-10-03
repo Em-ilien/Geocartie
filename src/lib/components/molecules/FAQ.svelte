@@ -4,7 +4,6 @@
     export let questions;
 
     function onClick(event) {
-        console.log(event);
         questions.forEach(question => {
             if (question.question === event.detail.question)
                 return;

@@ -15,10 +15,7 @@
         
         answerHeight = 0;
         const answerElem = liEl.querySelector('.answer');
-        console.log(answerElem)
         setTimeout(() => {
-            console.log(answerElem.clientHeight)
-
             const interval = setInterval(() => {
                 if (answerHeight < answerElem.clientHeight + 8) {
                     answerHeight += 10;

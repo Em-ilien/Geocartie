@@ -12,7 +12,7 @@
 </section>
 
 <style>
-    section {
+    .context-section {
         display: flex;
         padding: 4em 4% 1em 4%;
         margin-left: 0.625em;
@@ -32,20 +32,49 @@
     }
 
     @media (max-width: 780px) {
-        section {
+        .context-section {
             width: 100%!important;
             height: fit-content;
             margin-left: unset;
             box-shadow: unset;
+            padding-bottom: 5em;
         }
     }
 
-    section > div {
+    .context-section > div {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 3em;
         flex-grow: 1;
+    }
+
+    .context-section :global(section) {
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+    }
+
+    .context-section :global(section h1) {
+        font-size: 2.5em;
+    }
+
+    .context-section :global(section h2) {
+        margin-top: 1.5em;
+    }
+
+    .context-section :global(section h3) {
+        margin-top: 1.25em;
+        margin-left: 1em;
+    }
+
+    .context-section :global(section ul li) {
+        margin-left: 3em;
+        margin-top: 0.25em;
+    }
+
+    .context-section :global(section p) {
+        margin: 1em 0 0 1em;
     }
 
     .context-section :global(h1),

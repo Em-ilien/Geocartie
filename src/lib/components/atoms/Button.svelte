@@ -42,11 +42,6 @@
         transform: scale(0.95);
     }
 
-    button img {
-        width: 1.6875em;
-        height: 1.6875em;
-    }
-
     button span {
         color: #FFF;
         font-size: 1.25em;

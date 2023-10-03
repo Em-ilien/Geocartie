@@ -4,7 +4,6 @@
 	import { Toaster } from 'svelte-french-toast';
 
     function onClick(e) {
-        console.log(e.target.tagName)
         if (["SPAN", "I", "B", "P", "H1", "H2"].includes(e.target.tagName))
             return;
 

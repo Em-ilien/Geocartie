@@ -48,7 +48,6 @@
         gap: 0.625em;
         cursor: pointer;
         padding: 0 1.5vw;
-
     }
 
     nav ul li span {
