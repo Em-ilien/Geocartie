@@ -19,6 +19,14 @@
         min-height: 100vh;
     }
 
+    @media (max-width: 780px) {
+        .app {
+            max-height: unset;
+            min-height: unset;
+            overflow: auto;
+        }
+    }
+
     :global(*) {
         margin: 0;
         padding: 0;

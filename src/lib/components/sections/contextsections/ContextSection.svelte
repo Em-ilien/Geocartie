@@ -1,23 +1,3 @@
-<script>
-    import FAQ from "../../molecules/FAQ.svelte";
-
-    let questions = [
-        {
-            question: "Qu'est-ce que Géocartie ?",
-            answer: "Géocartie est une application web permettant d'apprendre et de découvrir les départements français. Cette plateforme open-source comprend une carte interactive et un Quizz.",
-        },
-        {
-            question: "Qu'est-ce que le Quizz ?",
-            answer: "Le Quizz permet de s'entraîner à localiser les départements. Géocartie donne le nom d'un département : votre objectif est de le retrouver sur la carte. Cliquez sur le bouton \"Jouer au Quizz\" pour essayer.",
-        },
-        {
-            question: "À quoi sert la connexion à son compte Google ?",
-            answer: "Se connecter à son compte Google permet de sauvegarder ses scores et ses statistiques liées au Quizz. Le mode hors-ligne permet toujours de jouer au Quizz.",
-        }
-    ];
-
-</script>
-
 <section class="context-section">
     <div>
         <slot />
@@ -49,6 +29,15 @@
         border-left: 1px solid #CCC;
         background: #FFF;
         box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 780px) {
+        section {
+            width: 100%!important;
+            height: fit-content;
+            margin-left: unset;
+            box-shadow: unset;
+        }
     }
 
     section > div {

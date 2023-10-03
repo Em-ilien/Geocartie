@@ -26,4 +26,11 @@
         overflow-y: hidden;
         height: fit-content;
     }
+
+    @media (max-width: 780px) {
+        main {
+            flex-direction: column-reverse;
+        }
+    }
+
 </style>

@@ -35,6 +35,13 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+        width: fit-content;
+    }
+
+    @media (max-width: 500px) {
+        a {
+            margin: auto;
+        }
     }
     
     a img {

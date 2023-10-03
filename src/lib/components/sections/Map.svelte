@@ -186,6 +186,14 @@
 		}
 	}
 
+	@media (max-width: 780px) {
+		section {
+			width: 100vw;
+			max-width: 450px;
+			margin: auto;
+		}
+	}
+
 	section.darken :global(*) {
 		pointer-events: none;
 	}
