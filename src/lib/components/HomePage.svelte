@@ -4,12 +4,12 @@
     import Header from "./sections/Header.svelte";
     import Map from "./sections/Map.svelte";
 
-    let dataState = null;
+    export let data = null;
 </script>
 
 <Header />
 <main>
-    <SpecificContextSection {dataState}/>
+    <SpecificContextSection {data}/>
     <Map />
 </main>
 <BottomNavigation />

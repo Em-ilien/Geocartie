@@ -21,6 +21,8 @@
         align-items: flex-start;
         gap: 5.5em;
         width: 50%;
+        max-width: 50%;
+        overflow-x: hidden;
         height: auto;
         flex-grow: 1;
         overflow-y: scroll;
@@ -47,12 +49,14 @@
         align-items: flex-start;
         gap: 3em;
         flex-grow: 1;
+        max-width: 100%;
     }
 
     .context-section :global(section) {
         line-height: 1.42857143;
         color: #333;
         background-color: #fff;
+        max-width: 100%;
     }
 
     .context-section :global(section h1) {

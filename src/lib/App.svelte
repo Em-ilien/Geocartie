@@ -1,7 +1,8 @@
 <script>
     import HomePage from "./components/HomePage.svelte";
-
 	import { Toaster } from 'svelte-french-toast';
+
+    export let data = null;
 
     function onClick(e) {
         if (["SPAN", "I", "B", "P", "H1", "H2"].includes(e.target.tagName))
@@ -13,7 +14,7 @@
 </script>
 
 <div class="app" on:click={onClick}>
-    <HomePage />
+    <HomePage {data}/>
 </div>
 
 <Toaster />

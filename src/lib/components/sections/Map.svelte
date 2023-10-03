@@ -1,4 +1,5 @@
 <script>
+	import {goto} from "$app/navigation";
   	import MapLittleCrown from "../molecules/MapLittleCrown.svelte";
 
 	let littleCrownModalActive = false;
@@ -24,9 +25,18 @@
 			e.stopPropagation();
 		}
 	}
+
+	function onClickDepartment(e) {
+		console.log(e.target.tagName)
+		if (e.target.tagName != "path")
+		return;
+	
+		const departmentId = e.target.id.replace("FR-", "");
+		goto(`/france/department/${departmentId}`);
+	}
 </script>
 
-<section class={sectionClass} on:click|self={onClickMapSection}>
+<section class={sectionClass} on:click|self={onClickMapSection} on:click={onClickDepartment}>
 	<svg viewBox="14 -1 600 590" xmlns="http://www.w3.org/2000/svg">
 		<defs>
 			<amcharts:ammap projection="mercator" leftLongitude="-5.185287" topLatitude="51.089515" rightLongitude="9.560553" bottomLatitude="41.366975"></amcharts:ammap>
