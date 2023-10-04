@@ -35,7 +35,8 @@
 
     @media (max-width: 780px) {
         .context-section {
-            width: 100%!important;
+            width: 100%;
+            max-width: 100%;
             height: fit-content;
             margin-left: unset;
             box-shadow: unset;
