@@ -1,5 +1,9 @@
 <script>
-    import HomePage from "./components/HomePage.svelte";
+    import BottomNavigation from "./sections/BottomNavigation.svelte";
+    import SpecificContextSection from "./sections/contextsections/SpecificContextSection.svelte";
+    import Header from "./sections/Header.svelte";
+    import Map from "./sections/Map.svelte";
+
 	import { Toaster } from 'svelte-french-toast';
 
     export let data = null;
@@ -14,12 +18,24 @@
 </script>
 
 <div class="app" on:click={onClick}>
-    <HomePage {data}/>
+    <Header />
+    <main>
+        <SpecificContextSection {data}/>
+        <Map />
+    </main>
+    <BottomNavigation />
 </div>
 
 <Toaster />
 
 <style>
+     :global(*) {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+    }
+
     .app {
         display: flex;
         flex-direction: column;
@@ -39,10 +55,21 @@
         }
     }
 
-    :global(*) {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        user-select: none;
+    main {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: stretch;
+        width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        overflow-y: hidden;
+        height: fit-content;
+    }
+
+    @media (max-width: 780px) {
+        main {
+            flex-direction: column-reverse;
+        }
     }
 </style>
