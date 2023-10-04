@@ -27,9 +27,8 @@
 	}
 
 	function onClickDepartment(e) {
-		console.log(e.target.tagName)
 		if (e.target.tagName != "path")
-		return;
+			return;
 	
 		const departmentId = e.target.id.replace("FR-", "");
 		goto(`/france/departments/${departmentId}`);

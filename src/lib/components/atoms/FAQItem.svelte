@@ -7,22 +7,25 @@
     export let active = false;
     
     let liEl;
-    let answerHeight = 0;
+    let answerHiderHeight = 0;
     
     function onClick(e) {
         active = !active;
         dispatch('click', { active, question, answer });
         
-        answerHeight = 0;
-        const answerElem = liEl.querySelector('.answer');
         setTimeout(() => {
+            answerHiderHeight = 0;
+            const answerElem = liEl.querySelector('.answer');
+
             const interval = setInterval(() => {
-                if (answerHeight < answerElem.clientHeight + 8) {
-                    answerHeight += 10;
+                if (answerElem.scrollHeight > answerHiderHeight) {
+                    answerHiderHeight += Math.min(10, answerElem.scrollHeight - answerHiderHeight);
+                } else if (answerElem.scrollHeight < answerHiderHeight) {
+                    answerHiderHeight -= Math.min(10, answerHiderHeight - answerElem.scrollHeight);
                 } else {
                     clearInterval(interval);
                 }
-            }, 10);
+            });
         });
     }
 </script>
@@ -35,14 +38,15 @@
         </svg>
         <span>{question}</span>
     </div>
-    <div class="answer-hider" style:height={(active ? answerHeight : "0") + "px"}> 
+    <div class="answer-hider" style:height={(active ? answerHiderHeight : "0") + "px"}> 
         <p class="answer">{answer}</p>
     </div>
 </li>
 
 <style>
     li .question {
-        padding: 0.6em 0;
+        padding: 0.5em 0;
+        margin-top: -0.5em;
         font-weight: bold;
         color: #000;
         font-size: 1em;
@@ -67,27 +71,27 @@
     }
 
     li .answer-hider {
+        margin: 0.5em 0;
         height: 0;
         overflow: hidden;
         transition: .7s ease;
     }
+    li.active .answer-hider {
+        margin-bottom: 1em;
+    }
 
     li .answer {
-        margin-top: 0.5em;
-        padding: 0 0.5em;
+        padding: 0 1.75em;
         height: 0;
         overflow: hidden;
         z-index: -1;
         position: relative;
         opacity: 0;
         transition: .7s ease;
-        margin: 0;
     }
     li.active .answer {
         height: auto;
         opacity: 1;
         z-index: 1;
-        padding: 0.5em 1.25em;
-        margin: 0 0.5em 0.5em;
     }
 </style>
