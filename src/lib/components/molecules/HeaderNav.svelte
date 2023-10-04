@@ -49,6 +49,13 @@
         padding: 0 1.5vw;
     }
 
+    nav:hover ul li {
+        opacity: 0.5;
+    }
+    nav:hover ul li:first-child {
+        opacity: 1;
+    }
+
     nav ul li span {
         font-size: 1.1em;
         font-style: normal;
@@ -57,6 +64,12 @@
     }
 
     nav ul li:hover span {
+        text-decoration: underline;
+    }
+    nav ul li:hover span {
+        text-decoration: none;
+    }
+    nav:hover ul li:hover:first-child span {
         text-decoration: underline;
     }
 
