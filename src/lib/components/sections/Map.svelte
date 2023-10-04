@@ -32,7 +32,7 @@
 		return;
 	
 		const departmentId = e.target.id.replace("FR-", "");
-		goto(`/france/department/${departmentId}`);
+		goto(`/france/departments/${departmentId}`);
 	}
 </script>
 

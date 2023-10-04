@@ -5,7 +5,7 @@
     export let data = null;
 
     function onClick(e) {
-        if (["SPAN", "I", "B", "P", "H1", "H2"].includes(e.target.tagName))
+        if (["SPAN", "I", "B", "P", "A", "H1", "H2"].includes(e.target.tagName))
             return;
 
         let selection = window.getSelection();

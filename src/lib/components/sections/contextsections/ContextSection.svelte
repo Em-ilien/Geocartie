@@ -85,6 +85,7 @@
     .context-section :global(h1),
     .context-section :global(h2),
     .context-section :global(p),
+    .context-section :global(a),
     .context-section :global(b),
     .context-section :global(i),
     .context-section :global(span) {
