@@ -1,27 +1,26 @@
 <script>
+    import {goto} from '$app/navigation';
+
     import icon from '$lib/assets/icons/arrow.png';
 
-    import toast from 'svelte-french-toast';
+    import {onClickMenuNav} from '$lib/helpers/buttonClick.js';
 
-    function onClick(e) {
-        toast.error("Le menu n'est pas encore implémenté.", {
-            style: "font-family: 'Roboto', 'Lato', sans-serif; box-shadow: 2px 2px 5px 3px #00000025",
-            position: "top-right",
-        });
+    function onClickFrance(e) {
+        goto('/');
     }
 </script>
 
 <nav>
-    <ul on:click={onClick}>
-        <li>
+    <ul>
+        <li on:click={onClickFrance}>
             <span>France</span>
             <img src={icon} alt="Icône flèche" />
         </li>
-        <li>
+        <li on:click={(e) => onClickMenuNav(e, "Europe")}>
             <span>Europe</span>
             <img src={icon} alt="Icône flèche" />
         </li>
-        <li>
+        <li on:click={(e) => onClickMenuNav(e, "Monde")}>
             <span>Monde</span>
             <img src={icon} alt="Icône flèche" />
         </li>

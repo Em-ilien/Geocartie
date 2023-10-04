@@ -16,3 +16,10 @@ export function onClickLogin(e) {
         position: POSITION,
     });
 }
+
+export function onClickMenuNav(e, itemLabel) {
+    toast.error("Le menu " + itemLabel + " n'est pas encore implémenté.", {
+        style: STYLE,
+        position: POSITION,
+    });
+}
