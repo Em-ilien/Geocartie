@@ -92,6 +92,6 @@
     li.active .answer {
         height: auto;
         opacity: 1;
-        z-index: 1;
+        z-index: unset;
     }
 </style>

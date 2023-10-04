@@ -1,10 +1,10 @@
 <script>
-    import BottomNavigation from "./sections/BottomNavigation.svelte";
-    import SpecificContextSection from "./sections/contextsections/SpecificContextSection.svelte";
-    import Header from "./sections/Header.svelte";
-    import Map from "./sections/Map.svelte";
 
 	import { Toaster } from 'svelte-french-toast';
+    import SpecificContextSection from '$lib/components/sections/contextsections/SpecificContextSection.svelte';
+    import Header from '$lib/components/sections/Header.svelte';
+    import Map from '$lib/components/sections/Map.svelte';
+    import BottomNavigation from '$lib/components/sections/BottomNavigation.svelte';
 
     export let data = null;
 
@@ -17,7 +17,7 @@
     }
 </script>
 
-<div class="app" on:click={onClick}>
+<div class="app" on:click={onClick} on:keydown={onClick} role={null}>
     <Header />
     <main>
         <SpecificContextSection {data}/>
