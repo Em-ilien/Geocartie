@@ -8,8 +8,6 @@
 
     export let data;
 
-    let department = data.department;
-
     function urlPathContains(path) {
         return $page.url.pathname.includes(path);
     }
@@ -21,7 +19,7 @@
 {:else if urlPathContains("/legal")}
     <LegalContextSection />
 {:else if urlPathContains("/france/departments/")}
-    <DepartmentContextSection {department}/>
+    <DepartmentContextSection department={data.department}/>
 {:else}
     <DefaultContextSection />
 {/if}
