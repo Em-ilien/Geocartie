@@ -3,13 +3,15 @@
 
     export let department;
 
-    $: formatDepartementName = department.prefix.charAt(0).toUpperCase() + department.prefix.slice(1) + department.name;
+    $: formatDepartementPrefix = department.prefix === "" ? "Le département de " : department.prefix.charAt(0).toUpperCase() + department.prefix.slice(1);
+    $: pastParticipleSentence = department.prefix === "les " ? "sont situés" : department.prefix === "la " ? "est située" : "est situé";
+    $: departmentPronounAndVerb = department.prefix === "les " ? "Ils ont" : department.prefix === "la " ? "Elle a" : "Il a";
 </script>
 
 <ContextSection>
     <section class="department">
         <h1>Département {department.id}</h1>
-        <p><b>{formatDepartementName}</b> est situé dans la région {department.region_name}. Il a pour préfecture <b>{department.prefecture_name}</b>.</p>    
+        <p>{ formatDepartementPrefix }<b>{ department.name }</b> {pastParticipleSentence} dans la région {department.region_name}. {departmentPronounAndVerb} pour préfecture <b>{department.prefecture_name}</b>.</p>    
         {#each department.images as img}
             <img src={img.src} alt="Image du département {department.id}"/>
         {/each}

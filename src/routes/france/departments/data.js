@@ -3,6 +3,7 @@ export const departments = [
     id: 1,
     name: "Ain",
     prefix: "l'",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Bourg-en-Bresse",
     images: [
@@ -67,6 +68,7 @@ export const departments = [
     id: 2,
     name: "Aisne",
     prefix: "l'",
+    masculin: true,
     region_name: "Hauts-de-France",
     prefecture_name: "Laon",
     images: [
@@ -122,6 +124,7 @@ export const departments = [
     id: 3,
     name: "Allier",
     prefix: "l'",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Moulins",
     images: [
@@ -187,6 +190,7 @@ export const departments = [
     id: 4,
     name: "Alpes-de-Haute-Provence",
     prefix: "les ",
+    masculin: true,
     region_name: "Provence-Alpes-C\u00f4te d'Azur",
     prefecture_name: "Digne-les-Bains",
     images: [
@@ -251,6 +255,7 @@ export const departments = [
     id: 5,
     name: "Hautes-Alpes",
     prefix: "les ",
+    masculin: true,
     region_name: "Provence-Alpes-C\u00f4te d'Azur",
     prefecture_name: "Gap",
     images: [
@@ -312,6 +317,7 @@ export const departments = [
     id: 6,
     name: "Alpes-Maritimes",
     prefix: "les ",
+    masculin: true,
     region_name: "Provence-Alpes-C\u00f4te d'Azur",
     prefecture_name: "Nice",
     images: [
@@ -362,6 +368,7 @@ export const departments = [
     id: 7,
     name: "Ard\u00e8che",
     prefix: "l'",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Privas",
     images: [
@@ -413,6 +420,7 @@ export const departments = [
     id: 8,
     name: "Ardennes",
     prefix: "les ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Charleville-M\u00e9zi\u00e8res",
     images: [
@@ -471,6 +479,7 @@ export const departments = [
     id: 9,
     name: "Ari\u00e8ge",
     prefix: "l'",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Foix",
     images: [
@@ -532,6 +541,7 @@ export const departments = [
     id: 10,
     name: "Aube",
     prefix: "l'",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Troyes",
     images: [
@@ -606,6 +616,7 @@ export const departments = [
     id: 11,
     name: "Aude",
     prefix: "l'",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Carcassonne",
     images: [
@@ -664,6 +675,7 @@ export const departments = [
     id: 12,
     name: "Aveyron",
     prefix: "l'",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Rodez",
     images: [
@@ -733,6 +745,7 @@ export const departments = [
     id: 13,
     name: "Bouches-du-Rh\u00f4ne",
     prefix: "les ",
+    masculin: true,
     region_name: "Provence-Alpes-C\u00f4te d'Azur",
     prefecture_name: "Marseille",
     images: [
@@ -801,6 +814,7 @@ export const departments = [
     id: 14,
     name: "Calvados",
     prefix: "le ",
+    masculin: true,
     region_name: "Normandie",
     prefecture_name: "Caen",
     images: [
@@ -869,6 +883,7 @@ export const departments = [
     id: 15,
     name: "Cantal",
     prefix: "le ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Aurillac",
     images: [
@@ -929,6 +944,7 @@ export const departments = [
     id: 16,
     name: "Charente",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Angoul\u00eame",
     images: [
@@ -982,6 +998,7 @@ export const departments = [
     id: 17,
     name: "Charente-Maritime",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "La Rochelle",
     images: [
@@ -1042,6 +1059,7 @@ export const departments = [
     id: 18,
     name: "Cher",
     prefix: "le ",
+    masculin: true,
     region_name: "Centre-Val de Loire",
     prefecture_name: "Bourges",
     images: [
@@ -1098,6 +1116,7 @@ export const departments = [
     id: 19,
     name: "Corr\u00e8ze",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Tulle",
     images: [
@@ -1166,6 +1185,7 @@ export const departments = [
     id: "2A",
     name: "Corse-du-Sud",
     prefix: "la ",
+    masculin: true,
     region_name: "Corse",
     prefecture_name: "Ajaccio",
     images: [
@@ -1245,6 +1265,7 @@ export const departments = [
     id: "2B",
     name: "Haute-Corse",
     prefix: "la ",
+    masculin: true,
     region_name: "Corse",
     prefecture_name: "Bastia",
     images: [
@@ -1318,6 +1339,7 @@ export const departments = [
     id: 21,
     name: "C\u00f4te-d'Or",
     prefix: "la ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Dijon",
     images: [
@@ -1387,6 +1409,7 @@ export const departments = [
     id: 22,
     name: "C\u00f4tes-d'Armor",
     prefix: "les ",
+    masculin: true,
     region_name: "Bretagne",
     prefecture_name: "Saint-Brieuc",
     images: [
@@ -1439,6 +1462,7 @@ export const departments = [
     id: 23,
     name: "Creuse",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Gu\u00e9ret",
     images: [
@@ -1502,6 +1526,7 @@ export const departments = [
     id: 24,
     name: "Dordogne",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "P\u00e9rigueux",
     images: [
@@ -1571,6 +1596,7 @@ export const departments = [
     id: 25,
     name: "Doubs",
     prefix: "le ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Besan\u00e7on",
     images: [
@@ -1630,6 +1656,7 @@ export const departments = [
     id: 26,
     name: "Dr\u00f4me",
     prefix: "la ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Valence",
     images: [
@@ -1687,6 +1714,7 @@ export const departments = [
     id: 27,
     name: "Eure",
     prefix: "l'",
+    masculin: true,
     region_name: "Normandie",
     prefecture_name: "\u00c9vreux",
     images: [
@@ -1742,6 +1770,7 @@ export const departments = [
     id: 28,
     name: "Eure-et-Loir",
     prefix: "l'",
+    masculin: true,
     region_name: "Centre-Val de Loire",
     prefecture_name: "Chartres",
     images: [
@@ -1764,7 +1793,8 @@ export const departments = [
   {
     id: 29,
     name: "Finist\u00e8re",
-    prefix: "la ",
+    prefix: "le ",
+    masculin: true,
     region_name: "Bretagne",
     prefecture_name: "Quimper",
     images: [
@@ -1816,6 +1846,7 @@ export const departments = [
     id: 30,
     name: "Gard",
     prefix: "le ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "N\u00eemes",
     images: [
@@ -1872,6 +1903,7 @@ export const departments = [
     id: 31,
     name: "Haute-Garonne",
     prefix: "la ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Toulouse",
     images: [
@@ -1952,6 +1984,7 @@ export const departments = [
     id: 32,
     name: "Gers",
     prefix: "le ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Auch",
     images: [
@@ -2013,6 +2046,7 @@ export const departments = [
     id: 33,
     name: "Gironde",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Bordeaux",
     images: [
@@ -2082,6 +2116,7 @@ export const departments = [
     id: 34,
     name: "H\u00e9rault",
     prefix: "l'",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Montpellier",
     images: [
@@ -2143,6 +2178,7 @@ export const departments = [
     id: 35,
     name: "Ille-et-Vilaine",
     prefix: "l'",
+    masculin: true,
     region_name: "Bretagne",
     prefecture_name: "Rennes",
     images: [
@@ -2201,6 +2237,7 @@ export const departments = [
     id: 36,
     name: "Indre",
     prefix: "l'",
+    masculin: true,
     region_name: "Centre-Val de Loire",
     prefecture_name: "Ch\u00e2teauroux",
     images: [
@@ -2265,6 +2302,7 @@ export const departments = [
     id: 37,
     name: "Indre-et-Loire",
     prefix: "l'",
+    masculin: true,
     region_name: "Centre-Val de Loire",
     prefecture_name: "Tours",
     images: [
@@ -2323,6 +2361,7 @@ export const departments = [
     id: 38,
     name: "Is\u00e8re",
     prefix: "l'",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Grenoble",
     images: [
@@ -2370,6 +2409,7 @@ export const departments = [
     id: 39,
     name: "Jura",
     prefix: "le ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Lons-le-Saunier",
     images: [
@@ -2444,6 +2484,7 @@ export const departments = [
     id: 40,
     name: "Landes",
     prefix: "les ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Mont-de-Marsan",
     images: [
@@ -2495,6 +2536,7 @@ export const departments = [
     id: 41,
     name: "Loir-et-Cher",
     prefix: "le ",
+    masculin: true,
     region_name: "Centre-Val de Loire",
     prefecture_name: "Blois",
     images: [
@@ -2543,6 +2585,7 @@ export const departments = [
     id: 42,
     name: "Loire",
     prefix: "la ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Saint-\u00c9tienne",
     images: [
@@ -2595,6 +2638,7 @@ export const departments = [
     id: 43,
     name: "Haute-Loire",
     prefix: "la ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Le Puy-en-Velay",
     images: [
@@ -2664,6 +2708,7 @@ export const departments = [
     id: 44,
     name: "Loire-Atlantique",
     prefix: "la ",
+    masculin: true,
     region_name: "Pays de la Loire",
     prefecture_name: "Nantes",
     images: [
@@ -2713,6 +2758,7 @@ export const departments = [
     id: 45,
     name: "Loiret",
     prefix: "le ",
+    masculin: true,
     region_name: "Centre-Val de Loire",
     prefecture_name: "Orl\u00e9ans",
     images: [
@@ -2767,6 +2813,7 @@ export const departments = [
     id: 46,
     name: "Lot",
     prefix: "le ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Cahors",
     images: [
@@ -2844,6 +2891,7 @@ export const departments = [
     id: 47,
     name: "Lot-et-Garonne",
     prefix: "le ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Agen",
     images: [
@@ -2902,6 +2950,7 @@ export const departments = [
     id: 48,
     name: "Loz\u00e8re",
     prefix: "la ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Mende",
     images: [
@@ -2970,7 +3019,8 @@ export const departments = [
   {
     id: 49,
     name: "Maine-et-Loire",
-    prefix: "le ",
+    prefix: "la ",
+    masculin: true,
     region_name: "Pays de la Loire",
     prefecture_name: "Angers",
     images: [
@@ -3015,6 +3065,7 @@ export const departments = [
     id: 50,
     name: "Manche",
     prefix: "la ",
+    masculin: true,
     region_name: "Normandie",
     prefecture_name: "Saint-L\u00f4",
     images: [
@@ -3083,6 +3134,7 @@ export const departments = [
     id: 51,
     name: "Marne",
     prefix: "la ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Ch\u00e2lons-en-Champagne",
     images: [
@@ -3155,6 +3207,7 @@ export const departments = [
     id: 52,
     name: "Haute-Marne",
     prefix: "la ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Chaumont",
     images: [
@@ -3222,6 +3275,7 @@ export const departments = [
     id: 53,
     name: "Mayenne",
     prefix: "la ",
+    masculin: true,
     region_name: "Pays de la Loire",
     prefecture_name: "Laval",
     images: [
@@ -3283,6 +3337,7 @@ export const departments = [
     id: 54,
     name: "Meurthe-et-Moselle",
     prefix: "la ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Nancy",
     images: [
@@ -3337,6 +3392,7 @@ export const departments = [
     id: 55,
     name: "Meuse",
     prefix: "la ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Bar-le-Duc",
     images: [
@@ -3406,6 +3462,7 @@ export const departments = [
     id: 56,
     name: "Morbihan",
     prefix: "le ",
+    masculin: true,
     region_name: "Bretagne",
     prefecture_name: "Vannes",
     images: [
@@ -3456,6 +3513,7 @@ export const departments = [
     id: 57,
     name: "Moselle",
     prefix: "la ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Metz",
     images: [
@@ -3526,6 +3584,7 @@ export const departments = [
     id: 58,
     name: "Ni\u00e8vre",
     prefix: "la ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Nevers",
     images: [
@@ -3585,6 +3644,7 @@ export const departments = [
     id: 59,
     name: "Nord",
     prefix: "le ",
+    masculin: true,
     region_name: "Hauts-de-France",
     prefecture_name: "Lille",
     images: [
@@ -3642,6 +3702,7 @@ export const departments = [
     id: 60,
     name: "Oise",
     prefix: "l'",
+    masculin: true,
     region_name: "Hauts-de-France",
     prefecture_name: "Beauvais",
     images: [
@@ -3708,6 +3769,7 @@ export const departments = [
     id: 61,
     name: "Orne",
     prefix: "l'",
+    masculin: true,
     region_name: "Normandie",
     prefecture_name: "Alen\u00e7on",
     images: [
@@ -3773,6 +3835,7 @@ export const departments = [
     id: 62,
     name: "Pas-de-Calais",
     prefix: "le ",
+    masculin: true,
     region_name: "Hauts-de-France",
     prefecture_name: "Arras",
     images: [
@@ -3828,6 +3891,7 @@ export const departments = [
     id: 63,
     name: "Puy-de-D\u00f4me",
     prefix: "le ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Clermont-Ferrand",
     images: [
@@ -3889,6 +3953,7 @@ export const departments = [
     id: 64,
     name: "Pyr\u00e9n\u00e9es-Atlantiques",
     prefix: "les ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Pau",
     images: [
@@ -3953,6 +4018,7 @@ export const departments = [
     id: 65,
     name: "Hautes-Pyr\u00e9n\u00e9es",
     prefix: "les ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Tarbes",
     images: [
@@ -3999,6 +4065,7 @@ export const departments = [
     id: 66,
     name: "Pyr\u00e9n\u00e9es-Orientales",
     prefix: "les ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Perpignan",
     images: [
@@ -4050,6 +4117,7 @@ export const departments = [
     id: 67,
     name: "Bas-Rhin",
     prefix: "le ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Strasbourg",
     images: [
@@ -4116,6 +4184,7 @@ export const departments = [
     id: 68,
     name: "Haut-Rhin",
     prefix: "le ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "Colmar",
     images: [
@@ -4172,6 +4241,7 @@ export const departments = [
     id: 69,
     name: "Rh\u00f4ne",
     prefix: "le ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Lyon",
     images: [
@@ -4222,6 +4292,7 @@ export const departments = [
     id: 70,
     name: "Haute-Sa\u00f4ne",
     prefix: "la ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Vesoul",
     images: [
@@ -4295,6 +4366,7 @@ export const departments = [
     id: 71,
     name: "Sa\u00f4ne-et-Loire",
     prefix: "la ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "M\u00e2con",
     images: [
@@ -4349,6 +4421,7 @@ export const departments = [
     id: 72,
     name: "Sarthe",
     prefix: "la ",
+    masculin: true,
     region_name: "Pays de la Loire",
     prefecture_name: "Le Mans",
     images: [
@@ -4417,6 +4490,7 @@ export const departments = [
     id: 73,
     name: "Savoie",
     prefix: "la ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Chamb\u00e9ry",
     images: [
@@ -4460,6 +4534,7 @@ export const departments = [
     id: 74,
     name: "Haute-Savoie",
     prefix: "la ",
+    masculin: true,
     region_name: "Auvergne-Rh\u00f4ne-Alpes",
     prefecture_name: "Annecy",
     images: [
@@ -4510,6 +4585,7 @@ export const departments = [
     id: 75,
     name: "Paris",
     prefix: "",
+masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Paris",
     images: [
@@ -4572,6 +4648,7 @@ export const departments = [
     id: 76,
     name: "Seine-Maritime",
     prefix: "la ",
+    masculin: true,
     region_name: "Normandie",
     prefecture_name: "Rouen",
     images: [
@@ -4635,6 +4712,7 @@ export const departments = [
     id: 77,
     name: "Seine-et-Marne",
     prefix: "la ",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Melun",
     images: [
@@ -4695,6 +4773,7 @@ export const departments = [
     id: 78,
     name: "Yvelines",
     prefix: "les ",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Versailles",
     images: [
@@ -4757,6 +4836,7 @@ export const departments = [
     id: 79,
     name: "Deux-S\u00e8vres",
     prefix: "les ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Niort",
     images: [
@@ -4807,6 +4887,7 @@ export const departments = [
     id: 80,
     name: "Somme",
     prefix: "la ",
+    masculin: true,
     region_name: "Hauts-de-France",
     prefecture_name: "Amiens",
     images: [
@@ -4865,6 +4946,7 @@ export const departments = [
     id: 81,
     name: "Tarn",
     prefix: "le ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Albi",
     images: [
@@ -4940,6 +5022,7 @@ export const departments = [
     id: 82,
     name: "Tarn-et-Garonne",
     prefix: "le ",
+    masculin: true,
     region_name: "Occitanie",
     prefecture_name: "Montauban",
     images: [
@@ -5011,6 +5094,7 @@ export const departments = [
     id: 83,
     name: "Var",
     prefix: "le ",
+    masculin: true,
     region_name: "Provence-Alpes-C\u00f4te d'Azur",
     prefecture_name: "Toulon",
     images: [
@@ -5077,6 +5161,7 @@ export const departments = [
     id: 84,
     name: "Vaucluse",
     prefix: "le ",
+    masculin: true,
     region_name: "Provence-Alpes-C\u00f4te d'Azur",
     prefecture_name: "Avignon",
     images: [
@@ -5130,6 +5215,7 @@ export const departments = [
     id: 85,
     name: "Vend\u00e9e",
     prefix: "la ",
+    masculin: true,
     region_name: "Pays de la Loire",
     prefecture_name: "La Roche-sur-Yon",
     images: [
@@ -5174,12 +5260,6 @@ export const departments = [
         contextLink:
           "https://www.la-poze-travel.com/vendee-itineraire-littoral-roadtrip/",
       },
-      {
-        src: "https://cdnuploads.aa.com.tr/uploads/Contents/2021/08/09/thumbs_b_c_feef8cb8cb0fc4d85acb77b36aa31dd0.jpg?v=141834",
-        description: "France : un pr\u00eatre assassin\u00e9 en Vend\u00e9e",
-        contextLink:
-          "https://www.aa.com.tr/fr/monde/france-un-pr%C3%AAtre-assassin%C3%A9-en-vend%C3%A9e-/2329016",
-      },
     ],
     verification: true,
   },
@@ -5187,6 +5267,7 @@ export const departments = [
     id: 86,
     name: "Vienne",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Poitiers",
     images: [
@@ -5228,6 +5309,7 @@ export const departments = [
     id: 87,
     name: "Haute-Vienne",
     prefix: "la ",
+    masculin: true,
     region_name: "Nouvelle-Aquitaine",
     prefecture_name: "Limoges",
     images: [
@@ -5307,6 +5389,7 @@ export const departments = [
     id: 88,
     name: "Vosges",
     prefix: "les ",
+    masculin: true,
     region_name: "Grand Est",
     prefecture_name: "\u00c9pinal",
     images: [
@@ -5362,6 +5445,7 @@ export const departments = [
     id: 89,
     name: "Yonne",
     prefix: "l'",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Auxerre",
     images: [
@@ -5432,6 +5516,7 @@ export const departments = [
     id: 90,
     name: "Territoire de Belfort",
     prefix: "le ",
+    masculin: true,
     region_name: "Bourgogne-Franche-Comt\u00e9",
     prefecture_name: "Belfort",
     images: [
@@ -5498,6 +5583,7 @@ export const departments = [
     id: 91,
     name: "Essonne",
     prefix: "l'",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "\u00c9vry",
     images: [
@@ -5569,6 +5655,7 @@ export const departments = [
     id: 92,
     name: "Hauts-de-Seine",
     prefix: "les ",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Nanterre",
     images: [
@@ -5637,6 +5724,7 @@ export const departments = [
     id: 93,
     name: "Seine-Saint-Denis",
     prefix: "la ",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Bobigny",
     images: [
@@ -5703,6 +5791,7 @@ export const departments = [
     id: 94,
     name: "Val-de-Marne",
     prefix: "le ",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Cr\u00e9teil",
     images: [
@@ -5754,6 +5843,7 @@ export const departments = [
     id: 95,
     name: "Val-d'Oise",
     prefix: "le ",
+    masculin: true,
     region_name: "\u00cele-de-France",
     prefecture_name: "Cergy",
     images: [
