@@ -1,5 +1,5 @@
 <script>
-    import FaqItem from "$lib/components/general/FaqItem.svelte";
+    import FAQItem from "$lib/components/general/FAQItem.svelte";
 
     export let questions;
 
@@ -15,7 +15,7 @@
 
 <ul class="faq">
     {#each questions as question, i}
-    <FaqItem question={question.question} answer={question.answer} bind:active={question.active} on:click={onClick} />
+    <FAQItem question={question.question} answer={question.answer} bind:active={question.active} on:click={onClick} />
     {/each}
 </ul>
 
