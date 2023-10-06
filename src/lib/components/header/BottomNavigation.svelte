@@ -1,15 +1,17 @@
 <script>
-    import ActionItem from "../atoms/ActionItem.svelte";
+    import ActionItem from "./ActionItem.svelte";
     
     import accountIcon from "$lib/assets/icons/actions/account-icon.png";
     import quizzIcon from "$lib/assets/icons/actions/quizz-icon.png";
 
-    import {onClickLogin, onClickQuizz} from "$lib/helpers/buttonClick.js";
+    import {onClickLogin} from "$lib/helpers/buttonClick.js";
+
+    import {quizzEnabled} from "$lib/store/store.js"
 </script>
 
 <div class="bottom-navigation">
     <ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-    <ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={onClickQuizz}/>
+    <ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizzEnabled.set(true)} />
 </div>
 
 <style>

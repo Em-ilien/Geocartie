@@ -20,8 +20,8 @@
         justify-content: space-between;
         align-items: flex-start;
         gap: 5.5em;
-        width: 50%;
-        max-width: 50%;
+        width: calc(50% - 0.625em);
+        max-width: calc(50% - 0.625em);
         overflow-x: hidden;
         height: auto;
         flex-grow: 1;

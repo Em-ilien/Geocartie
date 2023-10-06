@@ -1,5 +1,5 @@
 <script>
-    import FaqItem from "../atoms/FAQItem.svelte";
+    import FaqItem from "$lib/components/general/FaqItem.svelte";
 
     export let questions;
 

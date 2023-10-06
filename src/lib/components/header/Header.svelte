@@ -1,7 +1,16 @@
 <script>
     import logo from '$lib/assets/images/logo.png';
-    import ActionsList from '../molecules/HeaderActionsList.svelte';
-    import HeaderNav from '../molecules/HeaderNav.svelte';
+    import QuizzInstruction from '../quizz/QuizzInstruction.svelte';
+    import HeaderActionsList from './HeaderActionsList.svelte';
+    import HeaderNav from './HeaderNav.svelte';
+
+    import {quizzEnabled} from "$lib/store/store.js";
+
+    let quizzIsEnabled = false;
+    quizzEnabled.subscribe(value => {
+        quizzIsEnabled = value;
+        console.log(quizzIsEnabled);
+    });
 </script>
 
 <header>
@@ -12,7 +21,11 @@
         <HeaderNav />
     </div>
     
-    <ActionsList />
+    {#if !quizzIsEnabled}
+        <HeaderActionsList />
+    {:else}
+        <QuizzInstruction />
+    {/if}
 </header>
 
 <style>
@@ -22,6 +35,8 @@
         justify-content: space-between;
         border-bottom: 1px solid #DDD;
         user-select: none;
+        min-height: 4em;
+        max-height: 4em;
     }
 
     header > div:first-child {

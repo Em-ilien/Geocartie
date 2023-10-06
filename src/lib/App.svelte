@@ -1,12 +1,8 @@
 <script>
-
 	import { Toaster } from 'svelte-french-toast';
-    import SpecificContextSection from '$lib/components/sections/contextsections/SpecificContextSection.svelte';
-    import Header from '$lib/components/sections/Header.svelte';
-    import Map from '$lib/components/sections/Map.svelte';
-    import BottomNavigation from '$lib/components/sections/BottomNavigation.svelte';
+    import Header from '$lib/components/header/Header.svelte';
+    import BottomNavigation from '$lib/components/header/BottomNavigation.svelte';
 
-    export let data = null;
 
     function onClick(e) {
         if (["SPAN", "I", "B", "P", "A", "H1", "H2"].includes(e.target.tagName))
@@ -15,13 +11,13 @@
         let selection = window.getSelection();
         selection.removeAllRanges();
     }
+
 </script>
 
 <div class="app" on:click={onClick} on:keydown={onClick} role={null}>
     <Header />
     <main>
-        <SpecificContextSection {data}/>
-        <Map />
+        <slot />
     </main>
     <BottomNavigation />
 </div>

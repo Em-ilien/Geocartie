@@ -1,5 +1,7 @@
 <script>
-    import ActionItem from '../atoms/ActionItem.svelte';
+    import {fade, fly} from "svelte/transition";
+
+    import ActionItem from './ActionItem.svelte';
 
     import accountIcon from "$lib/assets/icons/actions/account-icon.png";
     import codeIcon from "$lib/assets/icons/actions/code-icon.png";
@@ -7,12 +9,14 @@
     import legalIcon from "$lib/assets/icons/actions/legal-icon.png";
     import quizzIcon from "$lib/assets/icons/actions/quizz-icon.png";
 
-    import {onClickLogin, onClickQuizz} from "$lib/helpers/buttonClick.js";
+    import {onClickLogin} from "$lib/helpers/buttonClick.js";
+    import {quizzEnabled} from "$lib/store/store.js";
+
 </script>
 
-<div class="actions">
+<div class="actions" in:fly={{y: 0, x: "100%", duration: 700, delay: 700}}>
     <ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-    <ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={onClickQuizz}/>
+    <ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizzEnabled.set(true)} />
     <div class="more">
         <ActionItem text="Nous contacter" icon={contactIcon} href="/contact" />
         <ActionItem text="Mentions légales" icon={legalIcon} href="/legal" />

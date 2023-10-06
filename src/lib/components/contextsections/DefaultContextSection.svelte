@@ -1,8 +1,9 @@
 <script>
-    import Button from "../../atoms/Button.svelte";
-    import FAQ from "../../molecules/FAQ.svelte";
+    import Button from "$lib/components/general/Button.svelte"
+    import FAQ from '$lib/components/general/FAQ.svelte'
     import ContextSection from "./ContextSection.svelte";
-    import {onClickQuizz} from "$lib/helpers/buttonClick.js";
+
+    import { quizzEnabled } from '$lib/store/store.js';
 
     let questions = [
         {
@@ -26,7 +27,7 @@
         <h2>Apprendre et découvrir les <b>départements français</b></h2>
     </div>
     <div class="cta">
-        <Button label="Jouer au Quizz" on:click={onClickQuizz}>
+        <Button label="Jouer au Quizz" on:click={() => quizzEnabled.set(true)}>
             <div slot="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
                     <g clip-path="url(#clip0_557_14)">
@@ -44,7 +45,7 @@
         </Button>
         <span>ou cliquez sur un département</span>
     </div>
-    <FAQ {questions}/>
+    <FAQ {questions} />
 </ContextSection>
 
 <style>
