@@ -48,3 +48,7 @@
         <p>Pour des questions de droit d'auteur, les images doivent être hébergées sur des serveurs Web par le soin des détenteurs desdits droits.</p>
     </section>
 </ContextSection>
+
+<svelte:head>
+    <title>Géocartie - Mentions légales</title>
+</svelte:head>

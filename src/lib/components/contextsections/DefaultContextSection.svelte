@@ -48,6 +48,10 @@
     <FAQ {questions} />
 </ContextSection>
 
+<svelte:head>
+    <title>Géocartie - Apprendre et découvrir les départements français</title>
+</svelte:head>
+
 <style>
     .titles {
         display: flex;

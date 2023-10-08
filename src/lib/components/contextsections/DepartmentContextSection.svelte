@@ -18,6 +18,10 @@
     </section>
 </ContextSection>
 
+<svelte:head>
+    <title>{formatDepartementPrefix}{department.name} - Géocartie</title>
+</svelte:head>
+
 <style>
     section > * {
         max-width: 100%;
