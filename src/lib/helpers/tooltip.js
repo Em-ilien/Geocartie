@@ -51,6 +51,12 @@ export function tooltip(element) {
 			element.removeEventListener('mouseleave', mouseLeave);
 			element.removeEventListener('mousemove', mouseMove);
             quizzEnabledUnsubscribe();
+
+            if (tooltipComponent !== undefined) {
+                tooltipComponent.$destroy();
+                // NOTE: restore the `title` attribute
+                element.setAttribute('title', title);
+            }
 		}
 	}
 }
