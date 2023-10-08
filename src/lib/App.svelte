@@ -3,7 +3,6 @@
     import Header from '$lib/components/header/Header.svelte';
     import BottomNavigation from '$lib/components/header/BottomNavigation.svelte';
 
-
     function onClick(e) {
         if (["SPAN", "I", "B", "P", "A", "H1", "H2"].includes(e.target.tagName))
             return;

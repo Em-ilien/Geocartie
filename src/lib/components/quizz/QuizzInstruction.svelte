@@ -23,8 +23,6 @@
         quizzEnabled.set(false);
     }
 
-    
-
     const unsubscribe = quizzAnswer.subscribe(value => {
         if (!instruction.id)
             return;
