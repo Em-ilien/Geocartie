@@ -9,7 +9,7 @@
     import legalIcon from "$lib/assets/icons/actions/legal-icon.png";
     import quizzIcon from "$lib/assets/icons/actions/quizz-icon.png";
 
-    import {onClickLogin} from "$lib/helpers/buttonClick.js";
+    import {onClickLogin} from "$lib/helpers/toasts.js";
     import {quizzEnabled} from "$lib/store/store.js";
 
 </script>

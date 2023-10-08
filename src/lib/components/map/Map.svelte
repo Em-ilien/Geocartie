@@ -1,13 +1,28 @@
 <script>
+	import {createEventDispatcher} from "svelte";
 	import {goto} from "$app/navigation";
   	import MapLittleCrown from "$lib/components/map/MapLittleCrown.svelte";
+	import {quizzEnabled, quizzAnswer} from "$lib/store/store.js";
+
+	const dispatch = createEventDispatcher();
 
 	let littleCrownModalActive = false;
 	let sectionClass = undefined;
 
+	let quizzIsEnabled = false;
+    quizzEnabled.subscribe(value => {
+        quizzIsEnabled = value;
+    });
+
+
 	function onClickLittleCrown(e) {
 		littleCrownModalActive = true;
-		sectionClass = "darken"
+		sectionClass = "darken";
+
+		const departmentId = e.departmentId;
+
+		if (quizzIsEnabled)
+			onQuizzAnswer(departmentId);
 	}
 
 	function onClickMapSection(e) {
@@ -32,6 +47,13 @@
 	
 		const departmentId = e.target.id.replace("FR-", "");
 		goto(`/france/departments/${departmentId}`);
+
+		if (quizzIsEnabled)
+			onQuizzAnswer(departmentId);
+	}
+
+	function onQuizzAnswer(departmentId) {
+		quizzAnswer.set(departmentId);
 	}
 </script>
 

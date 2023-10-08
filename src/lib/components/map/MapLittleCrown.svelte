@@ -3,7 +3,8 @@
     const dispatch = createEventDispatcher();
 
     function onClick(e) {
-        dispatch('click', e.target);
+        const departmentId = e.target.id.replace("FR-", "");
+        dispatch('click', {departmentId});
     }
 </script>
 

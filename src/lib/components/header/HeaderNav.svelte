@@ -3,7 +3,7 @@
 
     import icon from '$lib/assets/icons/arrow.png';
 
-    import {onClickMenuNav} from '$lib/helpers/buttonClick.js';
+    import {onClickMenuNav} from '$lib/helpers/toasts.js';
 
     function onClickFrance(e) {
         goto('/');
