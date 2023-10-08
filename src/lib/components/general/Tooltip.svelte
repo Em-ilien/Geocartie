@@ -2,10 +2,18 @@
 	export let title;
 	export let x;
 	export let y;
+
+    function formatStr(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
 </script>
-<div style="
-		top: {y + 10}px;
-		left: {x + 10}px;">{title}</div>
+<div style:top={y + 10 + "px"} style:left={x + 10 + "px"}>
+    <span>
+    {#each title.split("\n") as line}
+        {formatStr(line)}<br>
+    {/each}
+    </span>
+</div>
 
 <style>
 	div {

@@ -1,7 +1,7 @@
 import Tooltip from '$lib/components/general/Tooltip.svelte';
 import { quizzEnabled } from '$lib/store/store.js';
 
-export function tooltip(element) {
+export function tooltip(element, tooltipLabel) {
 	let div;
 	let title;
 	let tooltipComponent;
@@ -22,7 +22,7 @@ export function tooltip(element) {
 
 		tooltipComponent = new Tooltip({
 			props: {
-				title: title,
+				title: tooltipLabel,
 				x: event.pageX,
 				y: event.pageY,
 			},
