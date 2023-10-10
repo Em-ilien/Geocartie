@@ -92,6 +92,12 @@
         min-height: 100%;
     }
 
+    @media (max-width: 780px) {
+        .quizz-instruction {
+            width: 100vw;
+        }
+    }
+
     .quizz-instruction-hider {
         background: #fff;
         box-shadow: 0 0 0 1px #fff;
