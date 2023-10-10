@@ -25,7 +25,7 @@
         overflow-x: hidden;
         height: auto;
         flex-grow: 1;
-        overflow-y: scroll;
+        overflow-y: auto;
         
         border-right: 1px solid #CCC;
         border-left: 1px solid #CCC;
