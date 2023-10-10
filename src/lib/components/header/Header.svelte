@@ -35,8 +35,6 @@
         justify-content: space-between;
         border-bottom: 1px solid #DDD;
         user-select: none;
-        min-height: 4em;
-        max-height: 4em;
     }
 
     header > div:first-child {
