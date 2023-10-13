@@ -1,4 +1,6 @@
 <script>
+	import { fade, fly } from 'svelte/transition';
+
 	import logo from '$lib/assets/images/logo.png';
 	import QuizzInstruction from '../quizz/QuizzInstruction.svelte';
 	import HeaderActionsList from './HeaderActionsList.svelte';
@@ -7,9 +9,17 @@
 	import { quizzEnabled } from '$lib/store/store.js';
 
 	let quizzIsEnabled = false;
+	let quizzWasDisabledSinceDelay = true;
 	quizzEnabled.subscribe((value) => {
 		quizzIsEnabled = value;
-		console.log(quizzIsEnabled);
+
+		if (!value) {
+			setTimeout(() => {
+				quizzWasDisabledSinceDelay = true;
+			}, 700);
+		} else {
+			quizzWasDisabledSinceDelay = false;
+		}
 	});
 </script>
 
@@ -22,9 +32,19 @@
 	</div>
 
 	{#if !quizzIsEnabled}
-		<HeaderActionsList />
+		{#if quizzWasDisabledSinceDelay}
+			<div in:fly={{ y: 0, x: '100%', duration: 700 }}>
+				<HeaderActionsList />
+			</div>
+		{/if}
 	{:else}
-		<QuizzInstruction />
+		<div
+			class="quizz-instruction-transition"
+			in:fly={{ y: 0, x: '100%', duration: 700 }}
+			out:fade={{ duration: 700 }}
+		>
+			<QuizzInstruction />
+		</div>
 	{/if}
 </header>
 
@@ -44,6 +64,11 @@
 		margin-left: 0.625em;
 	}
 
+	.quizz-instruction-transition {
+		flex-shrink: 1;
+		width: 50vw;
+	}
+
 	a {
 		cursor: pointer;
 		display: flex;
@@ -60,6 +85,7 @@
 	a img {
 		object-fit: contain;
 		width: 10em;
+		padding: 0.625em 0;
 	}
 
 	@media (max-width: 780px) {

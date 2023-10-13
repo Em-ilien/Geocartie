@@ -13,7 +13,7 @@
 	import { quizzEnabled } from '$lib/store/store.js';
 </script>
 
-<div class="actions" in:fly={{ y: 0, x: '100%', duration: 700, delay: 700 }}>
+<div class="actions">
 	<ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
 	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizzEnabled.set(true)} />
 	<div class="more">
