@@ -6,12 +6,14 @@
 
 Geocartie est une application Web open-source permettant de découvrir et d'apprendre les différents départements métropolitains français.
 L'interface comprend :
-* sur la section droite de l'écran, une carte, divisée en plusieurs départements navigables par clic ;
-* sur la gauche, une section consacrée aux informations d'un département sélectionné.
+
+-   sur la section droite de l'écran, une carte, divisée en plusieurs départements navigables par clic ;
+-   sur la gauche, une section consacrée aux informations d'un département sélectionné.
 
 Cette branche est dédiée à la version 2.0.0 qui est en production. Cette nouvelle version vient avec une nouvelle interface et l'utilisation du framework Svelte.
 
 ## Liens utiles
+
 [Site Web](https://geocartie.fr)
 
 [Twitter](https://twitter.com/Em_ixocle)
@@ -39,9 +41,10 @@ Les **DROM-COM**, dont cinq sont des **départements français**, ne figurent pa
 ## Propriété intellectuelle et droits d'auteur
 
 Ce code source appartient à M. Emilien COSSON. Toute utilisation ou reproduction est autorisée à condition :
-* de mentionner le lien vers ce repository Github, ou bien vers la page Web https://geocartie.fr ;
-* de ne pas revendre le code source ;
-* de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (emilien@em-ilien.fr).
+
+-   de mentionner le lien vers ce repository Github, ou bien vers la page Web https://geocartie.fr ;
+-   de ne pas revendre le code source ;
+-   de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (emilien@em-ilien.fr).
 
 Vous pouvez mettre en ligne Géocartie sur votre serveur Web et le mettre à la disposition de vos utilisateurs aux conditions mentionnés ci-dessus.
 

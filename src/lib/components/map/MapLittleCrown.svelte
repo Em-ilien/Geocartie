@@ -1,17 +1,18 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-    const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 
-    export let preview = false;
+	export let preview = false;
 
-    $: prefixId = !preview ? "FR-" : "LC-";
+	$: prefixId = !preview ? 'FR-' : 'LC-';
 
-    function onClick(e) {
-        const departmentId = e.target.id.replace("FR-", "");
-        dispatch('click', {departmentId});
-    }
+	function onClick(e) {
+		const departmentId = e.target.id.replace('FR-', '');
+		dispatch('click', { departmentId });
+	}
 </script>
 
+<!-- prettier-ignore -->
 <g on:click={onClick}>
     <path id={prefixId + "75"} title="Paris" class="land" d="M311.53,141.03L314.45,141.07L315.23,143.69L315.23,143.69L317.16,145.98L311.9,146.11L311.9,146.11L307.49,143.87z" />
     <path id={prefixId + "92"} title="Hauts-de-Seine" class="land" d="M309.85,137.88L312.08,138.48L311.53,141.03L311.53,141.03L307.49,143.87L311.9,146.11L311.9,146.11L310.83,150.95L310.83,150.95L306.17,149.45L306.17,149.45L304.1,144.61L306.49,140.49L306.49,140.49z" />

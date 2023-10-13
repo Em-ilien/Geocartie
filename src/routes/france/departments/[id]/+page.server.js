@@ -5,8 +5,8 @@ export function load({ params }) {
 	const department = departments.find((department) => department.id == params.id);
 
 	if (!department) throw error(404);
-	
+
 	return {
-		department: department
+		department: department,
 	};
 }

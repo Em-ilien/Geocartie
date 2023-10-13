@@ -1,59 +1,52 @@
 <script>
-	import {createEventDispatcher} from "svelte";
-	import {goto} from "$app/navigation";
-  	import MapLittleCrown from "$lib/components/map/MapLittleCrown.svelte";
-	import {quizzEnabled, quizzAnswer} from "$lib/store/store.js";
-	import {tooltip} from "$lib/helpers/tooltip.js";
-	import {departments} from "/src/routes/france/departments/data.js";
-
+	import { createEventDispatcher } from 'svelte';
+	import { goto } from '$app/navigation';
+	import MapLittleCrown from '$lib/components/map/MapLittleCrown.svelte';
+	import { quizzEnabled, quizzAnswer } from '$lib/store/store.js';
+	import { tooltip } from '$lib/helpers/tooltip.js';
+	import { departments } from '/src/routes/france/departments/data.js';
 
 	const dispatch = createEventDispatcher();
 
 	let littleCrownModalActive = false;
-	$: sectionClass = littleCrownModalActive ? "darken" : undefined;
+	$: sectionClass = littleCrownModalActive ? 'darken' : undefined;
 
 	let quizzIsEnabled = false;
-    quizzEnabled.subscribe(value => {
-        quizzIsEnabled = value;
-    });
-
+	quizzEnabled.subscribe((value) => {
+		quizzIsEnabled = value;
+	});
 
 	function onClickLittleCrown(e) {
 		littleCrownModalActive = true;
 
 		const departmentId = e.departmentId;
 
-		if (quizzIsEnabled)
-			onQuizzAnswer(departmentId);
+		if (quizzIsEnabled) onQuizzAnswer(departmentId);
 	}
 
 	function onClickMapSection(e) {
-		if (!littleCrownModalActive)
-			return;
+		if (!littleCrownModalActive) return;
 
 		littleCrownModalActive = false;
 	}
 
 	function onKeydown(e) {
-		if (e.key === "Escape") {
+		if (e.key === 'Escape') {
 			littleCrownModalActive = false;
 			e.stopPropagation();
 		}
 	}
 
 	function onClickDepartment(e) {
-		if (e.target.tagName != "path")
-			return;
+		if (e.target.tagName != 'path') return;
 
-		if (e.target.id.includes("LC-"))
-			return;
+		if (e.target.id.includes('LC-')) return;
 
-		const departmentId = e.target.id.replace("FR-", "");
+		const departmentId = e.target.id.replace('FR-', '');
 		goto(`/france/departments/${departmentId}`);
 		littleCrownModalActive = false;
 
-		if (quizzIsEnabled)
-			onQuizzAnswer(departmentId);
+		if (quizzIsEnabled) onQuizzAnswer(departmentId);
 	}
 
 	function onQuizzAnswer(departmentId) {
@@ -61,12 +54,13 @@
 	}
 
 	function tooltipLabel(departmentId) {
-		const department = departments.find(department => department.id == departmentId);
+		const department = departments.find((department) => department.id == departmentId);
 
 		return `${department.prefix}${department.name} (${departmentId})\n\nRégion : ${department.region_name}\nPréfecture : ${department.prefecture_name}`;
 	}
 </script>
 
+<!-- prettier-ignore -->
 <section class={sectionClass} on:click|self={onClickMapSection} on:click={onClickDepartment}>
 	<svg viewBox="14 -1 600 590" xmlns="http://www.w3.org/2000/svg">
 		<defs>
@@ -240,29 +234,30 @@
 		pointer-events: all;
 	}
 
-    svg :global(.land) {
-        fill: transparent;
-        fill-opacity: 1;
-        stroke:#777;
-        stroke-opacity: 1;
-        stroke-width: 0.5;
-        cursor: pointer;
-    }
+	svg :global(.land) {
+		fill: transparent;
+		fill-opacity: 1;
+		stroke: #777;
+		stroke-opacity: 1;
+		stroke-width: 0.5;
+		cursor: pointer;
+	}
 
-    svg :global(.land:hover) {
-        fill: #d5d5d5;
+	svg :global(.land:hover) {
+		fill: #d5d5d5;
 		opacity: 1;
-    }
+	}
 
 	section > svg {
 		width: 100%;
 		height: 100%;
 	}
 
-	svg :global(polygon), svg :global(polyline) {
-        fill-opacity: 0;
+	svg :global(polygon),
+	svg :global(polyline) {
+		fill-opacity: 0;
 		stroke: #555;
-        stroke-width: 1.25;
+		stroke-width: 1.25;
 	}
 
 	section .little-crown-modal {
