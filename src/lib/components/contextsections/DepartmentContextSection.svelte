@@ -15,7 +15,7 @@
 
 <ContextSection>
 	<section class="department">
-		<h1>Département {department.id}</h1>
+		<h1>{department.name} ({department.id})</h1>
 		<p>
 			{formatDepartementPrefix}<b>{department.name}</b>
 			{pastParticipleSentence} dans la région {department.region_name}. {departmentPronounAndVerb}
