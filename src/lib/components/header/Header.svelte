@@ -33,7 +33,7 @@
 
 	{#if !quizzIsEnabled}
 		{#if quizzWasDisabledSinceDelay}
-			<div in:fly={{ y: 0, x: '100%', duration: 700 }}>
+			<div class="actions-transition" in:fly={{ y: 0, x: '100%', duration: 700 }}>
 				<HeaderActionsList />
 			</div>
 		{/if}
@@ -69,6 +69,10 @@
 		width: 50vw;
 	}
 
+	.actions-transition {
+		margin-left: auto;
+	}
+
 	a {
 		cursor: pointer;
 		display: flex;
@@ -88,13 +92,10 @@
 		padding: 0.625em 0;
 	}
 
-	@media (max-width: 780px) {
+	@media (max-width: 1000px) {
 		header {
-			flex-direction: column;
-		}
-
-		header > div:first-child {
-			width: 100vw;
+			flex-direction: row;
+			flex-wrap: wrap;
 		}
 	}
 

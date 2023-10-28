@@ -69,10 +69,12 @@
 		const departementId = ('0' + instruction.id).slice(-2);
 		const departementElement = document.querySelector(`#FR-${departementId}`);
 		departementElement.classList.add('quizz-show-answer');
-		departementElement.addEventListener('click', () => {
+		const handler = () => {
 			departementElement.classList.remove('quizz-show-answer');
 			answerShowed = false;
-		});
+			departementElement.removeEventListener('click', handler);
+		};
+		departementElement.addEventListener('click', handler);
 	}
 
 	loadNewInstruction();
@@ -126,7 +128,7 @@
 		justify-content: center;
 	}
 
-	@media (max-width: 780px) {
+	@media (max-width: 1000px) {
 		.quizz-instruction {
 			width: 100vw;
 		}

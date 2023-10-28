@@ -23,7 +23,9 @@
 
 <style>
 	.actions {
-		display: inline-flex;
+		margin: auto;
+		display: flex;
+		width: fit-content;
 		flex-direction: row-reverse;
 		padding: 0 1em;
 		align-items: center;
