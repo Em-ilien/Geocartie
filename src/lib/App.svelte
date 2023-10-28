@@ -1,6 +1,6 @@
 <script>
-	import BottomNavigation from './components/layout/BottomNavigation.svelte';
-	import Header from './components/layout/Header.svelte';
+	import BottomNavigation from './components/navigation/BottomNavigation.svelte';
+	import Header from './components/navigation/Header.svelte';
 	import { Toaster } from 'svelte-french-toast';
 
 	function onClick(e) {
