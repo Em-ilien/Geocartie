@@ -29,13 +29,13 @@ export function tooltip(element, tooltipLabel) {
 		});
 	}
 	function mouseMove(event) {
-		tooltipComponent.$set({
+		tooltipComponent?.$set({
 			x: event.pageX,
 			y: event.pageY,
 		});
 	}
 	function mouseLeave() {
-		tooltipComponent.$destroy();
+		tooltipComponent?.$destroy();
 		// NOTE: restore the `title` attribute
 		element.setAttribute('title', title);
 	}
@@ -52,7 +52,7 @@ export function tooltip(element, tooltipLabel) {
 			quizzEnabledUnsubscribe();
 
 			if (tooltipComponent !== undefined) {
-				tooltipComponent.$destroy();
+				tooltipComponent?.$destroy();
 				// NOTE: restore the `title` attribute
 				element.setAttribute('title', title);
 			}

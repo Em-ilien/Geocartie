@@ -19,7 +19,6 @@ export function onClickMenuNav(e, itemLabel) {
 }
 
 export function initQuizz(instruction) {
-	console.log(instruction);
 	toast.success(
 		`Bienvenue dans le quizz ! Cherchez le département ${instruction.prefix}${instruction.name} (${instruction.id})`,
 		{
