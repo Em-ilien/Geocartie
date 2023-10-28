@@ -66,7 +66,7 @@
 	let answerShowed = false;
 	function showAnswer() {
 		answerShowed = true;
-		const departementId = instruction.id;
+		const departementId = ('0' + instruction.id).slice(-2);
 		const departementElement = document.querySelector(`#FR-${departementId}`);
 		departementElement.classList.add('quizz-show-answer');
 		departementElement.addEventListener('click', () => {
@@ -82,13 +82,15 @@
 <section class="quizz-instruction">
 	<span class="score">{scoreStr}</span>
 
-	<p>{instruction.label}</p>
+	<main>
+		<p>{instruction.label}</p>
 
-	{#if questionFailed && !answerShowed}
-		<div in:fade={{ duration: 200 }}>
-			<Button label="Afficher la bonne réponse" on:click={showAnswer} />
-		</div>
-	{/if}
+		{#if questionFailed && !answerShowed}
+			<div in:fade={{ duration: 200 }}>
+				<Button label="Afficher la bonne réponse" on:click={showAnswer} />
+			</div>
+		{/if}
+	</main>
 
 	<button on:click={onStopQuizz}>
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,6 +115,15 @@
 		backdrop-filter: blur(2px);
 		min-height: 100%;
 		align-items: center;
+	}
+
+	.quizz-instruction main {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1.5em 2.5em;
+		align-items: center;
+		justify-content: center;
 	}
 
 	@media (max-width: 780px) {
