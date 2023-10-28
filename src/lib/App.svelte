@@ -1,7 +1,7 @@
 <script>
+	import BottomNavigation from './components/layout/BottomNavigation.svelte';
+	import Header from './components/layout/Header.svelte';
 	import { Toaster } from 'svelte-french-toast';
-	import Header from 'components/layout/Header.svelte';
-	import BottomNavigation from 'components/layout/BottomNavigation.svelte';
 
 	function onClick(e) {
 		if (['SPAN', 'I', 'B', 'P', 'A', 'H1', 'H2'].includes(e.target.tagName)) return;
