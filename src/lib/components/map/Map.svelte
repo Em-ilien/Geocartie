@@ -255,6 +255,10 @@
 		opacity: 1;
 	}
 
+	svg :global(.land.quizz-show-answer) {
+		fill: #c85a40;
+	}
+
 	section > svg {
 		width: 100%;
 		height: 100%;

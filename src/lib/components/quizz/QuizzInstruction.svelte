@@ -1,9 +1,11 @@
 <script>
 	import { onDestroy } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	import { quizzEnabled, quizzAnswer } from '$lib/store/store.js';
 	import { departments } from '/src/routes/france/departments/data.js';
-	import { onQuizzFalseAnswer, onQuizzTrueAnswer, initQuizz } from '$lib/helpers/toasts.js';
+	import { initQuizz } from '$lib/helpers/toasts.js';
+	import Button from '../general/Button.svelte';
 
 	const MAX_MISSED_TRIES = 3;
 
@@ -20,6 +22,8 @@
 		tries: 0,
 	};
 
+	$: questionFailed = instruction.tries >= MAX_MISSED_TRIES;
+
 	function onStopQuizz() {
 		quizzEnabled.set(false);
 	}
@@ -30,12 +34,8 @@
 
 		if (value != instruction.id) {
 			instruction.tries++;
-			if (instruction.tries >= MAX_MISSED_TRIES) {
+			if (instruction.tries == MAX_MISSED_TRIES) {
 				answers++;
-				loadNewInstruction();
-				onQuizzFalseAnswer(instruction);
-			} else {
-				onQuizzFalseAnswer();
 			}
 			return;
 		}
@@ -43,7 +43,6 @@
 		goodAnswers++;
 		answers++;
 		loadNewInstruction();
-		onQuizzTrueAnswer(instruction);
 	});
 
 	onDestroy(unsubscribe);
@@ -64,6 +63,18 @@
 		instruction.tries = 0;
 	}
 
+	let answerShowed = false;
+	function showAnswer() {
+		answerShowed = true;
+		const departementId = instruction.id;
+		const departementElement = document.querySelector(`#FR-${departementId}`);
+		departementElement.classList.add('quizz-show-answer');
+		departementElement.addEventListener('click', () => {
+			departementElement.classList.remove('quizz-show-answer');
+			answerShowed = false;
+		});
+	}
+
 	loadNewInstruction();
 	initQuizz(instruction);
 </script>
@@ -72,6 +83,12 @@
 	<span class="score">{scoreStr}</span>
 
 	<p>{instruction.label}</p>
+
+	{#if questionFailed && !answerShowed}
+		<div in:fade={{ duration: 200 }}>
+			<Button label="Afficher la bonne réponse" on:click={showAnswer} />
+		</div>
+	{/if}
 
 	<button on:click={onStopQuizz}>
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,6 +112,7 @@
 		background: linear-gradient(120deg, #90b2dbaa 0%, #cb8de6aa 80%);
 		backdrop-filter: blur(2px);
 		min-height: 100%;
+		align-items: center;
 	}
 
 	@media (max-width: 780px) {

@@ -18,31 +18,6 @@ export function onClickMenuNav(e, itemLabel) {
 	});
 }
 
-export function onQuizzFalseAnswer(newInstruction = null) {
-	if (newInstruction === null)
-		toast.error(`Vous avez cliqué sur un autre département, réessayez !`, {
-			style: STYLE,
-			position: QUIZZ_POSITION,
-		});
-	else
-		toast.error(
-			`Vous avez cliqué sur un autre département. À présent cherchez ${newInstruction.prefix}${newInstruction.name} (${newInstruction.id})`,
-			{
-				style: STYLE,
-				position: QUIZZ_POSITION,
-				duration: 5000,
-			},
-		);
-}
-
-export function onQuizzTrueAnswer(instruction) {
-	toast.success(`Bravo ! Maintenant cherchez ${instruction.prefix}${instruction.name} (${instruction.id})`, {
-		style: STYLE,
-		position: QUIZZ_POSITION,
-		duration: 3000,
-	});
-}
-
 export function initQuizz(instruction) {
 	console.log(instruction);
 	toast.success(
