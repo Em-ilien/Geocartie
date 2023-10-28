@@ -61,6 +61,9 @@
 		instruction.name = randomDepartment.name;
 		instruction.prefix = randomDepartment.prefix;
 		instruction.tries = 0;
+
+		document.querySelector('.land.quizz-show-answer')?.classList.remove('quizz-show-answer');
+		answerShowed = false;
 	}
 
 	let answerShowed = false;
@@ -69,12 +72,6 @@
 		const departementId = ('0' + instruction.id).slice(-2);
 		const departementElement = document.querySelector(`#FR-${departementId}`);
 		departementElement.classList.add('quizz-show-answer');
-		const handler = () => {
-			departementElement.classList.remove('quizz-show-answer');
-			answerShowed = false;
-			departementElement.removeEventListener('click', handler);
-		};
-		departementElement.addEventListener('click', handler);
 	}
 
 	loadNewInstruction();
