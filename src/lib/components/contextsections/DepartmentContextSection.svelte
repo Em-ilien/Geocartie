@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import ContextSection from './ContextSection.svelte';
 
 	export let department;
@@ -11,6 +12,11 @@
 		department.prefix === 'les ' ? 'sont situés' : department.prefix === 'la ' ? 'est située' : 'est situé';
 	$: departmentPronounAndVerb =
 		department.prefix === 'les ' ? 'Ils ont' : department.prefix === 'la ' ? 'Elle a' : 'Il a';
+
+	onMount(() => {
+		document.querySelector('.active')?.classList.remove('active');
+		document.querySelector(`#FR-${department.id}`)?.classList.add('active');
+	}, 0);
 </script>
 
 <ContextSection>
