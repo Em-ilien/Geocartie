@@ -1,10 +1,11 @@
 <script>
 	import { onDestroy } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
 
 	import { quizzEnabled, quizzAnswer } from '$lib/store/store.js';
 	import { departments } from '/src/routes/france/departments/data.js';
 	import { onQuizzFalseAnswer, onQuizzTrueAnswer, initQuizz } from '$lib/helpers/toasts.js';
+
+	const MAX_MISSED_TRIES = 3;
 
 	let goodAnswers = 0;
 	let answers = 0;
@@ -29,7 +30,7 @@
 
 		if (value != instruction.id) {
 			instruction.tries++;
-			if (instruction.tries >= 3) {
+			if (instruction.tries >= MAX_MISSED_TRIES) {
 				answers++;
 				loadNewInstruction();
 				onQuizzFalseAnswer(instruction);

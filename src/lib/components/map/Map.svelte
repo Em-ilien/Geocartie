@@ -9,7 +9,8 @@
 	const dispatch = createEventDispatcher();
 
 	let littleCrownModalActive = false;
-	$: sectionClass = littleCrownModalActive ? 'darken' : undefined;
+
+	$: darken = littleCrownModalActive || !'other_future_conditions';
 
 	let quizzIsEnabled = false;
 	quizzEnabled.subscribe((value) => {
@@ -62,7 +63,7 @@
 </script>
 
 <!-- prettier-ignore -->
-<section class={sectionClass} on:click|self={onClickMapSection} on:click={onClickDepartment}>
+<section class:darken on:click|self={onClickMapSection} on:click={onClickDepartment}>
 	<svg viewBox="14 -1 600 590" xmlns="http://www.w3.org/2000/svg">
 		<defs>
 			<amcharts:ammap projection="mercator" leftLongitude="-5.185287" topLatitude="51.089515" rightLongitude="9.560553" bottomLatitude="41.366975"></amcharts:ammap>

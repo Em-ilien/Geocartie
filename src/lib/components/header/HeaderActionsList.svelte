@@ -1,6 +1,4 @@
 <script>
-	import { fade, fly } from 'svelte/transition';
-
 	import ActionItem from './ActionItem.svelte';
 
 	import accountIcon from '$lib/assets/icons/actions/account-icon.png';
@@ -28,9 +26,10 @@
 		display: inline-flex;
 		flex-direction: row-reverse;
 		padding: 0 1em;
-		align-items: flex-start;
+		align-items: center;
 		gap: 0.375em;
 		align-self: flex-end;
+		height: 100%;
 	}
 
 	.more {
