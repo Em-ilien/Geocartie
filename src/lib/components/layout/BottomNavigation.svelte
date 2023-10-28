@@ -1,12 +1,11 @@
 <script>
+	import { quizzEnabled } from './../../store/store.js';
 	import ActionItem from './ActionItem.svelte';
 
 	import accountIcon from '$lib/assets/icons/actions/account-icon.png';
 	import quizzIcon from '$lib/assets/icons/actions/quizz-icon.png';
 
 	import { onClickLogin } from '$lib/helpers/toasts.js';
-
-	import { quizzEnabled } from '$lib/store/store.js';
 </script>
 
 <div class="bottom-navigation">

@@ -1,9 +1,8 @@
 <script>
-	import Button from '$lib/components/general/Button.svelte';
-	import FAQ from '$lib/components/general/FAQ.svelte';
+	import { quizzEnabled } from './../../store/store.js';
+	import Button from './../general/Button.svelte';
+	import FAQ from './../faq/FAQ.svelte';
 	import ContextSection from './ContextSection.svelte';
-
-	import { quizzEnabled } from '$lib/store/store.js';
 
 	let questions = [
 		{

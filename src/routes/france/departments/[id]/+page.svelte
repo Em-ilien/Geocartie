@@ -1,7 +1,7 @@
 <script>
+	import Map from './../../../../lib/components/map/Map.svelte';
+	import DepartmentContextSection from './../../../../lib/components/contextsections/DepartmentContextSection.svelte';
 	import App from '../../../../lib/App.svelte';
-	import DepartmentContextSection from '$lib/components/contextsections/DepartmentContextSection.svelte';
-	import Map from '$lib/components/map/Map.svelte';
 
 	export let data;
 </script>

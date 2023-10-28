@@ -1,8 +1,8 @@
 <script>
+	import { quizzEnabled, quizzAnswer } from './../../store/store.js';
 	import { onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	import { quizzEnabled, quizzAnswer } from '$lib/store/store.js';
 	import { departments } from '/src/routes/france/departments/data.js';
 	import { initQuizz } from '$lib/helpers/toasts.js';
 	import Button from '../general/Button.svelte';

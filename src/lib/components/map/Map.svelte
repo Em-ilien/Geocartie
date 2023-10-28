@@ -1,8 +1,8 @@
 <script>
+	import { quizzEnabled, quizzAnswer } from './../../store/store.js';
+	import MapLittleCrown from './MapLittleCrown.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { goto } from '$app/navigation';
-	import MapLittleCrown from '$lib/components/map/MapLittleCrown.svelte';
-	import { quizzEnabled, quizzAnswer } from '$lib/store/store.js';
 	import { tooltip } from '$lib/helpers/tooltip.js';
 	import { departments } from '/src/routes/france/departments/data.js';
 

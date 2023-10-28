@@ -1,12 +1,11 @@
 <script>
+	import { quizzEnabled } from './../../store/store.js';
 	import { fade, fly } from 'svelte/transition';
 
 	import logo from '$lib/assets/images/logo.png';
 	import QuizzInstruction from '../quizz/QuizzInstruction.svelte';
 	import HeaderActionsList from './HeaderActionsList.svelte';
 	import HeaderNav from './HeaderNav.svelte';
-
-	import { quizzEnabled } from '$lib/store/store.js';
 
 	let quizzIsEnabled = false;
 	let quizzWasDisabledSinceDelay = true;
