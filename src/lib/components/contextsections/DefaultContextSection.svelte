@@ -51,7 +51,7 @@
 				</svg>
 			</div>
 		</Button>
-		<span>ou cliquez sur un département</span>
+		<span>ou explorez la carte</span>
 	</div>
 	<FAQ {questions} />
 </ContextSection>
