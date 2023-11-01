@@ -1,6 +1,6 @@
 # Geocartie
 
-<img style="width:500px;" src="https://user-images.githubusercontent.com/66224623/169597707-3951e731-b296-4630-94cd-5d07c2435894.png" alt="Image Géocartie"/>
+<img style="width:500px;" src="https://github-production-user-asset-6210df.s3.amazonaws.com/66224623/279664859-5cc83ce8-3d18-4719-ae67-e5e9e6bdfc7c.png" alt="Image Géocartie"/>
 
 ## Introduction
 
@@ -10,7 +10,7 @@ L'interface comprend :
 -   sur la section droite de l'écran, une carte, divisée en plusieurs départements navigables par clic ;
 -   sur la gauche, une section consacrée aux informations d'un département sélectionné.
 
-Cette branche est dédiée à la version 2.0.0 qui est en production. Cette nouvelle version vient avec une nouvelle interface et l'utilisation du framework Svelte.
+Cette branche est dédiée à la version 2 qui est en production. Cette nouvelle version vient avec une nouvelle interface et l'utilisation du framework Svelte.
 
 ## Liens utiles
 
@@ -27,8 +27,6 @@ Le Mode Quizz permet à l'utilisateur de tester ses connaissances et d'apprendre
 ## Images d'illustration
 
 Pour toute demande d'ajout d'images sur le site geocartie.fr, veuillez rédiger un courriel à emilien@em-ilien.fr en mentionnant le numéro de département concerné et les liens vers les images.
-
-Pour des questions de droit d'auteur, les images doivent être hébergées sur des serveurs Web par le soin des détenteurs desdits droits.
 
 ## Données géographiques
 
