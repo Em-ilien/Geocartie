@@ -8,6 +8,8 @@
 	import Button from '../general/Button.svelte';
 
 	const MAX_MISSED_TRIES = 3;
+	const DELAY_FLASHING = 300;
+	const FLASHING_NUMBERS = 5;
 
 	let goodAnswers = 0;
 	let answers = 0;
@@ -67,7 +69,22 @@
 	function showAnswer() {
 		const departementId = ('0' + instruction.id).slice(-2);
 		const departementElement = document.querySelector(`#FR-${departementId}`);
-		departementElement.classList.add('quizz-show-answer');
+		let colorInRed = () => {
+			departementElement.classList.add('quizz-show-answer');
+		};
+		let removeRedColor = () => {
+			departementElement.classList.remove('quizz-show-answer');
+		};
+
+		for (let i = 0; i < FLASHING_NUMBERS; i++) {
+			setTimeout(() => {
+				removeRedColor();
+				setTimeout(() => {
+					if (instruction.id != departementId) return;
+					colorInRed();
+				}, DELAY_FLASHING / 2);
+			}, DELAY_FLASHING * i);
+		}
 	}
 
 	loadNewInstruction();

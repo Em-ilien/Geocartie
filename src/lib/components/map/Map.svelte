@@ -256,7 +256,7 @@
 	}
 
 	svg :global(.land.quizz-show-answer) {
-		fill: #c85a40;
+		fill: #e84822;
 	}
 
 	section > svg {
