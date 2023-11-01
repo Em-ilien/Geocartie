@@ -14,7 +14,7 @@
 		in:fly={{ x: '-100%%', duration: 500, delay: 0 }}
 		out:fly={{ x: '-100%', duration: 500, delay: 0 }}
 	>
-		<div class="close-ctn" on:click={onClose}>
+		<div class="close-ctn" on:click={onClose} title="Fermer">
 			<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
 				<path d="M6 18L18 6M6 6L18 18" stroke-linecap="round" stroke-linejoin="round" />
 			</svg>
@@ -101,6 +101,9 @@
 		.context-section > main {
 			height: fit-content;
 			padding-bottom: 5em;
+		}
+		.context-section > .close-ctn {
+			display: none;
 		}
 	}
 
