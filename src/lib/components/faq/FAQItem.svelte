@@ -65,11 +65,11 @@
 	}
 
 	li .question svg {
-		transform: rotate(0deg);
+		transform: rotate(-90deg);
 		transition: 0.15s ease-in-out;
 	}
 	li.active .question svg {
-		transform: rotate(180deg);
+		transform: rotate(0deg);
 		transition: 0.15s ease-in-out;
 	}
 
