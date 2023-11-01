@@ -18,9 +18,14 @@
 			answer: 'Se connecter à son compte Google permet de sauvegarder ses scores et ses statistiques liées au Quizz. Le mode hors-ligne permet toujours de jouer au Quizz.',
 		},
 	];
+
+	let contextSectionIsClosed = false;
+	function onCloseContextSection() {
+		contextSectionIsClosed = true;
+	}
 </script>
 
-<ContextSection>
+<ContextSection onClose={onCloseContextSection} bind:closed={contextSectionIsClosed}>
 	<div class="titles">
 		<h1>Géocartie</h1>
 		<h2>Apprendre et découvrir les <b>départements français</b></h2>

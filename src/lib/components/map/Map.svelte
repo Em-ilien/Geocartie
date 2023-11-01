@@ -204,6 +204,7 @@
 		width: 50%;
 		max-height: 100%;
 		padding: 1em;
+		flex-grow: 1;
 	}
 	section.darken {
 		background: #00000060;

@@ -1,50 +1,110 @@
-<section class="context-section">
-	<div>
-		<slot />
+<script>
+	import { goto } from '$app/navigation';
+	import { fly } from 'svelte/transition';
+	export let onClose = () => {
+		goto('/');
+	};
+
+	export let closed = false;
+</script>
+
+{#if !closed}
+	<section
+		class="context-section"
+		in:fly={{ x: '-100%%', duration: 500, delay: 0 }}
+		out:fly={{ x: '-100%', duration: 500, delay: 0 }}
+	>
+		<div class="close-ctn" on:click={onClose}>
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+				<path d="M6 18L18 6M6 6L18 18" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+		</div>
+		<main>
+			<div>
+				<slot />
+			</div>
+			<footer>
+				<nav>
+					<a target="_blank" href="https://github.com/Em-ilien/Geocartie">Code source</a>
+					<a href="/legal">Mentions légales</a>
+					<a href="/contact">Nous contacter</a>
+				</nav>
+			</footer>
+		</main>
+	</section>
+{:else}
+	<div class="hamburger-ctn" on:click={() => (closed = false)}>
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+			<path d="M4 6H20M4 12H20M4 18H20" stroke-linecap="round" stroke-linejoin="round" />
+		</svg>
 	</div>
-	<footer>
-		<nav>
-			<a target="_blank" href="https://github.com/Em-ilien/Geocartie">Code source</a>
-			<a href="/legal">Mentions légales</a>
-			<a href="/contact">Nous contacter</a>
-		</nav>
-	</footer>
-</section>
+{/if}
 
 <style>
 	.context-section {
 		display: flex;
-		padding: 4em 4% 1em 4%;
-		margin-left: 0.625em;
 		flex-direction: column;
-		justify-content: space-between;
 		align-items: flex-start;
-		gap: 5.5em;
+		margin-left: 0.625em;
 		width: calc(50% - 0.625em);
 		max-width: calc(50% - 0.625em);
-		overflow-x: hidden;
-		height: auto;
-		flex-grow: 1;
-		overflow-y: auto;
-
 		border-right: 1px solid #ccc;
 		border-left: 1px solid #ccc;
 		background: #fff;
 		box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.25);
+		flex-grow: 1;
+		height: auto;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	.context-section > main {
+		display: flex;
+		padding: 4em 8% 1em;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 5.5em;
+		height: 100%;
+	}
+	.context-section > .close-ctn {
+		width: 3em;
+		height: 2.5em;
+		position: fixed;
+		align-self: flex-end;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		z-index: 1;
+		background: #fff;
+		padding: 0.5em;
+	}
+
+	.context-section > .close-ctn:hover {
+		background: #efefef;
+		border-radius: 0.5em;
+	}
+
+	.context-section > .close-ctn svg {
+		stroke: #bbb;
+		stroke-width: 2;
 	}
 
 	@media (max-width: 780px) {
 		.context-section {
+			margin-left: unset;
 			width: 100%;
 			max-width: 100%;
-			height: fit-content;
-			margin-left: unset;
 			box-shadow: unset;
+		}
+		.context-section > main {
+			height: fit-content;
 			padding-bottom: 5em;
 		}
 	}
 
-	.context-section > div {
+	.context-section > main > div {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -108,5 +168,29 @@
 	}
 	footer nav a:hover {
 		text-decoration: underline;
+	}
+
+	.hamburger-ctn {
+		width: 3em;
+		height: 2.5em;
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		z-index: 1;
+		background: #fff;
+		padding: 0.5em;
+		margin: 0.5em;
+	}
+
+	.hamburger-ctn:hover {
+		background: #efefef;
+		border-radius: 0.5em;
+	}
+
+	.hamburger-ctn svg {
+		stroke: #bbb;
+		stroke-width: 2;
 	}
 </style>
