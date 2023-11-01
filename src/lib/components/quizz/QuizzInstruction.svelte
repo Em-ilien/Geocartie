@@ -22,8 +22,6 @@
 		tries: 0,
 	};
 
-	$: questionFailed = instruction.tries >= MAX_MISSED_TRIES;
-
 	function onStopQuizz() {
 		quizzEnabled.set(false);
 	}
@@ -36,6 +34,7 @@
 			instruction.tries++;
 			if (instruction.tries == MAX_MISSED_TRIES) {
 				answers++;
+				showAnswer();
 			}
 			return;
 		}
@@ -63,12 +62,9 @@
 		instruction.tries = 0;
 
 		document.querySelector('.land.quizz-show-answer')?.classList.remove('quizz-show-answer');
-		answerShowed = false;
 	}
 
-	let answerShowed = false;
 	function showAnswer() {
-		answerShowed = true;
 		const departementId = ('0' + instruction.id).slice(-2);
 		const departementElement = document.querySelector(`#FR-${departementId}`);
 		departementElement.classList.add('quizz-show-answer');
@@ -83,12 +79,6 @@
 
 	<main>
 		<p>{instruction.label}</p>
-
-		{#if questionFailed && !answerShowed}
-			<div in:fade={{ duration: 200 }}>
-				<Button label="Afficher la bonne réponse" on:click={showAnswer} />
-			</div>
-		{/if}
 	</main>
 
 	<button on:click={onStopQuizz}>
