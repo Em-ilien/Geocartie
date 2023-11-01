@@ -1,11 +1,9 @@
 <script>
-	import { quizzEnabled, quizzAnswer } from './../../store/store.js';
+	import { quizzEnabled, quizzAnswer, quizzEnded } from './../../store/store.js';
 	import { onDestroy } from 'svelte';
-	import { fade } from 'svelte/transition';
 
 	import { departments } from '/src/routes/france/departments/data.js';
-	import { initQuizz } from '$lib/helpers/toasts.js';
-	import Button from '../general/Button.svelte';
+	import { initQuizz, quizzFinished } from '$lib/helpers/toasts.js';
 
 	const MAX_MISSED_TRIES = 3;
 	const DELAY_FLASHING = 300;
@@ -23,6 +21,7 @@
 		prefix: undefined,
 		tries: 0,
 	};
+	let instructionsHistory = [];
 
 	function onStopQuizz() {
 		quizzEnabled.set(false);
@@ -41,15 +40,42 @@
 			return;
 		}
 
-		goodAnswers++;
-		answers++;
+		if (instruction.tries < MAX_MISSED_TRIES) {
+			goodAnswers++;
+			answers++;
+		}
 		loadNewInstruction();
 	});
 
 	onDestroy(unsubscribe);
 
-	function loadNewInstruction() {
-		const randomDepartment = departments[Math.floor(Math.random() * departments.length)];
+	let loadNewInstruction = () => {
+		if (instruction.id != undefined)
+			instructionsHistory.push({
+				id: instruction.id,
+				tries: instruction.tries,
+			});
+
+		document.querySelector('.land.quizz-show-answer')?.classList.remove('quizz-show-answer');
+
+		if (instructionsHistory.length == departments.length) {
+			quizzEnded.set(true);
+			quizzFinished();
+			onStopQuizz();
+			return;
+		}
+
+		let randomDepartment = (() => {
+			let randomDepartment = undefined;
+			do {
+				randomDepartment = departments[Math.floor(Math.random() * departments.length)];
+			} while (
+				instructionsHistory.some(
+					(instruction) => instruction.id == randomDepartment.id && instruction.tries < MAX_MISSED_TRIES,
+				)
+			);
+			return randomDepartment;
+		})();
 
 		instruction.label =
 			'Cherchez ' +
@@ -62,9 +88,7 @@
 		instruction.name = randomDepartment.name;
 		instruction.prefix = randomDepartment.prefix;
 		instruction.tries = 0;
-
-		document.querySelector('.land.quizz-show-answer')?.classList.remove('quizz-show-answer');
-	}
+	};
 
 	function showAnswer() {
 		const departementId = ('0' + instruction.id).slice(-2);

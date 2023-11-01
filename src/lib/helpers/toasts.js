@@ -24,7 +24,15 @@ export function initQuizz(instruction) {
 		{
 			style: STYLE,
 			position: QUIZZ_POSITION,
-			duration: 5000,
+			duration: 3000,
 		},
 	);
+}
+
+export function quizzFinished() {
+	toast.success('Bravo ! Vous avez trouvé tous les départements de France !', {
+		style: STYLE,
+		position: QUIZZ_POSITION,
+		duration: 5000,
+	});
 }
