@@ -1,18 +1,12 @@
 import Tooltip from '$lib/components/general/Tooltip.svelte';
-import { quizzEnabled } from '$lib/store/store.js';
 
 export function tooltip(element, tooltipLabel) {
 	let div;
 	let title;
 	let tooltipComponent;
 
-	let quizzIsEnabled = false;
-	let quizzEnabledUnsubscribe = quizzEnabled.subscribe((value) => {
-		quizzIsEnabled = value;
-	});
-
 	function mouseOver(event) {
-		if (quizzIsEnabled) return;
+		if (tooltipLabel == null) return;
 
 		// NOTE: remove the `title` attribute, to prevent showing the default browser tooltip
 		// remember to set it back on `mouseleave`
@@ -49,7 +43,6 @@ export function tooltip(element, tooltipLabel) {
 			element.removeEventListener('mouseover', mouseOver);
 			element.removeEventListener('mouseleave', mouseLeave);
 			element.removeEventListener('mousemove', mouseMove);
-			quizzEnabledUnsubscribe();
 
 			if (tooltipComponent !== undefined) {
 				tooltipComponent?.$destroy();

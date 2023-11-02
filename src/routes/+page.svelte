@@ -1,10 +1,8 @@
 <script>
-	import App from '../lib/App.svelte';
+	import { getContext } from 'svelte';
 	import DefaultContextSection from './../lib/components/contextsections/DefaultContextSection.svelte';
-	import Map from './../lib/components/map/Map.svelte';
+
+	let enableQuizz = getContext('enableQuizz');
 </script>
 
-<App>
-	<DefaultContextSection />
-	<Map />
-</App>
+<DefaultContextSection {enableQuizz} />

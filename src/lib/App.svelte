@@ -1,4 +1,5 @@
 <script>
+	import Map from './components/map/Map.svelte';
 	import BottomNavigation from './components/navigation/BottomNavigation.svelte';
 	import Header from './components/navigation/Header.svelte';
 	import { Toaster } from 'svelte-french-toast';
@@ -9,14 +10,17 @@
 		let selection = window.getSelection();
 		selection.removeAllRanges();
 	}
+
+	export let quizzIsEnabled = false;
 </script>
 
 <div class="app" on:click={onClick} on:keydown={onClick} role={null}>
-	<Header />
+	<Header bind:quizzIsEnabled />
 	<main>
 		<slot />
+		<Map bind:quizzIsEnabled />
 	</main>
-	<BottomNavigation />
+	<BottomNavigation bind:quizzIsEnabled />
 </div>
 
 <Toaster />

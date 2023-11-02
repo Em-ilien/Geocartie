@@ -1,8 +1,9 @@
 <script>
-	import { quizzEnabled } from './../../store/store.js';
 	import Button from './../general/Button.svelte';
 	import FAQ from './../faq/FAQ.svelte';
 	import ContextSection from './ContextSection.svelte';
+
+	export let enableQuizz = () => {};
 
 	let questions = [
 		{
@@ -31,7 +32,7 @@
 		<h2>Apprendre et découvrir les <b>départements français</b></h2>
 	</div>
 	<div class="cta">
-		<Button label="Jouer au Quizz" on:click={() => quizzEnabled.set(true)}>
+		<Button label="Jouer au Quizz" on:click={enableQuizz}>
 			<div slot="icon">
 				<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
 					<g clip-path="url(#clip0_557_14)">

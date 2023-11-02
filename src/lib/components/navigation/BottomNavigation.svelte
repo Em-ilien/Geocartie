@@ -1,16 +1,17 @@
 <script>
-	import { quizzEnabled } from './../../store/store.js';
 	import ActionItem from './ActionItem.svelte';
 
 	import accountIcon from '$lib/assets/icons/actions/account-icon.png';
 	import quizzIcon from '$lib/assets/icons/actions/quizz-icon.png';
 
 	import { onClickLogin } from '$lib/helpers/toasts.js';
+
+	export let quizzIsEnabled = false;
 </script>
 
 <div class="bottom-navigation">
 	<ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizzEnabled.set(true)} />
+	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => (quizzIsEnabled = true)} />
 </div>
 
 <style>

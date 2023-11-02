@@ -1,5 +1,5 @@
 <script>
-	import { quizzEnabled, quizzAnswer } from './../../store/store.js';
+	import { quizzAnswer } from '../../store/quizzStore.js';
 	import MapLittleCrown from './MapLittleCrown.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -12,10 +12,7 @@
 
 	$: darken = littleCrownModalActive || !'other_future_conditions';
 
-	let quizzIsEnabled = false;
-	quizzEnabled.subscribe((value) => {
-		quizzIsEnabled = value;
-	});
+	export let quizzIsEnabled = false;
 
 	function onClickPreviewLittleCrown(e) {
 		littleCrownModalActive = true;
@@ -56,8 +53,9 @@
 	}
 
 	function tooltipLabel(departmentId) {
-		const department = departments.find((department) => department.id == departmentId);
+		if (!quizzIsEnabled) return null;
 
+		const department = departments.find((department) => department.id == departmentId);
 		return `${department.prefix}${department.name} (${departmentId})\n\nRégion : ${department.region_name}\nPréfecture : ${department.prefecture_name}`;
 	}
 </script>

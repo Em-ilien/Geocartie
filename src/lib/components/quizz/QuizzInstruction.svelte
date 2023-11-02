@@ -1,5 +1,5 @@
 <script>
-	import { quizzEnabled, quizzAnswer, quizzEnded } from './../../store/store.js';
+	import { quizzAnswer } from '../../store/quizzStore.js';
 	import { onDestroy } from 'svelte';
 
 	import { departments } from '/src/routes/france/departments/data.js';
@@ -8,6 +8,8 @@
 	const MAX_MISSED_TRIES = 3;
 	const DELAY_FLASHING = 300;
 	const FLASHING_NUMBERS = 5;
+
+	export let quizzIsEnabled = false;
 
 	let goodAnswers = 0;
 	let answers = 0;
@@ -24,7 +26,7 @@
 	let instructionsHistory = [];
 
 	function onStopQuizz() {
-		quizzEnabled.set(false);
+		quizzIsEnabled = false;
 	}
 
 	const unsubscribe = quizzAnswer.subscribe((value) => {
@@ -59,7 +61,6 @@
 		document.querySelector('.land.quizz-show-answer')?.classList.remove('quizz-show-answer');
 
 		if (instructionsHistory.length == departments.length) {
-			quizzEnded.set(true);
 			quizzFinished();
 			onStopQuizz();
 			return;
