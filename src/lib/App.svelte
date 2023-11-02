@@ -19,6 +19,14 @@
 			goodAnswers: 0,
 			totalAnswers: 0,
 		},
+		reset: () => {
+			quizz.enabled = false;
+			quizz.answer = undefined;
+			quizz.score = {
+				goodAnswers: 0,
+				totalAnswers: 0,
+			};
+		},
 	};
 
 	setContext('enableQuizz', () => {

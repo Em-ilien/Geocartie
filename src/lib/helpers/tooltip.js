@@ -1,12 +1,13 @@
 import Tooltip from '$lib/components/general/Tooltip.svelte';
 
-export function tooltip(element, tooltipLabel) {
-	let div;
+export function tooltip(element, params) {
+	const { conditionFct, label } = params;
+
 	let title;
 	let tooltipComponent;
 
 	function mouseOver(event) {
-		if (tooltipLabel == null) return;
+		if (!conditionFct()) return;
 
 		// NOTE: remove the `title` attribute, to prevent showing the default browser tooltip
 		// remember to set it back on `mouseleave`
@@ -15,7 +16,7 @@ export function tooltip(element, tooltipLabel) {
 
 		tooltipComponent = new Tooltip({
 			props: {
-				title: tooltipLabel,
+				title: label,
 				x: event.pageX,
 				y: event.pageY,
 			},

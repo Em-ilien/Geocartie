@@ -18,7 +18,7 @@
 	let instructionsHistory = [];
 
 	function onStopQuizz() {
-		quizz.enabled = false;
+		quizz.reset();
 	}
 
 	$: {
