@@ -9,12 +9,12 @@
 
 	import { onClickLogin } from '$lib/helpers/toasts.js';
 
-	export let quizzIsEnabled = false;
+	export let quizz;
 </script>
 
 <div class="actions">
 	<ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => (quizzIsEnabled = true)} />
+	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => (quizz.enabled = true)} />
 	<div class="more">
 		<ActionItem text="Nous contacter" icon={contactIcon} href="/contact" />
 		<ActionItem text="Mentions légales" icon={legalIcon} href="/legal" />

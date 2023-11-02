@@ -6,12 +6,12 @@
 	import HeaderActionsList from './HeaderActionsList.svelte';
 	import HeaderNav from './HeaderNav.svelte';
 
-	export let quizzIsEnabled = false;
+	export let quizz;
 
 	let quizzWasDisabledSinceDelay = true;
 
 	$: {
-		if (!quizzIsEnabled) {
+		if (!quizz.enabled) {
 			setTimeout(() => {
 				quizzWasDisabledSinceDelay = true;
 			}, 700);
@@ -19,8 +19,6 @@
 			quizzWasDisabledSinceDelay = false;
 		}
 	}
-
-	// });
 </script>
 
 <header>
@@ -31,10 +29,10 @@
 		<HeaderNav />
 	</div>
 
-	{#if !quizzIsEnabled}
+	{#if !quizz.enabled}
 		{#if quizzWasDisabledSinceDelay}
 			<div class="actions-transition" in:fly={{ y: 0, x: '100%', duration: 700 }}>
-				<HeaderActionsList bind:quizzIsEnabled />
+				<HeaderActionsList bind:quizz />
 			</div>
 		{/if}
 	{:else}
@@ -43,7 +41,7 @@
 			in:fly={{ y: 0, x: '100%', duration: 700 }}
 			out:fade={{ duration: 700 }}
 		>
-			<QuizzInstruction bind:quizzIsEnabled />
+			<QuizzInstruction bind:quizz />
 		</div>
 	{/if}
 </header>

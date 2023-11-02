@@ -1,7 +1,4 @@
 <script>
-	import { quizzAnswer } from '../../store/quizzStore.js';
-	import { onDestroy } from 'svelte';
-
 	import { departments } from '/src/routes/france/departments/data.js';
 	import { initQuizz, quizzFinished } from '$lib/helpers/toasts.js';
 
@@ -9,12 +6,7 @@
 	const DELAY_FLASHING = 300;
 	const FLASHING_NUMBERS = 5;
 
-	export let quizzIsEnabled = false;
-
-	let goodAnswers = 0;
-	let answers = 0;
-
-	$: scoreStr = `${goodAnswers} / ${answers}`;
+	export let quizz;
 
 	let instruction = {
 		label: undefined,
@@ -26,30 +18,34 @@
 	let instructionsHistory = [];
 
 	function onStopQuizz() {
-		quizzIsEnabled = false;
+		quizz.enabled = false;
 	}
 
-	const unsubscribe = quizzAnswer.subscribe((value) => {
+	$: {
+		if (quizz.answer) {
+			checkNewUserAnswer(quizz.answer);
+		}
+	}
+
+	const checkNewUserAnswer = (value) => {
 		if (!instruction.id) return;
 		if (!value) return;
 
 		if (value != instruction.id) {
 			instruction.tries++;
 			if (instruction.tries == MAX_MISSED_TRIES) {
-				answers++;
+				quizz.score.totalAnswers++;
 				showAnswer();
 			}
 			return;
 		}
 
 		if (instruction.tries < MAX_MISSED_TRIES) {
-			goodAnswers++;
-			answers++;
+			quizz.score.goodAnswers++;
+			quizz.score.totalAnswers++;
 		}
 		loadNewInstruction();
-	});
-
-	onDestroy(unsubscribe);
+	};
 
 	let loadNewInstruction = () => {
 		if (instruction.id != undefined)
@@ -117,7 +113,7 @@
 </script>
 
 <section class="quizz-instruction">
-	<span class="score">{scoreStr}</span>
+	<span class="score">{`${quizz.score.goodAnswers} / ${quizz.score.totalAnswers}`}</span>
 
 	<main>
 		<p>{instruction.label}</p>

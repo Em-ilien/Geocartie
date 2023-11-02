@@ -3,6 +3,7 @@
 	import BottomNavigation from './components/navigation/BottomNavigation.svelte';
 	import Header from './components/navigation/Header.svelte';
 	import { Toaster } from 'svelte-french-toast';
+	import { setContext } from 'svelte';
 
 	function onClick(e) {
 		if (['SPAN', 'I', 'B', 'P', 'A', 'H1', 'H2'].includes(e.target.tagName)) return;
@@ -11,16 +12,28 @@
 		selection.removeAllRanges();
 	}
 
-	export let quizzIsEnabled = false;
+	let quizz = {
+		enabled: false,
+		answer: undefined,
+		score: {
+			goodAnswers: 0,
+			totalAnswers: 0,
+		},
+	};
+
+	setContext('enableQuizz', () => {
+		quizz.enabled = true;
+		console.log('enableQuizz');
+	});
 </script>
 
 <div class="app" on:click={onClick} on:keydown={onClick} role={null}>
-	<Header bind:quizzIsEnabled />
+	<Header bind:quizz />
 	<main>
 		<slot />
-		<Map bind:quizzIsEnabled />
+		<Map bind:quizz />
 	</main>
-	<BottomNavigation bind:quizzIsEnabled />
+	<BottomNavigation bind:quizz />
 </div>
 
 <Toaster />
