@@ -1,12 +1,11 @@
 <script>
+	import { quizz } from '../../stores/quizzStore';
 	import { departments } from '/src/routes/france/departments/data.js';
 	import { initQuizz, quizzFinished } from '$lib/helpers/toasts.js';
 
 	const MAX_MISSED_TRIES = 3;
 	const DELAY_FLASHING = 300;
 	const FLASHING_NUMBERS = 5;
-
-	export let quizz;
 
 	let instruction = {
 		label: undefined,
@@ -22,8 +21,8 @@
 	}
 
 	$: {
-		if (quizz.answer) {
-			checkNewUserAnswer(quizz.answer);
+		if ($quizz.answer) {
+			checkNewUserAnswer($quizz.answer);
 		}
 	}
 
@@ -34,15 +33,14 @@
 		if (value != instruction.id) {
 			instruction.tries++;
 			if (instruction.tries == MAX_MISSED_TRIES) {
-				quizz.score.totalAnswers++;
+				quizz.score.incrementWrongAnswers();
 				showAnswer();
 			}
 			return;
 		}
 
 		if (instruction.tries < MAX_MISSED_TRIES) {
-			quizz.score.goodAnswers++;
-			quizz.score.totalAnswers++;
+			quizz.score.incrementGoodAnswers();
 		}
 		loadNewInstruction();
 	};
@@ -108,12 +106,14 @@
 		}
 	}
 
+	$: scoreStr = $quizz.score.goodAnswers + ' / ' + ($quizz.score.goodAnswers + $quizz.score.wrongAnswers);
+
 	loadNewInstruction();
 	initQuizz(instruction);
 </script>
 
 <section class="quizz-instruction">
-	<span class="score">{`${quizz.score.goodAnswers} / ${quizz.score.totalAnswers}`}</span>
+	<span class="score">{scoreStr}</span>
 
 	<main>
 		<p>{instruction.label}</p>

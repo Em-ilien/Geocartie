@@ -1,4 +1,5 @@
 <script>
+	import { quizz } from '../../stores/quizzStore.js';
 	import { fade, fly } from 'svelte/transition';
 
 	import logo from '$lib/assets/images/logo.png';
@@ -6,12 +7,10 @@
 	import HeaderActionsList from './HeaderActionsList.svelte';
 	import HeaderNav from './HeaderNav.svelte';
 
-	export let quizz;
-
 	let quizzWasDisabledSinceDelay = true;
 
 	$: {
-		if (!quizz.enabled) {
+		if (!$quizz.enabled) {
 			setTimeout(() => {
 				quizzWasDisabledSinceDelay = true;
 			}, 700);
@@ -19,6 +18,8 @@
 			quizzWasDisabledSinceDelay = false;
 		}
 	}
+
+	console.log($quizz);
 </script>
 
 <header>
@@ -29,10 +30,10 @@
 		<HeaderNav />
 	</div>
 
-	{#if !quizz.enabled}
+	{#if !$quizz.enabled}
 		{#if quizzWasDisabledSinceDelay}
 			<div class="actions-transition" in:fly={{ y: 0, x: '100%', duration: 700 }}>
-				<HeaderActionsList bind:quizz />
+				<HeaderActionsList />
 			</div>
 		{/if}
 	{:else}
@@ -41,7 +42,7 @@
 			in:fly={{ y: 0, x: '100%', duration: 700 }}
 			out:fade={{ duration: 700 }}
 		>
-			<QuizzInstruction bind:quizz />
+			<QuizzInstruction />
 		</div>
 	{/if}
 </header>

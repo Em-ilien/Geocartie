@@ -1,5 +1,8 @@
 <script>
+	import { preferences } from './../../stores/preferencesStore.js';
 	import ContextSection from './ContextSection.svelte';
+
+	preferences.layout.contextSection.open();
 </script>
 
 <ContextSection>

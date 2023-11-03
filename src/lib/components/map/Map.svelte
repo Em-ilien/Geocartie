@@ -1,4 +1,5 @@
 <script>
+	import { quizz } from '../../stores/quizzStore.js';
 	import MapLittleCrown from './MapLittleCrown.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -11,14 +12,12 @@
 
 	$: darken = littleCrownModalActive || !'other_future_conditions';
 
-	export let quizz;
-
 	function onClickPreviewLittleCrown(e) {
 		littleCrownModalActive = true;
 
 		const departmentId = e.departmentId;
 
-		if (quizz.enabled) onQuizzAnswer(departmentId);
+		if ($quizz.enabled) onQuizzAnswer(departmentId);
 	}
 
 	function onClickMapSection(e) {
@@ -41,14 +40,14 @@
 		goto(`/france/departments/${departmentId}`);
 		littleCrownModalActive = false;
 
-		if (quizz.enabled) onQuizzAnswer(departmentId);
+		if ($quizz.enabled) onQuizzAnswer(departmentId);
 
 		document.querySelector('.active')?.classList.remove('active');
 		document.querySelector('#FR-' + departmentId)?.classList.add('active');
 	}
 
 	function onQuizzAnswer(departmentId) {
-		quizz.answer = departmentId;
+		quizz.setAnswer(departmentId);
 	}
 
 	function tooltipLabel(departmentId) {
@@ -56,7 +55,7 @@
 		return `${department.prefix}${department.name} (${departmentId})\n\nRégion : ${department.region_name}\nPréfecture : ${department.prefecture_name}`;
 	}
 	function tooltipCondition() {
-		return !quizz.enabled;
+		return !$quizz.enabled;
 	}
 </script>
 

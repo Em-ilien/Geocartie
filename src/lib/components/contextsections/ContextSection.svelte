@@ -1,14 +1,13 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
+	import { preferences } from '../../stores/preferencesStore';
 	export let onClose = () => {
 		goto('/');
 	};
-
-	export let closed = false;
 </script>
 
-{#if !closed}
+{#if !$preferences.layout.contextSection.closed}
 	<section
 		class="context-section"
 		in:fly={{ x: '-100%%', duration: 500, delay: 0 }}
@@ -33,7 +32,7 @@
 		</main>
 	</section>
 {:else}
-	<div class="hamburger-ctn" on:click={() => (closed = false)}>
+	<div class="hamburger-ctn" on:click={() => preferences.layout.contextSection.open()}>
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 			<path d="M4 6H20M4 12H20M4 18H20" stroke-linecap="round" stroke-linejoin="round" />
 		</svg>

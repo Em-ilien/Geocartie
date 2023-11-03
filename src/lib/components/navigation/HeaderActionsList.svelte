@@ -1,4 +1,5 @@
 <script>
+	import { quizz } from '../../stores/quizzStore.js';
 	import ActionItem from './ActionItem.svelte';
 
 	import accountIcon from '$lib/assets/icons/actions/account-icon.png';
@@ -8,13 +9,11 @@
 	import quizzIcon from '$lib/assets/icons/actions/quizz-icon.png';
 
 	import { onClickLogin } from '$lib/helpers/toasts.js';
-
-	export let quizz;
 </script>
 
 <div class="actions">
 	<ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => (quizz.enabled = true)} />
+	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizz.enable()} />
 	<div class="more">
 		<ActionItem text="Nous contacter" icon={contactIcon} href="/contact" />
 		<ActionItem text="Mentions légales" icon={legalIcon} href="/legal" />

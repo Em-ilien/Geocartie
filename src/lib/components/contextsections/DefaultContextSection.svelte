@@ -1,9 +1,9 @@
 <script>
+	import { preferences } from './../../stores/preferencesStore.js';
+	import { quizz } from '../../stores/quizzStore.js';
 	import Button from './../general/Button.svelte';
 	import FAQ from './../faq/FAQ.svelte';
 	import ContextSection from './ContextSection.svelte';
-
-	export let enableQuizz = () => {};
 
 	let questions = [
 		{
@@ -20,19 +20,18 @@
 		},
 	];
 
-	let contextSectionIsClosed = false;
 	function onCloseContextSection() {
-		contextSectionIsClosed = true;
+		preferences.layout.contextSection.close();
 	}
 </script>
 
-<ContextSection onClose={onCloseContextSection} bind:closed={contextSectionIsClosed}>
+<ContextSection onClose={onCloseContextSection}>
 	<div class="titles">
 		<h1>Géocartie</h1>
 		<h2>Apprendre et découvrir les <b>départements français</b></h2>
 	</div>
 	<div class="cta">
-		<Button label="Jouer au Quizz" on:click={enableQuizz}>
+		<Button label="Jouer au Quizz" on:click={() => quizz.enable()}>
 			<div slot="icon">
 				<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
 					<g clip-path="url(#clip0_557_14)">
