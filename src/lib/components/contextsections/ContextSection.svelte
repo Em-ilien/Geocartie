@@ -66,6 +66,7 @@
 		gap: 5.5em;
 		height: 100%;
 	}
+
 	.context-section > .close-ctn {
 		width: 3em;
 		height: 2.5em;
@@ -78,6 +79,11 @@
 		z-index: 1;
 		background: #fff;
 		padding: 0.5em;
+		opacity: 0;
+	}
+	.context-section:hover .close-ctn {
+		opacity: 1;
+		transition: opacity 0.3s ease-in-out;
 	}
 
 	.context-section > .close-ctn:hover {
