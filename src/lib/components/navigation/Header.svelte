@@ -18,8 +18,6 @@
 			quizzWasDisabledSinceDelay = false;
 		}
 	}
-
-	console.log($quizz);
 </script>
 
 <header>
