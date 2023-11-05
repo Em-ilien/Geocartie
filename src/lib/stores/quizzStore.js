@@ -4,38 +4,43 @@ import { departments } from './../../routes/france/departments/data';
 export const MAX_MISSED_TRIES = 3;
 
 function createQuizz() {
-	const { subscribe, set, update } = writable({
-		enabled: false,
-		questions: [],
-		score: { goodAnswers: 0, wrongAnswers: 0 },
-	});
+	const initialValue = () => {
+		return {
+			enabled: false,
+			questions: [],
+			score: { goodAnswers: 0, wrongAnswers: 0 },
+		};
+	};
+	const { subscribe, set, update } = writable(initialValue());
 
 	function loadNewInstruction(n) {
-		let randomDepartment = (() => {
-			let randomDepartment = undefined;
-			do {
-				randomDepartment = departments[Math.floor(Math.random() * departments.length)];
-			} while (
-				n.questions != undefined &&
-				n.questions.some((question) => question.id == randomDepartment.id && question.tries < MAX_MISSED_TRIES)
-			);
-			return randomDepartment;
-		})();
+		//Supprimer les départements déjà trouvés
+		let remainingDepartments = departments.filter(
+			(department) =>
+				!n.questions.some(
+					(question) => question.id == department.id && question.tries.length < MAX_MISSED_TRIES,
+				),
+		);
+		//Supprimer le dernier département que l'utilisateur a échoué à trouver le cas échéant
+		remainingDepartments = remainingDepartments.filter(
+			(department) => n.questions[n.questions.length - 1]?.id != department.id,
+		);
 
+		if (remainingDepartments.length == 0) return null;
+
+		const randomDepartment = remainingDepartments[Math.floor(Math.random() * remainingDepartments.length)];
 		return {
 			id: randomDepartment.id,
 			tries: [],
 		};
 	}
+	function disable() {
+		set(initialValue());
+	}
 
 	return {
 		subscribe, //NOTE: subscribe is used by svelte to listen to changes
-		disable: () =>
-			set({
-				enabled: false,
-				questions: [],
-				score: { goodAnswers: 0, wrongAnswers: 0 },
-			}),
+		disable: () => disable(),
 		enable: () =>
 			update((n) => {
 				return {
@@ -64,7 +69,10 @@ function createQuizz() {
 						if (currentQuestion.tries.length < MAX_MISSED_TRIES) {
 							res.score.goodAnswers++;
 						}
-						res.questions.push(loadNewInstruction(n));
+
+						const newQuestion = loadNewInstruction(n);
+						if (!newQuestion) return initialValue();
+						res.questions.push(newQuestion);
 					} else if (currentQuestion.tries.length == MAX_MISSED_TRIES) {
 						res.score.wrongAnswers++;
 					}
