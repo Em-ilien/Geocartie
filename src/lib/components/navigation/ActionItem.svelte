@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	export let text = '';
+	export let text = null;
 	export let icon;
 	export let href = null;
 	export let blank = null;
@@ -11,17 +11,20 @@
 	function onClick(e) {
 		dispatch('click', null);
 	}
+
+	$: padding = text ? '0.5625em 0.8125em' : '0 0.8125em';
 </script>
 
-<a {href} target={blank ? '_blank' : ''} on:click={onClick} {title}>
+<a {href} target={blank ? '_blank' : ''} on:click={onClick} {title} style:padding>
 	<img src={icon} alt="Icône" />
-	<span>{text}</span>
+	{#if text}
+		<span>{text}</span>
+	{/if}
 </a>
 
 <style>
 	a {
 		display: flex;
-		padding: 0.5625em 0.8125em;
 		flex-direction: column;
 		align-items: center;
 		gap: 0.625em;

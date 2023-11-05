@@ -2,22 +2,39 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	export let label;
+	export let size;
 	export let title = null;
 
 	function onClick(e) {
 		dispatch('click', null);
 	}
+
+	$: hasIconSlot = !!$$slots.icon;
 </script>
 
-<button on:click={onClick} {title}>
-	<slot name="icon" />
-	<span>{label}</span>
+<button
+	on:click={onClick}
+	{title}
+	style:padding={size * 0.0255 + 'em ' + size * 0.0463 + 'em ' + size * 0.0255 + 'em ' + size * 0.0278 + 'em'}
+>
+	{#if hasIconSlot}
+		<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewbox="0 0 27 27" fill="none">
+			<g clip-path="url(#clip0_557_14)">
+				<slot name="icon" />
+			</g>
+			<defs>
+				<clipPath id="clip0_557_14">
+					<rect width="27" height="27" fill="white" />
+				</clipPath>
+			</defs>
+		</svg>
+	{/if}
+	<span style:font-size={size * 0.0463 + 'em'}>{label}</span>
 </button>
 
 <style>
 	button {
 		display: flex;
-		padding: 0.6875em 1.25em 0.6875em 0.75em;
 		align-items: center;
 		gap: 0.8125em;
 		border-radius: 0.75em;
@@ -45,7 +62,6 @@
 
 	button span {
 		color: #fff;
-		font-size: 1.25em;
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;

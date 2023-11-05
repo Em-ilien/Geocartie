@@ -1,4 +1,5 @@
 <script>
+	import BottomNavigation from './BottomNavigation.svelte';
 	import { quizz } from '../../stores/quizzStore.js';
 	import { fade, fly } from 'svelte/transition';
 
@@ -45,6 +46,8 @@
 	{/if}
 </header>
 
+<BottomNavigation />
+
 <style>
 	header {
 		display: flex;
@@ -52,6 +55,8 @@
 		justify-content: space-between;
 		border-bottom: 1px solid #ddd;
 		user-select: none;
+		padding: 0.625em 0;
+		gap: 0.5em;
 	}
 
 	header > div:first-child {
@@ -68,6 +73,8 @@
 
 	.actions-transition {
 		margin-left: auto;
+		display: flex;
+		align-items: center;
 	}
 
 	a {
@@ -86,7 +93,6 @@
 	a img {
 		object-fit: contain;
 		width: 10em;
-		padding: 0.625em 0;
 	}
 
 	@media (max-width: 1000px) {

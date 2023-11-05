@@ -1,6 +1,5 @@
 <script>
 	import Map from './components/map/Map.svelte';
-	import BottomNavigation from './components/navigation/BottomNavigation.svelte';
 	import Header from './components/navigation/Header.svelte';
 	import { Toaster } from 'svelte-french-toast';
 
@@ -18,7 +17,6 @@
 		<slot />
 		<Map />
 	</main>
-	<BottomNavigation />
 </div>
 
 <Toaster />
