@@ -8,6 +8,7 @@
 
 	$: totalAnswers = score.goodAnswers + score.wrongAnswers;
 	$: scoreStr = `${score.goodAnswers} / ${totalAnswers}`;
+	$: successRate = Math.round((score.goodAnswers / (totalAnswers != 0 ? totalAnswers : 1)) * 100);
 
 	let scoreHeight = 0;
 	let scoreWidth = 0;
@@ -59,7 +60,7 @@
 		<p>
 			Vous avez commis <b class="red">{score.wrongAnswers} erreur{score.wrongAnswers > 1 ? 's' : ''}</b>, soit un
 			taux de réussite est de
-			<b class="green">{Math.round((score.goodAnswers / totalAnswers) * 100)} %</b>.
+			<b class="green">{successRate} %</b>.
 		</p>
 	</div>
 {/if}
@@ -76,10 +77,9 @@
 
 	.score-tooltip {
 		position: absolute;
-		z-index: 1000;
+		z-index: 100000;
 		padding: 1em;
 		box-shadow: 1px 1px 0.5em 0 #00000050;
-		background: #fff;
 		border-radius: 0.5em;
 		background: #fff;
 	}

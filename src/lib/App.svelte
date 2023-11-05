@@ -12,11 +12,11 @@
 </script>
 
 <div class="app" on:click={onClick} on:keydown={onClick} role={null}>
-	<Header />
 	<main>
 		<slot />
 		<Map />
 	</main>
+	<Header />
 </div>
 
 <Toaster />
@@ -31,7 +31,7 @@
 
 	.app {
 		display: flex;
-		flex-direction: column;
+		flex-direction: column-reverse;
 		font-family: 'Roboto', 'Lato', sans-serif;
 		overflow: hidden;
 		max-width: 100vw;
