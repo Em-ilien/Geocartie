@@ -62,10 +62,6 @@
 		}
 	}
 
-	.score {
-		min-width: max-content;
-	}
-
 	button {
 		background: none;
 		box-shadow: none;

@@ -1,7 +1,11 @@
 import Tooltip from '$lib/components/general/Tooltip.svelte';
 
 export function tooltip(element, params) {
-	const { conditionFct, label } = params;
+	let { conditionFct, label } = params;
+
+	if (!conditionFct) {
+		conditionFct = () => true;
+	}
 
 	let title;
 	let tooltipComponent;
@@ -16,7 +20,7 @@ export function tooltip(element, params) {
 
 		tooltipComponent = new Tooltip({
 			props: {
-				title: label,
+				title: label(),
 				x: event.pageX,
 				y: event.pageY,
 			},
