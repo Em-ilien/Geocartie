@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores.js';
 	import { MAX_MISSED_TRIES, quizz } from '../../stores/quizzStore.js';
-	import MapLittleCrown from './MapLittleCrown.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { tooltip } from '../../helpers/tooltip.js';
@@ -9,20 +8,50 @@
 
 	$: currentQuizzQuestion = $quizz.questions[$quizz.questions.length - 1];
 
-	let littleCrownModalActive = false;
+	let zoomLevel = 1;
+	const zoomFactor = 0.5;
+	let cursorX = 0;
+	let newCursorX = 0;
+	let cursorY = 0;
+	let newCursorY = 0;
+	let map = undefined;
 
-	$: darken = littleCrownModalActive || !'other_future_conditions';
+	onMount(() => {
+		map = document.querySelector('#map');
+	});
 
-	function onClickPreviewLittleCrown(e) {
-		littleCrownModalActive = true;
+	function handleMouseMove(event) {
+		//NOTE: retrancher la position du svg dans la page
+		let svg = document.querySelector('#map');
+		let rect = svg.getBoundingClientRect();
+		newCursorX = event.clientX - rect.left;
+		newCursorY = event.clientY - rect.top;
 	}
 
-	function onClickMapSection(e) {
-		littleCrownModalActive = false;
+	function handleScroll(event) {
+		if (!map) return;
+
+		const centerX = map.clientWidth / 2;
+		const centerY = map.clientHeight / 2;
+
+		const delta = event.deltaY > 0 ? -zoomFactor : zoomFactor;
+		const newZoom = Math.max(1, Math.min(5, zoomLevel + delta));
+
+		if (newZoom == zoomLevel) return;
+
+		if (zoomLevel == 1) {
+			cursorX = centerX + (newCursorX - centerX) * (newZoom / zoomLevel);
+			cursorY = centerY + (newCursorY - centerY) * (newZoom / zoomLevel);
+		}
+
+		zoomLevel = newZoom;
 	}
+
+	$: transformOrigin = `${cursorX}px ${cursorY}px`;
+
+	function onClickMapSection(e) {}
 	function onKeydown(e) {
 		if (e.key === 'Escape') {
-			littleCrownModalActive = false;
 			e.stopPropagation();
 		}
 	}
@@ -39,7 +68,6 @@
 
 		const departmentId = e.target.id.replace('FR-', '');
 		goto(`/france/departments/${departmentId}`);
-		littleCrownModalActive = false;
 		activeDepartmentId = departmentId;
 
 		if ($quizz.enabled) quizz.currentQuestion.addTry(departmentId);
@@ -81,9 +109,15 @@
 	}
 </script>
 
-<!-- prettier-ignore -->
-<section class:darken on:click|self={onClickMapSection} on:click={onClickDepartment} on:contextmenu|preventDefault>
-	<svg viewBox="14 -1 600 590" xmlns="http://www.w3.org/2000/svg">
+<section
+	on:click|self={onClickMapSection}
+	on:click={onClickDepartment}
+	on:contextmenu|preventDefault
+	on:wheel={handleScroll}
+	on:mousemove={handleMouseMove}
+>
+	<!-- prettier-ignore -->
+	<svg id="map" viewBox="14 -1 600 590" xmlns="http://www.w3.org/2000/svg" style:transform={`scale(${zoomLevel})`} style:transform-origin={transformOrigin} >
 		<defs>
 			<amcharts:ammap projection="mercator" leftLongitude="-5.185287" topLatitude="51.089515" rightLongitude="9.560553" bottomLatitude="41.366975"></amcharts:ammap>	
 		</defs>
@@ -107,7 +141,6 @@
 			</g>
 			
 			<g>
-				<!-- <path id="FR-02" class:active={activeDepartmentId == "02"} class:quizz-wrong-answer={quizzWrongAnswer("02")} class:quizz-show-answer={showAnswer("02")} use:tooltip={{label: tooltipLabel("02"), conditionFct: tooltipCondition}} title="Aisne" d="M346.84,70.19L354.77,68.56L360.05,69.76L362.25,67.4L367.05,69.02L369.34,66.45L375.88,68.52L376.51,70.35L380.45,68.11L380.38,71.37L387.12,72.25L387.12,72.25L390.82,73.57L390.82,73.57L391.7,79.39L389.74,85.06L391.56,86.53L386.43,91.59L385.96,94.47L382.16,95.18L384.42,98.43L383.18,108.95L383.18,108.95L382.7,111.88L378.01,108.92L375.18,110.61L375,112.86L371.95,112.13L366.44,114.85L366.8,121.24L370.72,124.66L365.48,125.19L364.59,127.14L366.14,129.82L363.94,132.36L366.66,131.97L367.78,133.8L359.78,144L359.78,144L358.78,144.92L355.54,142.76L354.9,139.21L353.3,140.49L352.3,137.93L350.63,138.55L346.6,133.92L346.49,128.46L342.66,127.33L342.66,127.33L345.78,124.58L343.86,122.21L343.34,124.65L343.16,122.54L339.98,121.06L340.6,123.93L337.97,120.39L341.36,120.01L341.28,116.56L339.11,116.45L338.4,113.98L341.53,113.88L343.58,107.21L346.53,106.78L344.13,105.11L343.58,102.12L345.41,98.19L343.54,95.15L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L341.95,81.73L348.12,71.96L346.09,71.49z" /> -->
 				<path id="FR-01" class={getLandClass("01")} use:tooltip={{label: tooltipLabel("01"), conditionFct: tooltipCondition}} title="Ain" d="M413.57,308.03L420.26,287.51L425.07,289.58L429.68,287.48L432.49,291.15L435.75,291.85L435.75,291.85L435.11,293.84L438.34,295.69L439.45,299.99L440.3,297.75L442.42,299.69L442.35,302.76L445.06,302.51L449.38,297.95L452.32,300.07L452.8,302.97L458.79,302.74L466.89,293.67L466.89,293.67L471.26,296.62L468.45,301.53L469.38,303.57L463.38,305.63L462.4,310.65L462.4,310.65L459.76,311.46L459.5,313.45L456.73,312.36L457.07,322.2L457.07,322.2L454.87,334.91L451.82,335.73L451.21,339.82L448.63,341.49L448.63,341.49L437.33,325.49L431.99,332.29L426.95,329.63L426.95,329.63L419.33,330.26L417.79,324.74L414.6,324.73L414.77,323.33L411.5,322.02L412.18,313.25L414.51,309.52z" />
 				<path id="FR-02" class={getLandClass("02")} use:tooltip={{label: tooltipLabel("02"), conditionFct: tooltipCondition}} title="Aisne" d="M346.84,70.19L354.77,68.56L360.05,69.76L362.25,67.4L367.05,69.02L369.34,66.45L375.88,68.52L376.51,70.35L380.45,68.11L380.38,71.37L387.12,72.25L387.12,72.25L390.82,73.57L390.82,73.57L391.7,79.39L389.74,85.06L391.56,86.53L386.43,91.59L385.96,94.47L382.16,95.18L384.42,98.43L383.18,108.95L383.18,108.95L382.7,111.88L378.01,108.92L375.18,110.61L375,112.86L371.95,112.13L366.44,114.85L366.8,121.24L370.72,124.66L365.48,125.19L364.59,127.14L366.14,129.82L363.94,132.36L366.66,131.97L367.78,133.8L359.78,144L359.78,144L358.78,144.92L355.54,142.76L354.9,139.21L353.3,140.49L352.3,137.93L350.63,138.55L346.6,133.92L346.49,128.46L342.66,127.33L342.66,127.33L345.78,124.58L343.86,122.21L343.34,124.65L343.16,122.54L339.98,121.06L340.6,123.93L337.97,120.39L341.36,120.01L341.28,116.56L339.11,116.45L338.4,113.98L341.53,113.88L343.58,107.21L346.53,106.78L344.13,105.11L343.58,102.12L345.41,98.19L343.54,95.15L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L341.95,81.73L348.12,71.96L346.09,71.49z" />
 				<path id="FR-03" class={getLandClass("03")} use:tooltip={{label: tooltipLabel("03"), conditionFct: tooltipCondition}} title="Allier" d="M309.79,293.44L313.12,287.63L320.42,287.48L323.66,285.42L321.81,279.05L324.21,279.07L324.06,277.16L327.86,273.84L329.74,275.55L333.28,275.02L336.37,270.96L340.96,270.84L340.96,270.84L348.05,278.03L350.83,275.54L354.06,277.53L357.12,275.72L359.68,279.56L362.94,277.23L362.39,275.19L364.44,275.1L364.42,272.61L365.78,273.6L365.78,273.6L370.48,286.3L374.51,286.74L375.66,289.29L379.25,289.08L381.18,290.92L381.38,298.98L377,302.07L377,302.07L371.55,304.27L374.17,318.6L369.08,320.13L368.46,322.71L368.46,322.71L364.21,317.15L358.94,318.08L358.84,314.98L357.06,314.11L353.45,315.85L345.04,314.36L343.47,311.69L340.27,312.42L336.09,307.92L337.44,304.15L336.34,303.56L332.7,303.79L331.77,306.83L328.57,305.26L324.68,311.46L321.71,310L321.71,310L318.18,301.81L310.7,298.03L312.05,296.46L310.08,295.74z" />
@@ -200,17 +233,13 @@
 				<path id="FR-90" class={getLandClass("90")} use:tooltip={{label: tooltipLabel("90"), conditionFct: tooltipCondition}} title="Territoire de Belfort" d="M498.91,208.16L500.16,210.59L507.24,214.26L505.95,221.67L509.3,222.24L511.23,227.75L511.23,227.75L505.02,228.3L505.8,230.78L503.24,232.05L503.24,232.05L501.85,229.58L503.4,227.11L501.62,224.88L497.69,224.1L497.69,224.1L495.68,212.74L498.39,208.6L498.39,208.6z" />
 				<path id="FR-91" class={getLandClass("91")} use:tooltip={{label: tooltipLabel("91"), conditionFct: tooltipCondition}} title="Essonne" d="M306.17,149.45L310.83,150.95L310.83,150.95L315.35,152.47L319.52,151.12L321.89,154.08L321.89,154.08L318.85,163.21L319.05,170.46L320.85,172.21L317.84,172.93L314.93,177.56L314.93,177.56L311.81,176.5L308.32,178.63L306.57,175.79L304.93,178.63L297.89,179.38L297.89,179.38L296.39,177.92L297.21,172.25L295.15,171.97L294.91,168.73L294.91,168.73L297.25,164.49L295.47,162.34L298.87,162.53L300.72,158.86L298.6,156.13L302.14,153.79L302.39,151.22z" />
 				<path id="FR-95" class={getLandClass("95")} use:tooltip={{label: tooltipLabel("95"), conditionFct: tooltipCondition}} title="Val-d'Oise" d="M285.85,120.07L287.35,120.55L287.42,123.28L291.31,124.35L298.23,123.61L301.51,121.43L305.23,124.39L307.22,123.39L307.58,125.14L311.17,122.94L318.5,127.99L321.15,126.86L322.65,129.65L322.65,129.65L321.01,133.96L321.01,133.96L316.39,137.61L313.35,136.4L309.85,137.88L309.85,137.88L306.49,140.49L306.49,140.49L306.65,137.78L303.15,133.61L299.11,134.84L294.32,131.69L293,133.62L291.11,129.89L286.66,131.89L281.9,129.82L281.9,129.82z" />
-				<MapLittleCrown {tooltipLabel} on:click={onClickPreviewLittleCrown} preview={true} />
+				<path id="FR-75" class={getLandClass("75")} use:tooltip={{label: tooltipLabel("75"), conditionFct: tooltipCondition}} title="Paris" d="M311.53,141.03L314.45,141.07L315.23,143.69L315.23,143.69L317.16,145.98L311.9,146.11L311.9,146.11L307.49,143.87z" />
+				<path id="FR-92" class={getLandClass("92")} use:tooltip={{label: tooltipLabel("92"), conditionFct: tooltipCondition}} title="Hauts-de-Seine" d="M309.85,137.88L312.08,138.48L311.53,141.03L311.53,141.03L307.49,143.87L311.9,146.11L311.9,146.11L310.83,150.95L310.83,150.95L306.17,149.45L306.17,149.45L304.1,144.61L306.49,140.49L306.49,140.49z" />
+				<path id="FR-93" class={getLandClass("93")} use:tooltip={{label: tooltipLabel("93"), conditionFct: tooltipCondition}} title="Seine-Saint-Denis" d="M321.01,133.96L323.18,138.83L321.35,141.83L322.85,146.9L322.85,146.9L320.27,143.91L315.23,143.69L315.23,143.69L314.45,141.07L311.53,141.03L311.53,141.03L312.08,138.48L309.85,137.88L309.85,137.88L313.35,136.4L316.39,137.61z" />
+				<path id="FR-94" class={getLandClass("94")} use:tooltip={{label: tooltipLabel("94"), conditionFct: tooltipCondition}} title="Val-de-Marne" d="M315.23,143.69L320.27,143.91L322.85,146.9L322.85,146.9L323.63,149.63L321.89,154.08L321.89,154.08L319.52,151.12L315.35,152.47L310.83,150.95L310.83,150.95L311.9,146.11L311.9,146.11L317.16,145.98z" />
 			  </g>
 		  </g>
 	</svg>
-	{#if littleCrownModalActive}
-	<div class="little-crown-modal">
-		<svg viewBox="303 133 21 22" xmlns="http://www.w3.org/2000/svg">
-			<MapLittleCrown {tooltipLabel} />
-		</svg>
-	</div>
-	{/if}
 </section>
 
 <svelte:body on:keydown={onKeydown} />
@@ -221,20 +250,7 @@
 		max-height: 100%;
 		padding: 1em;
 		flex-grow: 1;
-	}
-	section.darken {
-		background: #00000060;
-		backdrop-filter: blur(1px);
-		animation: darken 0.1875s ease-in-out;
-	}
-
-	@keyframes darken {
-		0% {
-			background: #fff;
-		}
-		100% {
-			background: #00000060;
-		}
+		overflow: hidden;
 	}
 
 	@media (max-width: 780px) {
@@ -243,14 +259,6 @@
 			max-width: 450px;
 			margin: auto;
 		}
-	}
-
-	section.darken :global(*) {
-		pointer-events: none;
-	}
-
-	section .little-crown-modal :global(*) {
-		pointer-events: all;
 	}
 
 	svg :global(.land) {
@@ -321,21 +329,6 @@
 		fill-opacity: 0;
 		stroke: #555;
 		stroke-width: 1.25;
-	}
-
-	section .little-crown-modal {
-		pointer-events: all;
-		position: relative;
-		top: -50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 100;
-		width: 10rem;
-		background: #fff;
-		border-radius: 1em;
-		padding: 1rem;
-		box-shadow: 0 0 1em 0.25em #00000080;
-		animation: open-modal 0.1875s ease-in-out;
 	}
 
 	@keyframes open-modal {
