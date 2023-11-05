@@ -81,6 +81,7 @@
 		box-shadow: 1px 1px 0.5em 0 #00000050;
 		background: #fff;
 		border-radius: 0.5em;
+		background: #fff;
 	}
 
 	.score-tooltip p {
