@@ -2,6 +2,8 @@
 	import { quizz } from '../../stores/quizzStore';
 	import { departments } from '/src/routes/france/departments/data.js';
 
+	import QuizzScore from './QuizzScore.svelte';
+
 	$: currentQuizzQuestion = $quizz.questions[$quizz.questions.length - 1];
 	$: currentQuestionId = currentQuizzQuestion?.id;
 	$: currentDepartment = departments.find((department) => department.id === currentQuestionId);
@@ -10,11 +12,10 @@
 		if (!$quizz.enabled) return 'À bientôt !';
 		return `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} sur la carte (${currentQuestionId})`;
 	};
-	$: scoreStr = `${$quizz.score.goodAnswers} / ${$quizz.score.goodAnswers + $quizz.score.wrongAnswers}`;
 </script>
 
 <section class="quizz-instruction">
-	<span class="score" title="Bonnes réponses">{scoreStr}</span>
+	<QuizzScore score={$quizz.score} />
 
 	<main>
 		<p>{instructionLabel()}</p>
@@ -38,10 +39,11 @@
 		justify-content: space-between;
 		gap: 1.25em;
 		width: 100%;
-		padding: 1em;
+		padding: 0 1em 0 0;
 		background: linear-gradient(120deg, #90b2dbaa 0%, #cb8de6aa 80%);
 		backdrop-filter: blur(2px);
 		min-height: 100%;
+		height: 100%;
 		align-items: center;
 	}
 
