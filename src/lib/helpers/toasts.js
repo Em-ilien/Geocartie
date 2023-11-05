@@ -17,22 +17,3 @@ export function onClickMenuNav(e, itemLabel) {
 		position: POSITION,
 	});
 }
-
-export function initQuizz(instruction) {
-	toast.success(
-		`Bienvenue dans le quizz ! Cherchez le département ${instruction.prefix}${instruction.name} (${instruction.id})`,
-		{
-			style: STYLE,
-			position: QUIZZ_POSITION,
-			duration: 3000,
-		},
-	);
-}
-
-export function quizzFinished() {
-	toast.success('Bravo ! Vous avez trouvé tous les départements de France !', {
-		style: STYLE,
-		position: QUIZZ_POSITION,
-		duration: 5000,
-	});
-}

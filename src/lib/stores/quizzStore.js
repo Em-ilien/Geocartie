@@ -1,54 +1,75 @@
 import { writable } from 'svelte/store';
+import { departments } from './../../routes/france/departments/data';
+
+export const MAX_MISSED_TRIES = 3;
 
 function createQuizz() {
-	const initialValue = {
+	const { subscribe, set, update } = writable({
 		enabled: false,
-		answer: undefined,
-		score: {
-			goodAnswers: 0,
-			wrongAnswers: 0,
-		},
-	};
+		questions: [],
+		score: { goodAnswers: 0, wrongAnswers: 0 },
+	});
 
-	const { subscribe, set, update } = writable(initialValue);
+	function loadNewInstruction(n) {
+		let randomDepartment = (() => {
+			let randomDepartment = undefined;
+			do {
+				randomDepartment = departments[Math.floor(Math.random() * departments.length)];
+			} while (
+				n.questions != undefined &&
+				n.questions.some((question) => question.id == randomDepartment.id && question.tries < MAX_MISSED_TRIES)
+			);
+			return randomDepartment;
+		})();
+
+		return {
+			id: randomDepartment.id,
+			tries: [],
+		};
+	}
 
 	return {
-		subscribe,
-		reset: () => set(initialValue),
+		subscribe, //NOTE: subscribe is used by svelte to listen to changes
+		disable: () =>
+			set({
+				enabled: false,
+				questions: [],
+				score: { goodAnswers: 0, wrongAnswers: 0 },
+			}),
 		enable: () =>
 			update((n) => {
 				return {
 					...n,
 					enabled: true,
+					questions: [loadNewInstruction(n)],
+					score: {
+						goodAnswers: 0,
+						wrongAnswers: 0,
+					},
 				};
 			}),
-		setAnswer: (answer) =>
-			update((n) => {
-				return {
-					...n,
-					answer,
-				};
-			}),
-		score: {
-			incrementGoodAnswers: () =>
+		currentQuestion: {
+			addTry: (id) =>
 				update((n) => {
-					return {
+					const res = {
 						...n,
-						score: {
-							...n.score,
-							goodAnswers: n.score.goodAnswers + 1,
-						},
+						questions: n.questions,
+						score: n.score,
 					};
-				}),
-			incrementWrongAnswers: () =>
-				update((n) => {
-					return {
-						...n,
-						score: {
-							...n.score,
-							wrongAnswers: n.score.wrongAnswers + 1,
-						},
-					};
+
+					let currentQuestion = res.questions[res.questions.length - 1];
+					currentQuestion.tries.push(id);
+
+					if (currentQuestion.id == id) {
+						if (currentQuestion.tries.length < MAX_MISSED_TRIES) {
+							res.score.goodAnswers++;
+						}
+						res.questions.push(loadNewInstruction(n));
+					} else if (currentQuestion.tries.length == MAX_MISSED_TRIES) {
+						res.score.wrongAnswers++;
+					}
+
+					return res;
 				}),
 		},
 	};

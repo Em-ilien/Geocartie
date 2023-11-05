@@ -1,125 +1,26 @@
 <script>
 	import { quizz } from '../../stores/quizzStore';
 	import { departments } from '/src/routes/france/departments/data.js';
-	import { initQuizz, quizzFinished } from '$lib/helpers/toasts.js';
 
-	const MAX_MISSED_TRIES = 3;
-	const DELAY_FLASHING = 300;
-	const FLASHING_NUMBERS = 5;
+	$: currentQuizzQuestion = $quizz.questions[$quizz.questions.length - 1];
+	$: currentQuestionId = currentQuizzQuestion?.id;
+	$: currentDepartment = departments.find((department) => department.id === currentQuestionId);
 
-	let instruction = {
-		label: undefined,
-		id: undefined,
-		name: undefined,
-		prefix: undefined,
-		tries: 0,
+	$: instructionLabel = () => {
+		if (!$quizz.enabled) return 'À bientôt !';
+		return `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} sur la carte (${currentQuestionId})`;
 	};
-	let instructionsHistory = [];
-
-	function onStopQuizz() {
-		quizz.reset();
-	}
-
-	$: {
-		if ($quizz.answer) {
-			checkNewUserAnswer($quizz.answer);
-		}
-	}
-
-	const checkNewUserAnswer = (value) => {
-		if (!instruction.id) return;
-		if (!value) return;
-
-		if (value != instruction.id) {
-			instruction.tries++;
-			if (instruction.tries == MAX_MISSED_TRIES) {
-				quizz.score.incrementWrongAnswers();
-				showAnswer();
-			}
-			return;
-		}
-
-		if (instruction.tries < MAX_MISSED_TRIES) {
-			quizz.score.incrementGoodAnswers();
-		}
-		loadNewInstruction();
-	};
-
-	let loadNewInstruction = () => {
-		if (instruction.id != undefined)
-			instructionsHistory.push({
-				id: instruction.id,
-				tries: instruction.tries,
-			});
-
-		document.querySelector('.land.quizz-show-answer')?.classList.remove('quizz-show-answer');
-
-		if (instructionsHistory.length == departments.length) {
-			quizzFinished();
-			onStopQuizz();
-			return;
-		}
-
-		let randomDepartment = (() => {
-			let randomDepartment = undefined;
-			do {
-				randomDepartment = departments[Math.floor(Math.random() * departments.length)];
-			} while (
-				instructionsHistory.some(
-					(instruction) => instruction.id == randomDepartment.id && instruction.tries < MAX_MISSED_TRIES,
-				)
-			);
-			return randomDepartment;
-		})();
-
-		instruction.label =
-			'Cherchez ' +
-			randomDepartment.prefix +
-			randomDepartment.name +
-			' sur la carte (' +
-			randomDepartment.id +
-			')';
-		instruction.id = randomDepartment.id;
-		instruction.name = randomDepartment.name;
-		instruction.prefix = randomDepartment.prefix;
-		instruction.tries = 0;
-	};
-
-	function showAnswer() {
-		const departementId = ('0' + instruction.id).slice(-2);
-		const departementElement = document.querySelector(`#FR-${departementId}`);
-		let colorInRed = () => {
-			departementElement.classList.add('quizz-show-answer');
-		};
-		let removeRedColor = () => {
-			departementElement.classList.remove('quizz-show-answer');
-		};
-
-		for (let i = 0; i < FLASHING_NUMBERS; i++) {
-			setTimeout(() => {
-				removeRedColor();
-				setTimeout(() => {
-					if (instruction.id != departementId) return;
-					colorInRed();
-				}, DELAY_FLASHING / 2);
-			}, DELAY_FLASHING * i);
-		}
-	}
-
-	$: scoreStr = $quizz.score.goodAnswers + ' / ' + ($quizz.score.goodAnswers + $quizz.score.wrongAnswers);
-
-	loadNewInstruction();
-	initQuizz(instruction);
+	$: scoreStr = `${$quizz.score.goodAnswers} / ${$quizz.score.goodAnswers + $quizz.score.wrongAnswers}`;
 </script>
 
 <section class="quizz-instruction">
 	<span class="score">{scoreStr}</span>
 
 	<main>
-		<p>{instruction.label}</p>
+		<p>{instructionLabel()}</p>
 	</main>
 
-	<button on:click={onStopQuizz}>
+	<button on:click={() => quizz.disable()}>
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
