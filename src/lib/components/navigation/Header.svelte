@@ -55,8 +55,6 @@
 		justify-content: space-between;
 		border-bottom: 1px solid #ddd;
 		user-select: none;
-		padding: 0.625em 0;
-		gap: 0.5em;
 	}
 
 	header > div:first-child {
@@ -75,6 +73,7 @@
 		margin-left: auto;
 		display: flex;
 		align-items: center;
+		padding: 0.5em 0;
 	}
 
 	a {
@@ -82,6 +81,7 @@
 		display: flex;
 		align-items: center;
 		width: fit-content;
+		padding: 0.625em 0;
 	}
 
 	@media (max-width: 500px) {
