@@ -6,13 +6,14 @@
 	export let icon;
 	export let href = null;
 	export let blank = null;
+	export let title = null;
 
 	function onClick(e) {
 		dispatch('click', null);
 	}
 </script>
 
-<a {href} target={blank ? '_blank' : ''} on:click={onClick}>
+<a {href} target={blank ? '_blank' : ''} on:click={onClick} {title}>
 	<img src={icon} alt="Icône" />
 	<span>{text}</span>
 </a>

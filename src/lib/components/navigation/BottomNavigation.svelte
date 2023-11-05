@@ -10,7 +10,7 @@
 
 <div class="bottom-navigation">
 	<ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizz.enable()} />
+	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizz.enable()} title="Lance le mode quizz" />
 </div>
 
 <style>

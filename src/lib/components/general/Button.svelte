@@ -2,13 +2,14 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	export let label;
+	export let title = null;
 
 	function onClick(e) {
 		dispatch('click', null);
 	}
 </script>
 
-<button on:click={onClick}>
+<button on:click={onClick} {title}>
 	<slot name="icon" />
 	<span>{label}</span>
 </button>

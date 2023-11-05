@@ -13,7 +13,7 @@
 
 <div class="actions">
 	<ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} />
-	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizz.enable()} />
+	<ActionItem text="Jouer au Quizz" icon={quizzIcon} on:click={() => quizz.enable()} title="Lance le mode quizz" />
 	<div class="more">
 		<ActionItem text="Nous contacter" icon={contactIcon} href="/contact" />
 		<ActionItem text="Mentions légales" icon={legalIcon} href="/legal" />
