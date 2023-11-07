@@ -1,5 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { quizz } from './../../stores/quizzStore.js';
+	import { preferences } from '../../stores/preferencesStore';
 	import ContextSection from './ContextSection.svelte';
 
 	export let department;
@@ -12,9 +14,17 @@
 		department.prefix === 'les ' ? 'sont situés' : department.prefix === 'la ' ? 'est située' : 'est situé';
 	$: departmentPronounAndVerb =
 		department.prefix === 'les ' ? 'Ils ont' : department.prefix === 'la ' ? 'Elle a' : 'Il a';
+
+	function closeContextSection() {
+		if ($quizz.enabled) {
+			preferences.layout.contextSection.close();
+			return;
+		}
+		goto('/');
+	}
 </script>
 
-<ContextSection>
+<ContextSection onClose={closeContextSection}>
 	<section class="department">
 		<h1>{department.name} ({department.id})</h1>
 		<p>

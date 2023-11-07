@@ -7,6 +7,7 @@
 	import QuizzInstruction from '../quizz/QuizzInstruction.svelte';
 	import HeaderActionsList from './HeaderActionsList.svelte';
 	import HeaderNav from './HeaderNav.svelte';
+	import { preferences } from '../../stores/preferencesStore';
 
 	let quizzWasDisabledSinceDelay = true;
 
@@ -19,15 +20,19 @@
 			quizzWasDisabledSinceDelay = false;
 		}
 	}
+
+	$: isQuizzFocused = $quizz.enabled && $preferences.layout.contextSection.closed;
 </script>
 
 <header>
-	<div>
-		<a href="/">
-			<img src={logo} alt="Logo Géocartie" />
-		</a>
-		<HeaderNav />
-	</div>
+	{#if !isQuizzFocused}
+		<div out:fly={{ y: 0, x: '-100%', duration: 700 }} in:fly={{ y: 0, x: '-100%', duration: 700 }}>
+			<a href="/">
+				<img src={logo} alt="Logo Géocartie" />
+			</a>
+			<HeaderNav />
+		</div>
+	{/if}
 
 	{#if !$quizz.enabled}
 		{#if quizzWasDisabledSinceDelay}
@@ -40,6 +45,7 @@
 			class="quizz-instruction-transition"
 			in:fly={{ y: 0, x: '100%', duration: 700 }}
 			out:fade={{ duration: 700 }}
+			style:width={isQuizzFocused ? '100vw' : '50vw'}
 		>
 			<QuizzInstruction />
 		</div>
