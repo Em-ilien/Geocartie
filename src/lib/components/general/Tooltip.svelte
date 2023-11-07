@@ -1,5 +1,5 @@
 <script>
-	export let title;
+	export let label;
 	export let x;
 	export let y;
 
@@ -10,7 +10,7 @@
 
 <div style:top={y + 10 + 'px'} style:left={x + 10 + 'px'}>
 	<span>
-		{#each title.split('\n') as line}
+		{#each label.split('\n') as line}
 			{formatStr(line)}<br />
 		{/each}
 	</span>

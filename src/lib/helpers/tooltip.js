@@ -1,17 +1,30 @@
 import Tooltip from '$lib/components/general/Tooltip.svelte';
 
 export function tooltip(element, params) {
-	let { conditionFct, label } = params;
-
-	if (!conditionFct) {
-		conditionFct = () => true;
-	}
-
 	let title;
 	let tooltipComponent;
 
 	function mouseOver(event) {
+		if (tooltipComponent !== undefined) return;
+		let { conditionFct, label, setLabelChangeCallback } = params();
+
+		if (!conditionFct) {
+			conditionFct = () => true;
+		}
+
 		if (!conditionFct()) return;
+
+		// Définir la fonction de rappel pour signaler les changements du label
+		if (setLabelChangeCallback)
+			setLabelChangeCallback((newLabel) => {
+				label = newLabel;
+				// Mettre à jour le label du tooltipComponent si nécessaire
+				if (tooltipComponent !== undefined) {
+					tooltipComponent?.$set({
+						label: label,
+					});
+				}
+			});
 
 		// NOTE: remove the `title` attribute, to prevent showing the default browser tooltip
 		// remember to set it back on `mouseleave`
@@ -20,7 +33,7 @@ export function tooltip(element, params) {
 
 		tooltipComponent = new Tooltip({
 			props: {
-				title: label(),
+				label: label,
 				x: event.pageX,
 				y: event.pageY,
 			},
@@ -35,6 +48,7 @@ export function tooltip(element, params) {
 	}
 	function mouseLeave() {
 		tooltipComponent?.$destroy();
+		tooltipComponent = undefined;
 		// NOTE: restore the `title` attribute
 		element.setAttribute('title', title);
 	}
