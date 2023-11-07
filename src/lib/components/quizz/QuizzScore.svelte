@@ -1,5 +1,5 @@
 <script>
-	import { tooltip } from '$lib/helpers/tooltip.js';
+	import { fade } from 'svelte/transition';
 	import { departments } from '../../../routes/france/departments/data';
 
 	export let score;
@@ -15,55 +15,50 @@
 	let tooltipWidth = 0;
 
 	let scoreIsHovered = false;
-	let tooltipIsHovered = false;
 
 	$: topTooltip = () => {
 		return `${scoreHeight}px`;
 	};
+
+	function onMouseEnter() {
+		scoreIsHovered = true;
+	}
+	function onMouseLeave() {
+		scoreIsHovered = false;
+	}
 </script>
 
 <div
 	class="score"
 	title={null}
-	on:mouseenter={() => (scoreIsHovered = true)}
-	on:mouseleave={() =>
-		setTimeout(() => {
-			scoreIsHovered = false;
-		}, 500)}
+	on:mouseenter={onMouseEnter}
+	on:focus={onMouseEnter}
+	on:mouseleave={onMouseLeave}
+	on:blur={onMouseLeave}
 	bind:offsetHeight={scoreHeight}
 	bind:offsetWidth={scoreWidth}
 	role={null}
 >
-	<span>
-		{scoreStr}
-	</span>
-</div>
-
-{#if scoreIsHovered || tooltipIsHovered}
-	<div
-		class="score-tooltip"
-		style:top={topTooltip()}
-		bind:offsetWidth={tooltipWidth}
-		on:mouseenter={() => (tooltipIsHovered = true)}
-		on:mouseleave={() => {
-			setTimeout(() => {
-				tooltipIsHovered = false;
-			}, 500);
-		}}
-		role={null}
-	>
-		<h1>Progression : {Math.round((score.goodAnswers / totalLandmarks) * 100)} %</h1>
-		<p>
-			Vous avez retrouvé <b class="green">{score.goodAnswers} département{totalAnswers > 1 ? 's' : ''}</b> sur
-			<b>{totalLandmarks}</b>.
-		</p>
-		<p>
-			Vous avez commis <b class="red">{score.wrongAnswers} erreur{score.wrongAnswers > 1 ? 's' : ''}</b>, soit un
-			taux de réussite est de
-			<b class="green">{successRate} %</b>.
-		</p>
+	<div class="style-ctn">
+		<span>
+			{scoreStr}
+		</span>
 	</div>
-{/if}
+	{#if scoreIsHovered}
+		<div class="score-tooltip" style:top={topTooltip()} bind:offsetWidth={tooltipWidth} in:fade>
+			<h1>Progression : {Math.round((score.goodAnswers / totalLandmarks) * 100)} %</h1>
+			<p>
+				Vous avez retrouvé <b class="green">{score.goodAnswers} département{totalAnswers > 1 ? 's' : ''}</b> sur
+				<b>{totalLandmarks}</b>.
+			</p>
+			<p>
+				Vous avez commis <b class="red">{score.wrongAnswers} erreur{score.wrongAnswers > 1 ? 's' : ''}</b>, soit
+				un taux de réussite est de
+				<b class="green">{successRate} %</b>.
+			</p>
+		</div>
+	{/if}
+</div>
 
 <style>
 	.score {
@@ -75,13 +70,23 @@
 		cursor: pointer;
 	}
 
+	.score .style-ctn {
+		padding-bottom: 0.125em;
+		border-bottom: 2px dotted #226bc2bb;
+		position: relative;
+		top: 0.125em;
+	}
+
 	.score-tooltip {
 		position: absolute;
+		margin-left: -1em;
 		z-index: 100000;
 		padding: 1em;
 		box-shadow: 1px 1px 0.5em 0 #00000050;
 		border-radius: 0.5em;
 		background: #fff;
+		width: max-content;
+		max-width: 100vw;
 	}
 
 	.score-tooltip p {
