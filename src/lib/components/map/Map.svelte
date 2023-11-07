@@ -126,7 +126,7 @@
 		const currentDepartment = departments.find((department) => department.id === currentQuestionId);
 
 		// Mise à jour du label
-		label = `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} sur la carte (${currentDepartment?.id})`;
+		label = `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} (${currentDepartment?.id})`;
 
 		// Appeler la fonction de rappel pour signaler les changements du label
 		labelChangeCallback(label);
