@@ -22,9 +22,20 @@
 	}
 
 	$: isQuizzFocused = $quizz.enabled && $preferences.layout.contextSection.closed;
+
+	let quizzInstructionWidth = '50vw';
+	$: {
+		if (isQuizzFocused) {
+			setTimeout(() => {
+				quizzInstructionWidth = '100vw';
+			}, 700);
+		} else {
+			quizzInstructionWidth = '50vw';
+		}
+	}
 </script>
 
-<header>
+<header style:justify-content={!isQuizzFocused ? 'space-between' : 'flex-end'}>
 	{#if !isQuizzFocused}
 		<div
 			class="left-ctn"
@@ -47,9 +58,9 @@
 	{:else}
 		<div
 			class="quizz-instruction-transition"
-			in:fly={{ y: 0, x: '100%', duration: 700 }}
+			in:fly={{ y: 0, x: '100%', duration: 700, delay: 700 }}
 			out:fade={{ duration: 700 }}
-			style:width={isQuizzFocused ? '100vw' : '50vw'}
+			style:width={quizzInstructionWidth}
 		>
 			<QuizzInstruction />
 		</div>
@@ -62,7 +73,6 @@
 	header {
 		display: flex;
 		align-items: stretch;
-		justify-content: space-between;
 		border-bottom: 1px solid #ddd;
 		user-select: none;
 	}
@@ -76,7 +86,10 @@
 
 	.quizz-instruction-transition {
 		flex-shrink: 1;
-		width: 50vw;
+		-webkit-transition: width 0.7s ease-in-out;
+		-moz-transition: width 0.7s ease-in-out;
+		-o-transition: width 0.7s ease-in-out;
+		transition: width 0.7s ease-in-out;
 	}
 
 	.actions-transition {
