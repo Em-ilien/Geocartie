@@ -26,7 +26,11 @@
 
 <header>
 	{#if !isQuizzFocused}
-		<div out:fly={{ y: 0, x: '-100%', duration: 700 }} in:fly={{ y: 0, x: '-100%', duration: 700 }}>
+		<div
+			class="left-ctn"
+			out:fly={{ y: 0, x: '-100%', duration: 700 }}
+			in:fly={{ y: 0, x: '-100%', duration: 700 }}
+		>
 			<a href="/">
 				<img src={logo} alt="Logo Géocartie" />
 			</a>
@@ -63,7 +67,7 @@
 		user-select: none;
 	}
 
-	header > div:first-child {
+	header > .left-ctn {
 		display: flex;
 		align-items: stretch;
 		gap: 6vw;
