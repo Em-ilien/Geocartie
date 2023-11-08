@@ -10,8 +10,8 @@
 {#if !$preferences.layout.contextSection.closed}
 	<section
 		class="context-section"
-		in:fly={{ x: '-100%%', duration: 500, delay: 0 }}
-		out:fly={{ x: '-100%', duration: 500, delay: 0 }}
+		in:fly={{ x: '-100%', duration: 700, delay: 0 }}
+		out:fly={{ x: '-100%', duration: 700, delay: 0 }}
 	>
 		<div class="close-ctn" on:click={onClose} title="Fermer">
 			<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
