@@ -6,7 +6,9 @@
 	preferences.layout.contextSection.open();
 
 	onMount(() => {
-		window.scrollTo(0, document.getElementById('legal').offsetTop);
+		setTimeout(() => {
+			document.getElementById('legal')?.scrollIntoView({ behavior: 'smooth' });
+		});
 	});
 </script>
 

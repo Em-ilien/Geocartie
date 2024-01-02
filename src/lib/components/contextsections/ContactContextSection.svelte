@@ -6,7 +6,9 @@
 	preferences.layout.contextSection.open();
 
 	onMount(() => {
-		window.scrollTo(0, document.getElementById('contact').offsetTop);
+		setTimeout(() => {
+			document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+		});
 	});
 </script>
 
