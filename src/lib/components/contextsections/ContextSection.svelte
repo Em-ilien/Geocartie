@@ -1,7 +1,8 @@
 <script>
+	import { preferences } from '../../stores/preferencesStore';
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
-	import { preferences } from '../../stores/preferencesStore';
+	import menuIcon from '$lib/assets/icons/menu.svg';
 	export let onClose = () => {
 		goto('/');
 	};
@@ -33,9 +34,7 @@
 	</section>
 {:else}
 	<div class="hamburger-ctn" on:click={() => preferences.layout.contextSection.open()}>
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-			<path d="M4 6H20M4 12H20M4 18H20" stroke-linecap="round" stroke-linejoin="round" />
-		</svg>
+		<img src={menuIcon} alt="Îcone menu" />
 	</div>
 {/if}
 
@@ -186,7 +185,6 @@
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		z-index: 1;
 		background: #fff;
 		padding: 0.5em;
 		margin: 0.5em;
@@ -195,10 +193,5 @@
 	.hamburger-ctn:hover {
 		background: #efefef;
 		border-radius: 0.5em;
-	}
-
-	.hamburger-ctn svg {
-		stroke: #bbb;
-		stroke-width: 2;
 	}
 </style>
