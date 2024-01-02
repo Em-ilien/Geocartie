@@ -1,5 +1,6 @@
 <script>
 	import { preferences } from '../../stores/preferencesStore';
+	import { preferences } from '../../stores/preferencesStore';
 
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
