@@ -3,8 +3,6 @@
 
 	import icon from '$lib/assets/icons/arrow.png';
 
-	import { onClickMenuNav } from '$lib/helpers/toasts.js';
-
 	function onClickFrance(e) {
 		goto('/');
 	}
@@ -16,14 +14,14 @@
 			<span>France</span>
 			<img src={icon} alt="Icône flèche" />
 		</li>
-		<li on:click={(e) => onClickMenuNav(e, 'Europe')}>
+		<!-- <li on:click={(e) => onClickMenuNav(e, 'Europe')}>
 			<span>Europe</span>
 			<img src={icon} alt="Icône flèche" />
 		</li>
 		<li on:click={(e) => onClickMenuNav(e, 'Monde')}>
 			<span>Monde</span>
 			<img src={icon} alt="Icône flèche" />
-		</li>
+		</li> -->
 	</ul>
 </nav>
 
