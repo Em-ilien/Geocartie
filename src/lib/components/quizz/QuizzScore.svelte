@@ -80,7 +80,7 @@
 	.score-tooltip {
 		position: absolute;
 		margin-left: -1em;
-		z-index: 100000;
+		z-index: 2;
 		padding: 1em;
 		box-shadow: 1px 1px 0.5em 0 #00000050;
 		border-radius: 0.5em;

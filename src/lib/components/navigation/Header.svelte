@@ -90,6 +90,7 @@
 		-moz-transition: width 0.7s ease-in-out;
 		-o-transition: width 0.7s ease-in-out;
 		transition: width 0.7s ease-in-out;
+		z-index: 2;
 	}
 
 	.actions-transition {

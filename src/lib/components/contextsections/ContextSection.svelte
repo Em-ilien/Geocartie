@@ -1,7 +1,7 @@
 <script>
+	import { preferences } from '../../stores/preferencesStore';
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
-	import { preferences } from '../../stores/preferencesStore';
 	export let onClose = () => {
 		goto('/');
 	};
@@ -32,9 +32,21 @@
 		</main>
 	</section>
 {:else}
-	<div class="hamburger-ctn" on:click={() => preferences.layout.contextSection.open()}>
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-			<path d="M4 6H20M4 12H20M4 18H20" stroke-linecap="round" stroke-linejoin="round" />
+	<div class="hamburger-ctn">
+		<svg
+			on:click={() => preferences.layout.contextSection.open()}
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+		>
+			<path
+				d="M4 6H20M4 12H20M4 18H20"
+				stroke="#999"
+				stroke-width="1.75"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
 		</svg>
 	</div>
 {/if}
@@ -179,26 +191,25 @@
 	}
 
 	.hamburger-ctn {
+		position: relative;
+	}
+
+	.hamburger-ctn > svg {
+		position: absolute;
 		width: 3em;
 		height: 2.5em;
-		position: fixed;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		z-index: 1;
 		background: #fff;
 		padding: 0.5em;
 		margin: 0.5em;
+		z-index: 1;
 	}
 
 	.hamburger-ctn:hover {
 		background: #efefef;
 		border-radius: 0.5em;
-	}
-
-	.hamburger-ctn svg {
-		stroke: #bbb;
-		stroke-width: 2;
 	}
 </style>
