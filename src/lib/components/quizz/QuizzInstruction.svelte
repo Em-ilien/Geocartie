@@ -10,7 +10,7 @@
 
 	$: instructionLabel = () => {
 		if (!$quizz.enabled) return 'À bientôt !';
-		return `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} sur la carte (${currentQuestionId})`;
+		return `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} (${currentQuestionId})`;
 	};
 </script>
 
@@ -18,7 +18,7 @@
 	<QuizzScore score={$quizz.score} />
 
 	<main>
-		<p>{instructionLabel()}</p>
+		<span>{instructionLabel()}</span>
 	</main>
 
 	<button on:click={() => quizz.disable()} title="Fermer le quizz">
@@ -54,6 +54,7 @@
 		gap: 1.5em 2.5em;
 		align-items: center;
 		justify-content: center;
+		font-size: 1.25em;
 	}
 
 	@media (max-width: 1000px) {

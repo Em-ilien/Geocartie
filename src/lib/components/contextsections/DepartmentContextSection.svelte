@@ -54,4 +54,9 @@
 	section img {
 		margin-top: 1em;
 	}
+
+	.department h1 {
+		color: #226bc2;
+		font-size: 1.5em;
+	}
 </style>
