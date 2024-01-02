@@ -1,13 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
 	import { preferences } from './../../stores/preferencesStore.js';
 	import ContextSection from './ContextSection.svelte';
 
 	preferences.layout.contextSection.open();
+
+	onMount(() => {
+		window.scrollTo(0, document.getElementById('legal').offsetTop);
+	});
 </script>
 
 <ContextSection>
 	<section class="legal">
-		<h1>Mentions légales</h1>
+		<h1 id="legal">Mentions légales</h1>
 
 		<h2>Editeur du site Web</h2>
 		<p>L'administration de ce site est assurée M. Emilien COSSON.</p>

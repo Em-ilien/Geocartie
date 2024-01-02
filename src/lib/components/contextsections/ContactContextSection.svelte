@@ -1,13 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
 	import { preferences } from '../../stores/preferencesStore';
 	import ContextSection from './ContextSection.svelte';
 
 	preferences.layout.contextSection.open();
+
+	onMount(() => {
+		window.scrollTo(0, document.getElementById('contact').offsetTop);
+	});
 </script>
 
 <ContextSection>
 	<section class="contact">
-		<h1>Contact</h1>
+		<h1 id="contact">Contact</h1>
 
 		<p>
 			Pour me contacter, envoyez-moi un courriel à l'adresse <a href="mailto:emilien@em-ilien.fr"
