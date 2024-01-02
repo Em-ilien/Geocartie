@@ -340,22 +340,12 @@
 	}
 
 	svg :global(.land.quizz-good-answer) {
-		animation: good 2s ease-in-out;
-	}
-
-	@keyframes good {
-		0%,
-		70% {
-			fill: #3fde3f;
-		}
-		100% {
-			fill: #226bc2aa;
-		}
+		fill: #3fde3f;
 	}
 
 	@keyframes light-flashing {
 		0% {
-			fill: #de3fb1;
+			fill: #ef3a0d;
 		}
 		100% {
 			fill: transparent;
