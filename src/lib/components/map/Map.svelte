@@ -1,5 +1,5 @@
 <script>
-	import { quizz } from './../../stores/quizzStore.js';
+	import { QUIZZ_QUESTION_CHANGMENT_COOLDOWN, quizz } from './../../stores/quizzStore.js';
 	import { page } from '$app/stores.js';
 	import { MAX_MISSED_TRIES } from '../../stores/quizzStore.js';
 	import { onMount } from 'svelte';
@@ -52,7 +52,6 @@
 
 	$: transformOrigin = `${cursorX}px ${cursorY}px`;
 
-	function onClickMapSection(e) {}
 	function onKeydown(e) {
 		if (e.key === 'Escape') {
 			e.stopPropagation();
@@ -67,13 +66,15 @@
 	function onClickDepartment(e) {
 		if (e.target.tagName != 'path') return;
 
-		if (e.target.classList.contains('preview')) return;
-
 		const departmentId = e.target.id.replace('FR-', '');
+		const quizzEnabled = $quizz.enabled;
+
+		if (quizzEnabled && $quizz.cooldownActive) return;
+
 		goto(`/france/departments/${departmentId}`);
 		activeDepartmentId = departmentId;
 
-		if ($quizz.enabled) quizz.currentQuestion.addTry(departmentId);
+		if (quizzEnabled) quizz.currentQuestion.addTry(departmentId);
 	}
 
 	$: landClass = (departmentId) => {
@@ -85,9 +86,12 @@
 		if (activeDepartmentId == departmentId) {
 			if (
 				currentQuizzQuestion?.tries?.length > 0 &&
-				currentQuizzQuestion?.tries[currentQuizzQuestion?.tries.length - 1] == departmentId
-			)
-				return 'land active quizz-wrong-answer';
+				currentQuizzQuestion?.tries[currentQuizzQuestion?.tries?.length - 1]?.id == departmentId
+			) {
+				if (currentQuizzQuestion?.tries[currentQuizzQuestion?.tries?.length - 1]?.missed)
+					return 'land active quizz-wrong-answer';
+				else return 'land active quizz-good-answer';
+			}
 
 			if ($quizz.questions.length < 2) return 'land active';
 
@@ -98,6 +102,31 @@
 			return 'land quizz-show-answer';
 
 		return 'land';
+	};
+
+	let mapCtnFeedbackClass = 'map-ctn';
+	$: {
+		mapCtnFeedbackClass = loadMapCtnFeedbackClass();
+	}
+	$: loadMapCtnFeedbackClass = () => {
+		if (!$quizz.enabled) return 'map-ctn';
+		if (currentQuizzQuestion?.tries?.length == 0) return 'map-ctn';
+
+		if (currentQuizzQuestion?.tries[currentQuizzQuestion?.tries?.length - 1].missed) {
+			console.log(currentQuizzQuestion?.tries.filter((tryAnswer) => tryAnswer.missed).length < MAX_MISSED_TRIES);
+			if (currentQuizzQuestion?.tries.filter((tryAnswer) => tryAnswer.missed).length < MAX_MISSED_TRIES)
+				return 'map-ctn';
+
+			setTimeout(() => {
+				mapCtnFeedbackClass = 'map-ctn';
+			}, 300);
+			return 'map-ctn quizz-feedback-wrong-answer';
+		}
+
+		setTimeout(() => {
+			mapCtnFeedbackClass = 'map-ctn';
+		}, QUIZZ_QUESTION_CHANGMENT_COOLDOWN);
+		return 'map-ctn quizz-feedback-good-answer';
 	};
 
 	function tooltipParams(departmentId) {
@@ -121,26 +150,26 @@
 	let labelChangeCallback = () => {}; // Fonction de rappel pour signaler les changements du label
 
 	function updateLabel() {
+		if (!$quizz.enabled) return;
+
 		const currentQuizzQuestion = $quizz.questions[$quizz.questions.length - 1];
 		const currentQuestionId = currentQuizzQuestion?.id;
 		const currentDepartment = departments.find((department) => department.id === currentQuestionId);
+		const currentLastTry = currentQuizzQuestion?.tries[currentQuizzQuestion?.tries?.length - 1];
 
-		// Mise à jour du label
-		label = `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} (${currentDepartment?.id})`;
+		label =
+			!currentLastTry?.missed && currentQuestionId == activeDepartmentId
+				? 'Bonne réponse !'
+				: `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} (${currentDepartment?.id})`;
 
-		// Appeler la fonction de rappel pour signaler les changements du label
 		labelChangeCallback(label);
 	}
 
 	$: {
-		updateLabel(); // Mise à jour initiale du label
-
-		if ($quizz.enabled) {
-			// Mettez à jour le label chaque fois que $quizz.enabled change
-			updateLabel();
-		}
+		updateLabel();
+		if ($quizz.enabled) updateLabel();
 	}
-	7;
+
 	function quizzTooltipParams() {
 		return () => {
 			let condition = () => {
@@ -158,7 +187,7 @@
 </script>
 
 <section
-	on:click|self={onClickMapSection}
+	class={mapCtnFeedbackClass}
 	on:click={onClickDepartment}
 	on:contextmenu|preventDefault
 	on:wheel={handleScroll}
@@ -190,7 +219,6 @@
 				<polyline points="390.737 466.319 391.232 464.029 394.513 462.791 394.203 461.058 394.884 462.296 400.039 459.242 400.637 457.729 398.632 457.096 401.305 452.982 407.284 453.579 408.937 444.459 407.742 443.157 412.243 440.054 416.042 435.193 411.153 430.957 411.046 424.624 408.181 420.058"/>
 				<polyline points="490.705 371.35 485.319 371.234 482.877 374.643 479.274 373.326 477.995 370.42 475.089 370.149 472.648 376.736 477.608 377.86 478.886 386.423 469.664 385.648 466.254 388.399 465.247 387.121 462.108 389.097 463.387 390.548 462.031 391.71 456.916 391.594 455.787 394.803 457.195 395.728 455.305 398.021 449.27 398.062 447.499 404.266 450.396 406.774 447.58 408.866 441.545 406.774 443.356 410.695 439.976 411.057 442.953 415.983 448.706 416.318 447.982 418.048 451.281 420.181 450.718 424.468 449.431 425.876 450.678 427.043 446.494 424.79 446.534 427.083 443.114 428.773 438.689 426.64 437.643 423.18 429.317 422.294 429.768 417.178 427.474 419.623 425.254 417.893 422.433 418.983 422.132 418.532 425.48 414.018 422.32 411.009 420.251 411.874 418.897 412.626 418.859 413.868 417.467 415.297 418.145 418.043 421.793 418.607 422.17 419.247 415.248 422.557 413.969 417.554 408.214 416.463 408.138 420.15 402.182 415.692 399.979 416.059 399.336 419.364 397.546 418.698 397.431 415.554 394.7 416.128 391.648 420.465 386.461 416.083 383.226 417.441 384.091 411.984 380.979 408.947 379.736 403.413 377.167 401.262 375.495 392.461 370.416 387.071 367.37 387.608 365.816 384.654 364.382 384.774 363.964 387.94 359.663 388.657 356.257 380.114 354.554 379.256 351.611 382.04 349.567 381.345 347.687 385.719 345.561 383.266 344.008 384.206 338.939 398.391 333.83 384.861 330.314 385.964 328.843 381.018 323.297 386.611 321.412 394.039 318.234 397.956 312.875 398.511 310.435 396.848 307.22 398.03 306.924 399.952 303.487 395.222 305.372 389.9 301.824 384.8 300.642 378.997"/>
 			</g>
-			
 			<g>
 				<path id="FR-01" class={landClass("01")} use:tooltip={tooltipParams("01")} title="Ain" d="M413.57,308.03L420.26,287.51L425.07,289.58L429.68,287.48L432.49,291.15L435.75,291.85L435.75,291.85L435.11,293.84L438.34,295.69L439.45,299.99L440.3,297.75L442.42,299.69L442.35,302.76L445.06,302.51L449.38,297.95L452.32,300.07L452.8,302.97L458.79,302.74L466.89,293.67L466.89,293.67L471.26,296.62L468.45,301.53L469.38,303.57L463.38,305.63L462.4,310.65L462.4,310.65L459.76,311.46L459.5,313.45L456.73,312.36L457.07,322.2L457.07,322.2L454.87,334.91L451.82,335.73L451.21,339.82L448.63,341.49L448.63,341.49L437.33,325.49L431.99,332.29L426.95,329.63L426.95,329.63L419.33,330.26L417.79,324.74L414.6,324.73L414.77,323.33L411.5,322.02L412.18,313.25L414.51,309.52z" />
 				<path id="FR-02" class={landClass("02")} use:tooltip={tooltipParams("02")} title="Aisne" d="M346.84,70.19L354.77,68.56L360.05,69.76L362.25,67.4L367.05,69.02L369.34,66.45L375.88,68.52L376.51,70.35L380.45,68.11L380.38,71.37L387.12,72.25L387.12,72.25L390.82,73.57L390.82,73.57L391.7,79.39L389.74,85.06L391.56,86.53L386.43,91.59L385.96,94.47L382.16,95.18L384.42,98.43L383.18,108.95L383.18,108.95L382.7,111.88L378.01,108.92L375.18,110.61L375,112.86L371.95,112.13L366.44,114.85L366.8,121.24L370.72,124.66L365.48,125.19L364.59,127.14L366.14,129.82L363.94,132.36L366.66,131.97L367.78,133.8L359.78,144L359.78,144L358.78,144.92L355.54,142.76L354.9,139.21L353.3,140.49L352.3,137.93L350.63,138.55L346.6,133.92L346.49,128.46L342.66,127.33L342.66,127.33L345.78,124.58L343.86,122.21L343.34,124.65L343.16,122.54L339.98,121.06L340.6,123.93L337.97,120.39L341.36,120.01L341.28,116.56L339.11,116.45L338.4,113.98L341.53,113.88L343.58,107.21L346.53,106.78L344.13,105.11L343.58,102.12L345.41,98.19L343.54,95.15L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L344.66,89.81L341.95,81.73L348.12,71.96L346.09,71.49z" />
@@ -288,8 +316,8 @@
 				<path id="FR-92" class={landClass("92")} use:tooltip={tooltipParams("92")} title="Hauts-de-Seine" d="M309.85,137.88L312.08,138.48L311.53,141.03L311.53,141.03L307.49,143.87L311.9,146.11L311.9,146.11L310.83,150.95L310.83,150.95L306.17,149.45L306.17,149.45L304.1,144.61L306.49,140.49L306.49,140.49z" />
 				<path id="FR-93" class={landClass("93")} use:tooltip={tooltipParams("93")} title="Seine-Saint-Denis" d="M321.01,133.96L323.18,138.83L321.35,141.83L322.85,146.9L322.85,146.9L320.27,143.91L315.23,143.69L315.23,143.69L314.45,141.07L311.53,141.03L311.53,141.03L312.08,138.48L309.85,137.88L309.85,137.88L313.35,136.4L316.39,137.61z" />
 				<path id="FR-94" class={landClass("94")} use:tooltip={tooltipParams("94")} title="Val-de-Marne" d="M315.23,143.69L320.27,143.91L322.85,146.9L322.85,146.9L323.63,149.63L321.89,154.08L321.89,154.08L319.52,151.12L315.35,152.47L310.83,150.95L310.83,150.95L311.9,146.11L311.9,146.11L317.16,145.98z" />
-			  </g>
-		  </g>
+			</g>
+		</g>
 	</svg>
 </section>
 
@@ -302,6 +330,32 @@
 		padding: 1em;
 		flex-grow: 1;
 		overflow: hidden;
+	}
+
+	section.quizz-feedback-wrong-answer {
+		animation: wrong-answer-feedback-animation 0.3s ease-in-out;
+	}
+
+	section.quizz-feedback-good-answer {
+		animation: good-answer-feedback-animation 1.25s ease-out; /*delay: QUIZZ_QUESTION_CHANGMENT_COOLDOWN*/
+	}
+
+	@keyframes wrong-answer-feedback-animation {
+		0% {
+			background: #ef3a0d35;
+		}
+		100% {
+			background: transparent;
+		}
+	}
+
+	@keyframes good-answer-feedback-animation {
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(1.15);
+		}
 	}
 
 	@media (max-width: 780px) {

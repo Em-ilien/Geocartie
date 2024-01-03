@@ -1,24 +1,44 @@
 <script>
-	import { quizz } from '../../stores/quizzStore';
+	import { QUIZZ_QUESTION_CHANGMENT_COOLDOWN, quizz } from '../../stores/quizzStore';
+	import { fade } from 'svelte/transition';
 	import { departments } from '/src/routes/france/departments/data.js';
 
 	import QuizzScore from './QuizzScore.svelte';
 
 	$: currentQuizzQuestion = $quizz.questions[$quizz.questions.length - 1];
 	$: currentQuestionId = currentQuizzQuestion?.id;
-	$: currentDepartment = departments.find((department) => department.id === currentQuestionId);
 
-	$: instructionLabel = () => {
-		if (!$quizz.enabled) return 'À bientôt !';
-		return `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} (${currentQuestionId})`;
-	};
+	let instructionLabel = { label: '', shown: false };
+	$: {
+		if (!$quizz.enabled) {
+			instructionLabel = { label: 'À bientôt !', shown: true };
+		} else {
+			const currentDepartment = departments.find((department) => department.id === currentQuestionId);
+			const label = `Cherchez ${currentDepartment?.prefix}${currentDepartment?.name} (${currentQuestionId})`;
+			if (instructionLabel.label != label) {
+				instructionLabel = { label, shown: true };
+			}
+		}
+	}
+	$: {
+		if (
+			$quizz.enabled &&
+			currentQuizzQuestion.tries.length > 0 &&
+			!currentQuizzQuestion.tries[currentQuizzQuestion.tries.length - 1].missed
+		)
+			instructionLabel.shown = false;
+	}
 </script>
 
 <section class="quizz-instruction">
 	<QuizzScore score={$quizz.score} />
 
 	<main>
-		<span>{instructionLabel()}</span>
+		{#if instructionLabel.shown}
+			<span out:fade={{ duration: QUIZZ_QUESTION_CHANGMENT_COOLDOWN / 2 }}>
+				{instructionLabel.label}
+			</span>
+		{/if}
 	</main>
 
 	<button on:click={() => quizz.disable()} title="Fermer le quizz">

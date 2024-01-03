@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import { departments } from './../../routes/france/departments/data';
 
 export const MAX_MISSED_TRIES = 3;
+export const QUIZZ_QUESTION_CHANGMENT_COOLDOWN = 1.25 * 1000;
 
 function createQuizz() {
 	const initialValue = () => {
@@ -12,6 +13,8 @@ function createQuizz() {
 		};
 	};
 	const { subscribe, set, update } = writable(initialValue());
+
+	let cooldown = undefined;
 
 	function loadNewInstruction(n) {
 		//Supprimer les départements déjà trouvés
@@ -56,6 +59,9 @@ function createQuizz() {
 		currentQuestion: {
 			addTry: (id) =>
 				update((n) => {
+					if (!n.enabled) return n;
+					if (cooldown && cooldown > Date.now()) return n;
+
 					const res = {
 						...n,
 						questions: n.questions,
@@ -63,19 +69,31 @@ function createQuizz() {
 					};
 
 					let currentQuestion = res.questions[res.questions.length - 1];
-					currentQuestion.tries.push(id);
 
-					if (currentQuestion.id == id) {
-						if (currentQuestion.tries.length < MAX_MISSED_TRIES) {
-							res.score.goodAnswers++;
-						}
-
-						const newQuestion = loadNewInstruction(n);
-						if (!newQuestion) return initialValue();
-						res.questions.push(newQuestion);
-					} else if (currentQuestion.tries.length == MAX_MISSED_TRIES) {
-						res.score.wrongAnswers++;
+					if (currentQuestion.id != id) {
+						currentQuestion.tries.push({ id, missed: true });
+						if (currentQuestion.tries.length == MAX_MISSED_TRIES) res.score.wrongAnswers++;
+						return res;
 					}
+
+					currentQuestion.tries.push({ id, missed: false });
+
+					if (currentQuestion.tries.length <= MAX_MISSED_TRIES) res.score.goodAnswers++;
+
+					const newQuestion = loadNewInstruction(n);
+					if (!newQuestion) return initialValue();
+
+					cooldown = Date.now() + QUIZZ_QUESTION_CHANGMENT_COOLDOWN;
+					res.cooldownActive = true;
+					setTimeout(() => {
+						update((n) => {
+							return {
+								...n,
+								questions: [...n.questions, newQuestion],
+								cooldownActive: false,
+							};
+						});
+					}, QUIZZ_QUESTION_CHANGMENT_COOLDOWN);
 
 					return res;
 				}),
