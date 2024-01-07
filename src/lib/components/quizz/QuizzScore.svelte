@@ -45,7 +45,15 @@
 		</span>
 	</div>
 	{#if scoreIsHovered}
-		<div class="score-tooltip" style:top={topTooltip()} bind:offsetWidth={tooltipWidth} in:fade>
+		<div
+			class="score-popover"
+			style:top={topTooltip()}
+			bind:offsetWidth={tooltipWidth}
+			on:mouseenter={onMouseLeave}
+			in:fade
+			out:fade={{ duration: 250 }}
+			role="tooltip"
+		>
 			<h1>Progression : {Math.round((score.goodAnswers / totalLandmarks) * 100)} %</h1>
 			<p>
 				Vous avez retrouvé <b class="green">{score.goodAnswers} département{totalAnswers > 1 ? 's' : ''}</b> sur
@@ -77,7 +85,7 @@
 		top: 0.125em;
 	}
 
-	.score-tooltip {
+	.score-popover {
 		position: absolute;
 		margin-left: -1em;
 		z-index: 2;
@@ -89,15 +97,13 @@
 		max-width: 100vw;
 	}
 
-	.score-tooltip p {
+	.score-popover p {
 		margin: 0.5em 0;
 	}
 
 	h1 {
+		color: #226bc2;
 		font-size: 1.25em;
-		font-weight: 600;
-		margin-bottom: 0.5em;
-		font-family: 'Roboto', 'Lato', sans-serif;
 	}
 
 	b {

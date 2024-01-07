@@ -17,7 +17,7 @@
 
 ### Quizz
 
-[ ] Cacher la progression de l'utilisateur une fois qu'il survole ce composant
+[x] Cacher la progression de l'utilisateur une fois qu'il survole ce composant
 [x] Améliorer le feedback du quizz lorsque l'utilisateur clique sur un département, selon que sa tentative soit correcte ou fausse
 
 ### Context Section
