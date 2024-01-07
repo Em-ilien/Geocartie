@@ -8,8 +8,36 @@
 
 ## 2.2.2
 
-### Zoom
+### Zoom sur la map
 
-[ ] Amélliorer le zoom avec la molette
+[ ] Améliorer le zoom avec la molette après le premier grossissement
+[ ] Permettre de se déplacer à travers la map sans déroomer mais avec le curseur de la souris
 [ ] Ajouter un composant visible pour le zoom
-[ ] Ajouter un zoom par défaut sur les départements de la petite couronne
+[ ] Ajouter un zoom par défaut sur les départements de la petite couronne parisienne
+
+### Quizz
+
+[ ] Cacher la progression de l'utilisateur une fois qu'il survole ce composant
+[x] Améliorer le feedback du quizz lorsque l'utilisateur clique sur un département, selon que sa tentative soit correcte ou fausse
+
+### Context Section
+
+[ ] Permettre à l'utilisateur d'agrandir et de rétrécir la taille de la ContextSection  
+[ ] Revoir l'UI pour fermer et rouvrir la Context Section
+[ ] Rediriger tout en haut du Department Context Section lorsque l'utilisateur clique sur un nouveau départemenent
+
+## 2.3.0
+
+[ ] Ajouter les départements d'Outre-mer
+[ ] Ajouter les modes Découvertes et Renforcement en plus du mode Quizz
+[ ] Renommer le bouton "Jouer au Quizz" en "S'entraîner"
+[ ] Ajouter l'inscription et la connexion
+[ ] Ajouter l'historique des entraînements de l'utilisateur
+[ ] Ajouter les stastistiques de l'utilisateur
+[ ] Mettre en place un système de points
+[ ] Mettre en place de badges
+
+## 2.4.0
+
+[ ] Ajouter les régions françaises
+[ ] Ajouter les pays européens
