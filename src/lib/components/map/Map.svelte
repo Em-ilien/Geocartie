@@ -113,7 +113,6 @@
 		if (currentQuizzQuestion?.tries?.length == 0) return 'map-ctn';
 
 		if (currentQuizzQuestion?.tries[currentQuizzQuestion?.tries?.length - 1].missed) {
-			console.log(currentQuizzQuestion?.tries.filter((tryAnswer) => tryAnswer.missed).length < MAX_MISSED_TRIES);
 			if (currentQuizzQuestion?.tries.filter((tryAnswer) => tryAnswer.missed).length < MAX_MISSED_TRIES)
 				return 'map-ctn';
 
@@ -325,7 +324,6 @@
 
 <style>
 	section {
-		width: 50%;
 		max-height: 100%;
 		padding: 1em;
 		flex-grow: 1;
@@ -416,16 +414,5 @@
 		fill-opacity: 0;
 		stroke: #555;
 		stroke-width: 1.25;
-	}
-
-	@keyframes open-modal {
-		0% {
-			transform: translate(+25%, +25%) scale(0);
-			opacity: 0;
-		}
-		100% {
-			transform: translate(-50%, -50%) scale(1);
-			opacity: 1;
-		}
 	}
 </style>

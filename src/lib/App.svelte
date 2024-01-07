@@ -1,5 +1,5 @@
 <script>
-	import Map from './components/map/Map.svelte';
+	import MainSplitPane from './components/general/MainSplitPane.svelte';
 	import Header from './components/navigation/Header.svelte';
 	import { Toaster } from 'svelte-french-toast';
 
@@ -12,11 +12,10 @@
 </script>
 
 <div class="app" on:click={onClick} on:keydown={onClick} role={null}>
-	<main>
-		<slot />
-		<Map />
-	</main>
 	<Header />
+	<MainSplitPane>
+		<slot />
+	</MainSplitPane>
 </div>
 
 <Toaster />
@@ -31,7 +30,7 @@
 
 	.app {
 		display: flex;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		font-family: 'Roboto', 'Lato', sans-serif;
 		overflow: hidden;
 		max-width: 100vw;
@@ -45,24 +44,6 @@
 			max-height: unset;
 			min-height: unset;
 			overflow: auto;
-		}
-	}
-
-	main {
-		display: flex;
-		flex-direction: row;
-		align-items: stretch;
-		justify-content: stretch;
-		width: 100%;
-		flex-grow: 1;
-		flex-shrink: 1;
-		overflow-y: hidden;
-		height: fit-content;
-	}
-
-	@media (max-width: 780px) {
-		main {
-			flex-direction: column-reverse;
 		}
 	}
 </style>

@@ -58,15 +58,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		margin-left: 0.625em;
-		width: calc(50% - 0.625em);
-		max-width: calc(50% - 0.625em);
-		border-right: 1px solid #ccc;
-		border-left: 1px solid #ccc;
 		background: #fff;
-		box-shadow: 0 0 16px 0px rgba(0, 0, 0, 0.25);
 		flex-grow: 1;
-		height: auto;
+		height: 100%;
 		overflow-x: hidden;
 		overflow-y: auto;
 	}

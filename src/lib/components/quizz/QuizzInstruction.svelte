@@ -77,7 +77,7 @@
 		font-size: 1.25em;
 	}
 
-	@media (max-width: 1000px) {
+	@media (max-width: 780px) {
 		.quizz-instruction {
 			width: 100vw;
 		}

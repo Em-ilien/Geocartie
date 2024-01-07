@@ -24,7 +24,7 @@
 		border-radius: 4px;
 		padding: 4px;
 		position: absolute;
-		z-index: 1;
+		z-index: 50;
 		font-family: 'Roboto', 'Lato', sans-serif;
 	}
 </style>

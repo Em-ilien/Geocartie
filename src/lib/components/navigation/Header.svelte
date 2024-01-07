@@ -23,14 +23,14 @@
 
 	$: isQuizzFocused = $quizz.enabled && $preferences.layout.contextSection.closed;
 
-	let quizzInstructionWidth = '50vw';
+	let quizzInstructionWidth = 'calc(50vw - 10px/2)';
 	$: {
 		if (isQuizzFocused) {
 			setTimeout(() => {
 				quizzInstructionWidth = '100vw';
 			}, 700);
 		} else {
-			quizzInstructionWidth = '50vw';
+			quizzInstructionWidth = 'calc(50vw - 10px/2)';
 		}
 	}
 </script>
@@ -72,6 +72,7 @@
 <style>
 	header {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: stretch;
 		border-bottom: 1px solid #ddd;
 		user-select: none;
@@ -119,10 +120,9 @@
 		width: 10em;
 	}
 
-	@media (max-width: 1000px) {
+	@media (max-width: 780px) {
 		header {
-			flex-direction: row;
-			flex-wrap: wrap;
+			flex-direction: column;
 		}
 	}
 
