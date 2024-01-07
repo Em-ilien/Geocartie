@@ -27,3 +27,10 @@
 <svelte:head>
 	<title>Géocartie - Contact</title>
 </svelte:head>
+
+<style>
+	section h1 {
+		margin-top: -1.6em;
+		padding-top: 1.6em;
+	}
+</style>

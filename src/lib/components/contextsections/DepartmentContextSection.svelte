@@ -3,6 +3,7 @@
 	import { quizz } from './../../stores/quizzStore.js';
 	import { preferences } from '../../stores/preferencesStore';
 	import ContextSection from './ContextSection.svelte';
+	import { onMount } from 'svelte';
 
 	export let department;
 
@@ -21,6 +22,15 @@
 			return;
 		}
 		goto('/');
+	}
+
+	let departmentEl = undefined;
+	onMount(() => {
+		departmentEl = document.querySelector('.context-section h1');
+	});
+
+	$: {
+		if (typeof department !== 'undefined') departmentEl?.scrollIntoView({ behavior: 'smooth' });
 	}
 </script>
 
@@ -55,8 +65,10 @@
 		margin-top: 1em;
 	}
 
-	.department h1 {
+	section h1 {
 		color: #226bc2;
 		font-size: 1.5em;
+		padding-top: 2.5em;
+		margin-top: -2.65em;
 	}
 </style>

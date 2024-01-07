@@ -24,7 +24,7 @@
 
 [ ] Permettre à l'utilisateur d'agrandir et de rétrécir la taille de la ContextSection  
 [ ] Revoir l'UI pour fermer et rouvrir la Context Section
-[ ] Rediriger tout en haut du Department Context Section lorsque l'utilisateur clique sur un nouveau départemenent
+[x] Rediriger tout en haut du Department Context Section lorsque l'utilisateur clique sur un nouveau départemenent
 
 ## 2.3.0
 
