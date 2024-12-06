@@ -3,6 +3,7 @@
 	import { quizz } from './../../stores/quizzStore.js';
 	import { preferences } from '../../stores/preferencesStore';
 	import ContextSection from './ContextSection.svelte';
+	import TipTap from '../TipTap.svelte';
 
 	export let department;
 
@@ -10,10 +11,6 @@
 		department.prefix === ''
 			? 'Le département de '
 			: department.prefix.charAt(0).toUpperCase() + department.prefix.slice(1);
-	$: pastParticipleSentence =
-		department.prefix === 'les ' ? 'sont situés' : department.prefix === 'la ' ? 'est située' : 'est situé';
-	$: departmentPronounAndVerb =
-		department.prefix === 'les ' ? 'Ils ont' : department.prefix === 'la ' ? 'Elle a' : 'Il a';
 
 	function closeContextSection() {
 		if ($quizz.enabled) {
@@ -22,19 +19,14 @@
 		}
 		goto('/');
 	}
+
+	$: contentTiptap = `<p>Cette description pour le département <strong>${formatDepartementPrefix + department.name}</strong> est éditable ! 🌍️ </p>`;
 </script>
 
 <ContextSection onClose={closeContextSection}>
 	<section class="department">
 		<h1>{department.name} ({department.id})</h1>
-		<p>
-			{formatDepartementPrefix}<b>{department.name}</b>
-			{pastParticipleSentence} dans la région {department.region_name}. {departmentPronounAndVerb}
-			pour préfecture <b>{department.prefecture_name}</b>.
-		</p>
-		{#each department.images as img}
-			<img src={img.src} alt="Image du département {department.id}" />
-		{/each}
+		<TipTap bind:content={contentTiptap} editable={true} />
 	</section>
 </ContextSection>
 
@@ -43,6 +35,10 @@
 </svelte:head>
 
 <style>
+	:global(.context-section) {
+		overflow-x: scroll !important;
+	}
+
 	section > * {
 		max-width: 100%;
 	}

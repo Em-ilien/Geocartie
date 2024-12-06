@@ -8,14 +8,14 @@
 
 <div class="bottom-navigation">
 	<!-- <ActionItem text="Se connecter" icon={accountIcon} on:click={onClickLogin} /> -->
-	{#if !$quizz.enabled}
+	<!-- {#if !$quizz.enabled}
 		<ActionItem
 			text="Jouer au Quizz"
 			icon={quizzIcon}
 			on:click={() => quizz.enable()}
 			title="Lance le mode quizz"
 		/>
-	{/if}
+	{/if} -->
 </div>
 
 <style>

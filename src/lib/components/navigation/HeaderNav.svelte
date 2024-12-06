@@ -10,10 +10,10 @@
 
 <nav>
 	<ul>
-		<li on:click={onClickFrance}>
+		<!-- <li on:click={onClickFrance}>
 			<span>France</span>
 			<img src={icon} alt="Icône flèche" />
-		</li>
+		</li> -->
 		<!-- <li on:click={(e) => onClickMenuNav(e, 'Europe')}>
 			<span>Europe</span>
 			<img src={icon} alt="Icône flèche" />

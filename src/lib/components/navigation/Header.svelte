@@ -45,6 +45,12 @@
 			<a href="/">
 				<img src={logo} alt="Logo Géocartie" />
 			</a>
+			<a href="/">
+				<img
+					src="https://cdn.vin.co/_clients_folder/6041PY4NT8/6041py4nt8_logo_mauperier_institutionnel_png_97480_320.png"
+					alt="Logo Maupérier"
+				/>
+			</a>
 			<HeaderNav />
 		</div>
 	{/if}
@@ -80,7 +86,7 @@
 	header > .left-ctn {
 		display: flex;
 		align-items: stretch;
-		gap: 6vw;
+		/* gap: 6vw; */
 		margin-left: 0.625em;
 	}
 
@@ -117,6 +123,7 @@
 	a img {
 		object-fit: contain;
 		width: 10em;
+		max-height: 3em;
 	}
 
 	@media (max-width: 1000px) {
