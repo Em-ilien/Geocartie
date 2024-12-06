@@ -413,12 +413,12 @@
 	.toolbar > div {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: 0.25rem;
 	}
 
 	.icon {
-		font-size: 1rem;
-		padding: 0.3rem;
+		font-size: 0.5rem;
+		padding: 0.2rem;
 		cursor: pointer;
 		color: #333;
 		display: flex;

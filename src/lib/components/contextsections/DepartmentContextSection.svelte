@@ -26,7 +26,7 @@
 <ContextSection onClose={closeContextSection}>
 	<section class="department">
 		<h1>{department.name} ({department.id})</h1>
-		<TipTap bind:content={contentTiptap} editable={true} />
+		<TipTap bind:content={contentTiptap} editable={true} --padding="0" />
 	</section>
 </ContextSection>
 
