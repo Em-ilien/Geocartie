@@ -15,6 +15,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tiptap/core": "^2.10.3",
+		"@tiptap/extension-color": "^2.10.3",
+		"@tiptap/extension-text-align": "^2.10.3",
+		"@tiptap/extension-underline": "^2.10.3",
+		"@tiptap/pm": "^2.10.3",
+		"@tiptap/starter-kit": "^2.10.3",
 		"svelte-french-toast": "^1.2.0"
 	}
 }
