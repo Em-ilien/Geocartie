@@ -7,12 +7,16 @@
 
 	let questions = [
 		{
-			question: "Qu'est-ce que Mauperier ?",
-			answer: "Mauperier est un domaine viticole en Castillon-Côtes de Bordeaux, engagé dans l'agriculture biologique et la production de vins de qualité, alliant respect de l'environnement et savoir-faire artisanal.",
+			question: "Qu'est-ce que Géocartie ?",
+			answer: "Géocartie est une application web permettant d'apprendre et de découvrir les départements français. Cette plateforme open-source comprend une carte interactive et un Quizz.",
 		},
 		{
-			question: "Qu'est-ce que Géocartie ?",
-			answer: "Géocartie est, à la base, une application web permettant d'apprendre et de découvrir les départements français. Cette plateforme open-source comprend une carte interactive et un Quizz. Son utilisation a été étendue pour Mauperier, afin de présenter sa carte de vins sur le territoire français.",
+			question: "Qu'est-ce que le Quizz ?",
+			answer: 'Le Quizz permet de s\'entraîner à localiser les départements. Géocartie donne le nom d\'un département : votre objectif est de le retrouver sur la carte. Cliquez sur le bouton "Jouer au Quizz" pour essayer.',
+		},
+		{
+			question: 'À quoi sert la connexion à son compte Google ?',
+			answer: 'Se connecter à son compte Google permet de sauvegarder ses scores et ses statistiques liées au Quizz. Le mode hors-ligne permet toujours de jouer au Quizz.',
 		},
 	];
 
@@ -23,11 +27,11 @@
 
 <ContextSection onClose={onCloseContextSection}>
 	<div class="titles">
-		<h1>Géocartie - Mauperier</h1>
-		<h2>Découvrir les <b>vins français</b></h2>
+		<h1>Géocartie</h1>
+		<h2>Apprendre et découvrir les <b>départements français</b></h2>
 	</div>
 	<div class="cta">
-		<!-- <Button label="Jouer au Quizz" size="27" on:click={() => quizz.enable()} title="Lance le mode quizz">
+		<Button label="Jouer au Quizz" size="27" on:click={() => quizz.enable()} title="Lance le mode quizz">
 			<svelte:fragment slot="icon">
 				<path
 					d="M13.5844 16.2C14.1514 16.2 14.4349 15.795 14.5193 15.142C14.5868 14.2408 14.8534 13.7666 15.9486 13.0157C17.0843 12.2141 17.7188 11.1763 17.7188 9.66433C17.7188 7.42839 16.1663 5.90627 13.9016 5.90627C12.1804 5.90627 10.8776 6.73652 10.3579 8.08314C10.2004 8.45093 10.1211 8.84745 10.125 9.24752C10.125 9.91071 10.4676 10.3275 11.0447 10.3275C11.5037 10.3275 11.8125 10.0795 11.9965 9.46689C12.2631 8.46789 12.8824 7.92283 13.8088 7.92283C14.8382 7.92283 15.547 8.67545 15.547 9.75208C15.547 10.7021 15.196 11.2455 14.1598 11.988C13.1153 12.7187 12.5972 13.5304 12.5972 14.7555V14.9428C12.5972 15.6651 12.9482 16.2 13.5844 16.2Z"
@@ -42,14 +46,14 @@
 					fill="white"
 				/>
 			</svelte:fragment>
-		</Button> -->
-		<span>Pour commencer, cliquez sur un département</span>
+		</Button>
+		<span>ou explorez la carte</span>
 	</div>
 	<FAQ {questions} />
 </ContextSection>
 
 <svelte:head>
-	<title>Géocartie Mauperier - Découvrir les vins français</title>
+	<title>Géocartie - Apprendre et découvrir les départements français</title>
 </svelte:head>
 
 <style>
