@@ -8,7 +8,7 @@
 	let questions = [
 		{
 			question: "Qu'est-ce que Mauperier ?",
-			answer: "Mauperier est un domaine viticole en Castillon-Côtes de Bordeaux, engagé dans l'agriculture biologique et la production de vins de qualité, alliant respect de l'environnement et savoir-faire artisanal.",
+			answer: 'Mauperier est un domaine viticole situé au cœur du terroir enchanteur de Castillon-la-Bataille, sur la rive droite de la Dordogne. Fondé par une famille passionnée, ce lieu est à la fois un écrin pour leur tribu et un projet dédié à produire des vins de qualité, dans le respect de la terre et des traditions. Epicuriens et amoureux du bon vin, ils vous invitent à partager convivialité, plaisir et moments chaleureux autour de leur passion commune.',
 		},
 		{
 			question: "Qu'est-ce que Géocartie ?",
