@@ -20,6 +20,17 @@
 	export let editor = null;
 	let element;
 
+	$: {
+		content;
+		updateContent();
+	}
+
+	const updateContent = () => {
+		if (editor && editor.isEditable) {
+			editor.commands.setContent(content);
+		}
+	};
+
 	let showColorDropdown = false;
 	const colors = [
 		['#000', '#333', '#666', '#999', '#bbb', '#fff'],
@@ -33,10 +44,6 @@
 	function setColor(color) {
 		editor?.chain().focus().setColor(color).run();
 		showColorDropdown = false;
-	}
-
-	$: if (editor && editor.getJSON() !== content) {
-		content = editor.getJSON();
 	}
 
 	onMount(() => {
@@ -141,7 +148,7 @@
 	// }
 </script>
 
-<div>
+<div on:keydown|capture|stopPropagation|stopImmediatePropagation>
 	{#if editor && editor.isEditable}
 		<div class="toolbar">
 			<div>
