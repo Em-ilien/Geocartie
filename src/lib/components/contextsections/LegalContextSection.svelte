@@ -19,8 +19,8 @@
 		<h2>Editeur du site Web</h2>
 		<p>L'administration de ce site est assurée M. Emilien COSSON.</p>
 		<p>
-			Vous pouvez contacter l'administrateur du site par courriel à <a href="mailto:emilien@em-ilien.fr"
-				>l'adresse emilien@em-ilien.fr</a
+			Vous pouvez contacter l'administrateur du site par courriel à <a href="mailto:contact@emiliencosson.fr"
+				>l'adresse contact@emiliencosson.fr</a
 			>.
 		</p>
 
@@ -83,15 +83,15 @@
 		</p>
 		<p>
 			Pour toute question ou demande, je serai ravi de vous renseigner par courriel (<a
-				href="mailto:emilien@em-ilien.fr">emilien@em-ilien.fr</a
+				href="mailto:contact@emiliencosson.fr">contact@emiliencosson.fr</a
 			>).
 		</p>
 
 		<h3>Images</h3>
 		<p>Les images sont issues de pages Internet.</p>
 		<p>
-			Pour toute demande d'ajout d'images, veuillez rédiger un courriel à <a href="mailto:emilien@em-ilien.fr"
-				>emilien@em-ilien.fr</a
+			Pour toute demande d'ajout d'images, veuillez rédiger un courriel à <a href="mailto:contact@emiliencosson.fr"
+				>contact@emiliencosson.fr</a
 			> en mentionnant le numéro de département concerné et les liens vers les images.
 		</p>
 		<p>

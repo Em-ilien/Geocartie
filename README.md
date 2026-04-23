@@ -18,7 +18,7 @@ Cette branche est dédiée à la version 2 qui est en production. Cette nouvelle
 
 [Twitter](https://twitter.com/Em_ixocle)
 
-[Mail](mailto:emilien@em-ilien.fr)
+[Mail](mailto:contact@emiliencosson.fr)
 
 ## Mode Quizz
 
@@ -26,7 +26,7 @@ Le Mode Quizz permet à l'utilisateur de tester ses connaissances et d'apprendre
 
 ## Images d'illustration
 
-Pour toute demande d'ajout d'images sur le site geocartie.fr, veuillez rédiger un courriel à emilien@em-ilien.fr en mentionnant le numéro de département concerné et les liens vers les images.
+Pour toute demande d'ajout d'images sur le site geocartie.fr, veuillez rédiger un courriel à contact@emiliencosson.fr en mentionnant le numéro de département concerné et les liens vers les images.
 
 ## Données géographiques
 
@@ -42,10 +42,10 @@ Ce code source appartient à M. Emilien COSSON. Toute utilisation ou reproductio
 
 -   de mentionner le lien vers ce repository Github, ou bien vers la page Web https://geocartie.fr ;
 -   de ne pas revendre le code source ;
--   de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (emilien@em-ilien.fr).
+-   de ne pas générer des revenus à l'aide de ce code source sans en avoir reçu mon autorisation écrite (contact@emiliencosson.fr).
 
 Vous pouvez mettre en ligne Géocartie sur votre serveur Web et le mettre à la disposition de vos utilisateurs aux conditions mentionnés ci-dessus.
 
 Vous pouvez mettre en ligne le code source de Géocartie, que vous l'ayez édité ou non, aux mêmes conditions en veillant tout particulièrement à informer vos utilisateurs que ce code est soumis au moins aux mêmes conditions mentionnées ci-dessus.
 
-Pour toute question ou demande, je serai ravi de vous renseigner par courriel (emilien@em-ilien.fr).
+Pour toute question ou demande, je serai ravi de vous renseigner par courriel (contact@emiliencosson.fr).

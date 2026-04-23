@@ -17,8 +17,8 @@
 		<h1 id="contact">Contact</h1>
 
 		<p>
-			Pour me contacter, envoyez-moi un courriel à l'adresse <a href="mailto:emilien@em-ilien.fr"
-				>emilien@em-ilien.fr</a
+			Pour me contacter, envoyez-moi un courriel à l'adresse <a href="mailto:contact@emiliencosson.fr"
+				>contact@emiliencosson.fr</a
 			>.
 		</p>
 	</section>
