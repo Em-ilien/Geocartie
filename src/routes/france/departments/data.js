@@ -3483,11 +3483,6 @@ export const departments = [
 				contextLink: 'https://www.lirelif.fr/geographies/le-departement-des-hautes-pyrenees/',
 			},
 			{
-				src: 'http://www.les-regions.com/images/regions/midi-pyrenees.jpg',
-				description: 'Midi-Pyr\u00e9n\u00e9es | LES REGIONS FRANCAISES',
-				contextLink: 'http://www.les-regions.com/midi-pyrenees/',
-			},
-			{
 				src: 'https://c8.alamy.com/compfr/x0g4n9/lac-de-gaube-cauterets-pyrenees-region-midi-pyrenees-parc-national-paysage-de-montagne-departement-des-hautes-pyrenees-x0g4n9.jpg',
 				description: 'lac-de-gaube-cauterets- ...',
 				contextLink: 'http://reflectim.fr/tag/region-midi-pyrenees-paysage/',
