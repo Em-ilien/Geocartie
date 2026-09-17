@@ -3938,12 +3938,6 @@ export const departments = [
 					'https://www.catawiki.com/fr/l/47747101-france-departement-74-haute-savoie-divers-ville-et-paysages-cartes-postales-ensemble-de-133-1900',
 			},
 			{
-				src: 'https://france3-regions.francetvinfo.fr/image/F_YCO9Sg43TohY6h1QC6XWomTBs/600x400/regions/2020/06/09/5edf97089e56f_maxnewsfrfour238080r-4830918.jpg',
-				description: 'Surmortalit\u00e9 : le Rh\u00f4ne et la Haute-Savoie d\u00e9partements les plus ...',
-				contextLink:
-					'https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes/surmortalite-rhone-haute-savoie-departements-plus-touches-auvergne-epargnee-1831454.html',
-			},
-			{
 				src: 'https://cdn.radiofrance.fr/s3/cruiser-production/2018/12/18e7b562-8cb0-4b26-9d84-150629afb9dc/870x489_dpaphotosthree654925.jpg',
 				description: 'La Haute-Savoie reste le d\u00e9partement le plus attractif de France ...',
 				contextLink:
